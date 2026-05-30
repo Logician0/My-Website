@@ -69,7 +69,7 @@ const desktopVideos: VideoProject[] = [
   { id: "v2-desk", showOn: "desktop", title: "Fashion Clip", category: "Reels", youtubeId: "wyz9Ok6gDyA", ratio: "9/16", gridClass: "col-span-1 row-span-1", w: "150%", h: "150%", customThumb: "" },
   { id: "v3-desk", showOn: "desktop", title: "Motion ID-009", category: "CGI", youtubeId: "KasJHz8AbnE", ratio: "9/16", gridClass: "col-span-2 row-span-2", w: "120%", h: "120%", customThumb: "" },
   { id: "v4-desk", showOn: "desktop", title: "Neon City", category: "3D Art", youtubeId: "Adiz1O8JQig", ratio: "9/16", gridClass: "col-span-2 row-span-2", w: "120%", h: "120%", customThumb: "" },
-  { id: "v5-desk", showOn: "desktop", title: "Tech Short", category: "Social", youtubeId: "c0v_SUjTg7Q", ratio: "9/16", gridClass: "col-span-1 row-span-1", w: "120%", h: "120%", customThumb: "public/vertical-v5.webp" },
+  { id: "v5-desk", showOn: "desktop", title: "Tech Short", category: "Social", youtubeId: "c0v_SUjTg7Q", ratio: "9/16", gridClass: "col-span-1 row-span-1", w: "120%", h: "120%", customThumb: "" },
   { id: "v6-desk", showOn: "desktop", title: "Automotive Ad", category: "Commercial", youtubeId: "-v31vBqMixw", ratio: "16/9", gridClass: "col-span-3 row-span-1", w: "120%", h: "120%", customThumb: "" },
   { id: "v7-desk", showOn: "desktop", title: "Travel Doc", category: "YouTube", youtubeId: "lsqQnlXeZ6Q", ratio: "16/9", gridClass: "col-span-3 row-span-1", w: "212%", h: "212%", customThumb: "" },
   { id: "v8-desk", showOn: "desktop", title: "Event B-Roll", category: "Highlight", youtubeId: "0Ph6MpGKq8I", ratio: "9/16", gridClass: "col-span-1 row-span-1", w: "120%", h: "120%", customThumb: "" },
@@ -102,7 +102,7 @@ const mobileVerticalVideos: MobileVideoItem[] = [
   { id: "mob-v2", title: "Fashion Clip", category: "Reels", youtubeId: "0Ph6MpGKq8I", ratio: "9/16", customThumb: "" },
   { id: "mob-v3", title: "Product Tease", category: "Promo", youtubeId: "hFGV4zHmXxY", ratio: "9/16", customThumb: "" },
   { id: "mob-v4", title: "Motion ID-009", category: "CGI", youtubeId: "Adiz1O8JQig", ratio: "9/16", customThumb: "" },
-  { id: "mob-v5", title: "Neon City", category: "3D Art", youtubeId: "c0v_SUjTg7Q", ratio: "9/16", customThumb: "public/vertical-v5.webp" },
+  { id: "mob-v5", title: "Neon City", category: "3D Art", youtubeId: "c0v_SUjTg7Q", ratio: "9/16", customThumb: "" },
 ];
 
 /* ═══ WEB DATA — UNCHANGED ═══ */
