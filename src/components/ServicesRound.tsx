@@ -77,10 +77,7 @@ const desktopVideos: VideoProject[] = [
   { id: "v10-desk", showOn: "desktop", title: "Product Tease", category: "Promo", youtubeId: "hFGV4zHmXxY", ratio: "9/16", gridClass: "col-span-1 row-span-1", w: "120%", h: "120%", customThumb: "" },
 ];
 
-const desktopCenterpiece: VideoProject = {
-  id: "v11-desk", showOn: "desktop", title: "Showreel 2026", category: "Main Reel",
-  youtubeId: "lsqQnlXeZ6Q", ratio: "16/9", isCenterpiece: true, w: "180%", h: "180%", customThumb: "",
-};
+
 
 /* ═══ MOBILE VIDEO SWIPE DATA ═══ */
 interface MobileVideoItem {
@@ -207,50 +204,7 @@ function DesktopVideoCard({
   );
 }
 
-/* ═══ DESKTOP CENTERPIECE (UNCHANGED) ═══ */
-function DesktopCenterpieceVideo({
-  video,
-  onPlay,
-}: {
-  video: VideoProject;
-  onPlay: (v: VideoProject) => void;
-}) {
-  const [hovered, setHovered] = useState(false);
-  const [iframeLoaded, setIframeLoaded] = useState(false);
 
-  return (
-    <motion.div
-      layoutId={`video-wrapper-${video.id}`}
-      onClick={() => onPlay(video)}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
-      animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
-      transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.4 }}
-      className="absolute top-1/2 left-1/2 w-[380px] h-[380px] rounded-full overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)] border-[6px] border-[#05070A] z-20 group cursor-pointer transform-gpu bg-zinc-900"
-    >
-      <img
-        src={video.customThumb || ytThumbMax(video.youtubeId)}
-        alt={video.title}
-        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${hovered && iframeLoaded ? "opacity-0" : "opacity-100"
-          }`}
-      />
-
-      {hovered && (
-        <div className={`absolute inset-0 rounded-full overflow-hidden transition-opacity duration-500 ${iframeLoaded ? "opacity-100" : "opacity-0"}`}>
-          <iframe
-            src={gridYtEmbed(video.youtubeId)}
-            onLoad={() => setIframeLoaded(true)}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-            style={{ width: video.w || "180%", height: video.h || "180%", border: "none" }}
-            allow="autoplay; muted; playsinline"
-            title={video.title}
-          />
-        </div>
-      )}
-    </motion.div>
-  );
-}
 
 /* ═══ MOBILE VIDEO SWIPE ROW — CSS Scroll-Snap ═══ */
 function MobileVideoSwipeRow({
