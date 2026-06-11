@@ -89,97 +89,117 @@ export function Navbar() {
 
   // 3. CONTINUOUS SCROLL TRACKING (Lag-Free Native DOM Updates)
   useEffect(() => {
+    let ticking = false;
+    let desktopButtons: HTMLButtonElement[] = [];
+    let mobileButtons: HTMLButtonElement[] = [];
+
     const handleScrollTracking = () => {
       if (isServicePage || isClickScrolling.current) return;
 
-      const currentScrollY = window.scrollY;
-      let currentIndex = 0;
-      let progress = 0;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
 
-      // Calculate interpolation between sections
-      for (let i = 0; i < navItems.length; i++) {
-        const sectionId = navItems[i].id;
-        const nextSectionId = i < navItems.length - 1 ? navItems[i + 1].id : null;
+          const desktopNavItems = navItems;
+          const mobileNavItems = navItems.filter(item => item.id !== 'testimonials');
 
-        const el = document.getElementById(sectionId);
-        const nextEl = nextSectionId ? document.getElementById(nextSectionId) : null;
+          const calculateTracking = (items: typeof navItems) => {
+            let currentIndex = 0;
+            let progress = 0;
+            let activeSectionId = items[0].id;
 
-        if (el) {
-          // If layout hasn't painted yet, offsetTop will be suspiciously low. Skip evaluation to prevent jumping.
-          if (i > 0 && el.offsetTop < 100) continue;
+            for (let i = 0; i < items.length; i++) {
+              const sectionId = items[i].id;
+              const nextSectionId = i < items.length - 1 ? items[i + 1].id : null;
+              
+              const el = document.getElementById(sectionId);
+              const nextEl = nextSectionId ? document.getElementById(nextSectionId) : null;
+              
+              if (el) {
+                if (i > 0 && el.offsetTop < 100) continue;
 
-          const top = i === 0 ? 0 : el.offsetTop - 300;
-          const bottom = nextEl ? nextEl.offsetTop - 300 : document.body.scrollHeight;
-
-          if (currentScrollY >= top && currentScrollY < bottom) {
-            currentIndex = i;
-            progress = Math.max(0, Math.min(1, (currentScrollY - top) / (bottom - top)));
-
-            // Set active text color via React State
-            const currentHref = "#" + sectionId;
-            if (activeItem !== currentHref && progress < 0.5) {
-              setActiveItem(currentHref);
-            } else if (nextSectionId && activeItem !== "#" + nextSectionId && progress >= 0.5) {
-              setActiveItem("#" + nextSectionId);
-            }
-            break;
-          }
-        }
-      }
-
-      // Update Pill Position Natively (60FPS)
-      const updatePill = (navRef: React.RefObject<HTMLDivElement>, pillRef: React.RefObject<HTMLDivElement>) => {
-        if (!navRef.current || !pillRef.current) return;
-
-        const buttons = Array.from(navRef.current.querySelectorAll('button'));
-        if (buttons.length === 0) return;
-
-        const currentBtn = buttons[currentIndex];
-        const nextBtn = buttons[Math.min(currentIndex + 1, buttons.length - 1)];
-
-        if (currentBtn && nextBtn) {
-          // Add easing to progress for smoother "magnetic" feel
-          const easeProgress = progress < 0.5
-            ? 2 * progress * progress
-            : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-
-          const left = currentBtn.offsetLeft + easeProgress * (nextBtn.offsetLeft - currentBtn.offsetLeft);
-          const width = currentBtn.offsetWidth + easeProgress * (nextBtn.offsetWidth - currentBtn.offsetWidth);
-          const height = currentBtn.offsetHeight;
-          const top = currentBtn.offsetTop;
-
-          // Prevent initial jump by disabling transition on first paint
-          const isInitialLoad = !pillRef.current.style.transform;
-          if (isInitialLoad) {
-            pillRef.current.style.transition = 'none';
-          }
-
-          pillRef.current.style.transform = `translate(${left}px, ${top}px)`;
-          pillRef.current.style.width = `${width}px`;
-          pillRef.current.style.height = `${height}px`;
-
-          if (isInitialLoad) {
-            // Re-enable hardware smoothing after layout establishes
-            requestAnimationFrame(() => {
-              if (pillRef.current) {
-                pillRef.current.style.transition = 'all 250ms ease-out';
+                const top = i === 0 ? 0 : el.offsetTop - 300;
+                const bottom = nextEl ? nextEl.offsetTop - 300 : document.body.scrollHeight;
+                
+                if (currentScrollY >= top && currentScrollY < bottom) {
+                  currentIndex = i;
+                  progress = Math.max(0, Math.min(1, (currentScrollY - top) / (bottom - top)));
+                  activeSectionId = progress < 0.5 ? sectionId : (nextSectionId || sectionId);
+                  break;
+                }
               }
-            });
-          }
-        }
-      };
+            }
+            return { currentIndex, progress, activeSectionId };
+          };
 
-      updatePill(desktopNavRef, desktopPillRef);
-      updatePill(mobileNavRef, mobilePillRef);
+          const desktopTracking = calculateTracking(desktopNavItems);
+          const mobileTracking = calculateTracking(mobileNavItems);
+
+          // Set active text color via React State using Desktop as the source of truth
+          const currentHref = "#" + desktopTracking.activeSectionId;
+          if (activeItem !== currentHref) {
+            setActiveItem(currentHref);
+          }
+
+          // Cache DOM queries for buttons
+          if (desktopButtons.length === 0 && desktopNavRef.current) {
+            desktopButtons = Array.from(desktopNavRef.current.querySelectorAll('button'));
+          }
+          if (mobileButtons.length === 0 && mobileNavRef.current) {
+            mobileButtons = Array.from(mobileNavRef.current.querySelectorAll('button'));
+          }
+
+          // Update Pill Position Natively (60FPS)
+          const updatePill = (
+            pillRef: React.RefObject<HTMLDivElement>, 
+            buttons: HTMLButtonElement[],
+            tracking: { currentIndex: number, progress: number }
+          ) => {
+            if (!pillRef.current || buttons.length === 0) return;
+
+            const currentBtn = buttons[tracking.currentIndex];
+            const nextBtn = buttons[Math.min(tracking.currentIndex + 1, buttons.length - 1)];
+
+            if (currentBtn && nextBtn) {
+              const easeOut = 1 - Math.pow(1 - tracking.progress, 3);
+              const easeIn = Math.pow(tracking.progress, 3);
+
+              const startLeft = currentBtn.offsetLeft;
+              const startRight = currentBtn.offsetLeft + currentBtn.offsetWidth;
+              
+              const endLeft = nextBtn.offsetLeft;
+              const endRight = nextBtn.offsetLeft + nextBtn.offsetWidth;
+
+              const currentLeft = startLeft + easeIn * (endLeft - startLeft);
+              const currentRight = startRight + easeOut * (endRight - startRight);
+
+              const left = currentLeft;
+              const width = currentRight - currentLeft;
+              const height = currentBtn.offsetHeight;
+              const top = currentBtn.offsetTop;
+
+              pillRef.current.style.transform = `translate(${left}px, ${top}px)`;
+              pillRef.current.style.width = `${width}px`;
+              pillRef.current.style.height = `${height}px`;
+            }
+          };
+
+          updatePill(desktopPillRef, desktopButtons, desktopTracking);
+          updatePill(mobilePillRef, mobileButtons, mobileTracking);
+          
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScrollTracking, { passive: true });
-
+    
     // Attempt tracking multiple times as layout paints
-    handleScrollTracking();
+    handleScrollTracking(); 
     setTimeout(handleScrollTracking, 100);
     setTimeout(handleScrollTracking, 500);
-
+    
     return () => window.removeEventListener("scroll", handleScrollTracking);
   }, [activeItem, isServicePage]);
 
@@ -281,7 +301,7 @@ export function Navbar() {
             {/* CONTINUOUS HIGHLIGHT PILL */}
             <div
               ref={desktopPillRef}
-              className="absolute top-0 left-0 bg-white/10 border border-white/20 rounded-full shadow-lg backdrop-blur-md pointer-events-none will-change-[transform,width] transition-all duration-[250ms] ease-out z-0"
+              className="absolute top-0 left-0 bg-white/10 border border-white/20 rounded-full shadow-lg pointer-events-none will-change-[transform,width] z-0"
             />
             {navItems.map((item) => {
               const isActive = activeItem === item.href;
@@ -311,7 +331,7 @@ export function Navbar() {
             {/* CONTINUOUS HIGHLIGHT PILL */}
             <div
               ref={mobilePillRef}
-              className="absolute top-0 left-0 bg-white/10 border border-white/20 rounded-full shadow-lg backdrop-blur-md pointer-events-none will-change-[transform,width] transition-all duration-[250ms] ease-out z-0"
+              className="absolute top-0 left-0 bg-white/10 border border-white/20 rounded-full shadow-lg pointer-events-none will-change-[transform,width] z-0"
             />
             {navItems.filter(item => item.id !== 'testimonials').map((item) => {
               const isActive = activeItem === item.href;
