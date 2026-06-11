@@ -3,7 +3,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Youtube, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
-import { PremiumBackground } from '@/components/PremiumBackground';
 
 const socialIcons = [
   { Icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@logiciancreatives' },

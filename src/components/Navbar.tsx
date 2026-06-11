@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import { ArrowRight, Home, Briefcase, Activity, User, MessageSquare, Mail } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/utils/cn";
@@ -151,7 +150,7 @@ export function Navbar() {
 
           // Update Pill Position Natively (60FPS)
           const updatePill = (
-            pillRef: React.RefObject<HTMLDivElement>, 
+            pillRef: React.RefObject<HTMLDivElement | null>, 
             buttons: HTMLButtonElement[],
             tracking: { currentIndex: number, progress: number }
           ) => {
@@ -220,7 +219,7 @@ export function Navbar() {
 
     // Force pill to target immediately
     const index = navItems.findIndex(i => i.href === href);
-    const forcePill = (navRef: React.RefObject<HTMLDivElement>, pillRef: React.RefObject<HTMLDivElement>) => {
+    const forcePill = (navRef: React.RefObject<HTMLDivElement | null>, pillRef: React.RefObject<HTMLDivElement | null>) => {
       if (navRef.current && pillRef.current) {
         const btn = navRef.current.querySelectorAll('button')[index];
         if (btn) {
