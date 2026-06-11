@@ -6,15 +6,15 @@ import { MessageSquare, Lightbulb, Palette, Code, Rocket } from 'lucide-react';
 import { PremiumBackground } from '@/components/PremiumBackground';
 
 const steps = [
-  { id: 1, title: 'Discovery', Icon: MessageSquare },
-  { id: 2, title: 'Strategy', Icon: Lightbulb },
-  { id: 3, title: 'Design', Icon: Palette },
-  { id: 4, title: 'Develop', Icon: Code },
-  { id: 5, title: 'Launch', Icon: Rocket },
+  { id: 1, title: 'Discovery', Icon: MessageSquare, desc: 'We dive deep into your brand, audience, and goals to lay a solid foundation.' },
+  { id: 2, title: 'Strategy', Icon: Lightbulb, desc: 'Crafting a customized blueprint and timeline to guarantee project success.' },
+  { id: 3, title: 'Design', Icon: Palette, desc: 'Creating stunning, user-centric visual interfaces that captivate and convert.' },
+  { id: 4, title: 'Develop', Icon: Code, desc: 'Writing clean, scalable, and high-performance code to bring the vision to life.' },
+  { id: 5, title: 'Launch', Icon: Rocket, desc: 'Rigorous testing, optimization, and deploying your product to the world.' },
 ];
 
 // --- UNIVERSAL PROCESS LOOP ---
-function ProcessLoop() {
+function ProcessLoop({ onStepChange }: { onStepChange: (step: number) => void }) {
   const [progress, setProgress] = useState(0);
   const animationRef = useRef<number | null>(null);
   
@@ -69,6 +69,10 @@ function ProcessLoop() {
     return 1;
   }, [progress]);
   
+  useEffect(() => {
+    onStepChange(activeStep);
+  }, [activeStep, onStepChange]);
+  
   const isLineActive = (stepId: number) => stepId <= activeStep;
 
   // Colors for theme
@@ -79,7 +83,7 @@ function ProcessLoop() {
 
   return (
     <div 
-      className="relative w-[340px] h-[240px] mx-auto mt-12 md:mt-24 lg:mt-32 transform scale-100 sm:scale-125 md:scale-150 lg:scale-[1.75] origin-center select-none"
+      className="relative w-[340px] h-[240px] mx-auto my-8 transform scale-100 sm:scale-125 md:scale-150 lg:scale-[1.35] xl:scale-[1.6] origin-center select-none"
       style={{ willChange: 'contents' }}
     >
       
@@ -173,14 +177,16 @@ const ProcessCard = React.memo(({ step, isActive }: { step: typeof steps[0], isA
 });
 
 export function Process() {
+  const [activeStepId, setActiveStepId] = useState(1);
+
   return (
     <section id="process" className="py-16 md:py-32 relative overflow-hidden flex flex-col items-center justify-center font-sans">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.08)_0%,transparent_60%)] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-7xl px-4">
+      <div className="relative z-10 w-full max-w-7xl px-4 lg:px-8 mx-auto">
         {/* Header */}
         <motion.div 
-          className="text-center mb-0 md:mb-8"
+          className="text-center mb-12 md:mb-20"
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -199,8 +205,49 @@ export function Process() {
           </p>
         </motion.div>
 
-        {/* Animation */}
-        <ProcessLoop />
+        {/* Layout: Diagram Left, Text Right */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-8 xl:gap-24">
+          
+          {/* Left Column: Animation */}
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end items-center h-[300px] sm:h-[400px]">
+            <ProcessLoop onStepChange={(step) => setActiveStepId(step || 1)} />
+          </div>
+
+          {/* Right Column: Static List of Descriptions */}
+          <div className="w-full lg:w-1/2 flex flex-col gap-2.5 max-w-lg mx-auto lg:mx-0">
+             {steps.map((step) => (
+               <div 
+                 key={step.id} 
+                 className={`flex gap-3.5 p-3 md:p-4 rounded-xl border transition-all duration-500 transform-gpu ${
+                   activeStepId === step.id 
+                     ? 'bg-cyan-900/20 border-cyan-500/30 shadow-[0_0_15px_rgba(6,182,212,0.1)] scale-[1.02] md:scale-105 z-10' 
+                     : 'bg-white/[0.02] border-white/[0.05] opacity-50 scale-100 z-0'
+                 }`}
+               >
+                 <div className={`mt-1 flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center border transition-colors duration-500 ${
+                   activeStepId === step.id 
+                     ? 'bg-cyan-500/20 border-cyan-400 text-cyan-400' 
+                     : 'bg-white/5 border-white/10 text-white/40'
+                 }`}>
+                    <step.Icon size={12} />
+                 </div>
+                 <div>
+                    <h3 className={`text-xs md:text-sm font-bold uppercase tracking-widest mb-0.5 transition-colors duration-500 ${
+                      activeStepId === step.id ? 'text-white' : 'text-white/60'
+                    }`}>
+                      0{step.id}. {step.title}
+                    </h3>
+                    <p className={`text-[10px] md:text-xs leading-relaxed transition-colors duration-500 ${
+                      activeStepId === step.id ? 'text-white/80' : 'text-white/40'
+                    }`}>
+                      {step.desc}
+                    </p>
+                 </div>
+               </div>
+             ))}
+          </div>
+
+        </div>
       </div>
     </section>
   );
