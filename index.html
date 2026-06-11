@@ -20,13 +20,13 @@
       html, body, #root {
         background-color: #000000 !important;
         min-height: 100%;
-        transform: translateZ(0);
         -webkit-font-smoothing: antialiased;
         /* 3. STOP OVERSCROLL: Prevents the "white bounce" lag on mobile browsers */
         overscroll-behavior-y: none;
       }
 
-      section {
+      /* Only apply content-visibility to main page sections, NOT the navbar header */
+      main > section {
         content-visibility: auto;
         contain-intrinsic-size: 1px 500px;
       }

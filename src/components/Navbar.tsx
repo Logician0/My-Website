@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Home, Briefcase, Activity, User, Mail } from "lucide-react";
+import { ArrowRight, Home, Briefcase, Activity, User, MessageSquare, Mail } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/utils/cn";
 
@@ -11,17 +11,18 @@ const navItems = [
   { label: "Portfolio", href: "#portfolio", icon: Briefcase },
   { label: "Process", href: "#process", icon: Activity },
   { label: "About", href: "#about", icon: User },
+  { label: "Testimonials", href: "#testimonials", icon: MessageSquare },
   { label: "Contact", href: "#contact", icon: Mail },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeItem, setActiveItem] = useState("#home"); 
-  
+  const [activeItem, setActiveItem] = useState("#home");
+
   // Visibility States
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
-  
+
   const isClickScrolling = useRef(false);
   const scrollTimer = useRef<NodeJS.Timeout | null>(null);
 
@@ -37,7 +38,7 @@ export function Navbar() {
 
     const element = document.querySelector(selector);
     if (element) {
-      const offset = 100; 
+      const offset = 100;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - offset;
 
@@ -58,11 +59,23 @@ export function Navbar() {
     }
   }, [location.hash, location.pathname]);
 
-  // 2. ISOLATED VISIBILITY LOGIC: Only handles background styling on scroll
+  // 2. ISOLATED VISIBILITY LOGIC: Auto-hide after scroll stops
   useEffect(() => {
     const handleVisibilityScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      // Removed auto-hide logic, navbar is always visible now
+      
+      // Make it visible immediately while scrolling
+      setIsNavVisible(true);
+      
+      // Clear previous timeout
+      if (scrollTimer.current) clearTimeout(scrollTimer.current);
+      
+      // Set a new timeout to hide the navbar if we are not at the very top
+      if (window.scrollY > 50) {
+        scrollTimer.current = setTimeout(() => {
+          setIsNavVisible(false);
+        }, 1000);
+      }
     };
 
     window.addEventListener("scroll", handleVisibilityScroll, { passive: true });
@@ -70,6 +83,7 @@ export function Navbar() {
     
     return () => {
       window.removeEventListener("scroll", handleVisibilityScroll);
+      if (scrollTimer.current) clearTimeout(scrollTimer.current);
     };
   }, []);
 
@@ -81,16 +95,16 @@ export function Navbar() {
       const currentScrollY = window.scrollY;
       let currentSection = "#home";
       const sections = navItems.map(item => item.href.substring(1));
-      
+
       for (const section of sections) {
-        if (section === "home") continue; 
-        
+        if (section === "home") continue;
+
         const el = document.getElementById(section);
         if (el && currentScrollY >= (el.offsetTop - 300)) {
           currentSection = "#" + section;
         }
       }
-      
+
       if (currentSection !== activeItem) {
         setActiveItem(currentSection);
       }
@@ -103,7 +117,7 @@ export function Navbar() {
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
     setActiveItem(href);
-    
+
     // Keep visible while programmatic scrolling happens
     setIsNavVisible(true);
     isClickScrolling.current = true;
@@ -119,9 +133,9 @@ export function Navbar() {
       } else {
         window.history.pushState(null, "", href);
       }
-      
+
       scrollToSection(href);
-      
+
       setTimeout(() => {
         isClickScrolling.current = false;
       }, 1000);
@@ -129,7 +143,7 @@ export function Navbar() {
   };
 
   return (
-    <motion.header
+    <header
       // Keep visible if mouse is over it (Desktop)
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -140,18 +154,22 @@ export function Navbar() {
         scrollTimer.current = setTimeout(() => setIsNavVisible(false), 2000); // Gives 2s to click
       }}
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out pointer-events-none",
         isScrolled || isServicePage
-          ? "bg-gradient-to-b from-black/80 to-transparent py-3 sm:py-4 border-none"
-          : "bg-transparent py-4 sm:py-6",
-        // Navbar is always visible now
-        "opacity-100 translate-y-0"
+          ? "py-3 sm:py-4"
+          : "py-4 sm:py-6",
+        isNavVisible || !isScrolled || isHovered 
+          ? "opacity-100 translate-y-0" 
+          : "opacity-0 -translate-y-32"
       )}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between relative">
-        
+
         {/* --- LEFT: TEXT LOGO (HIDDEN ON MOBILE) --- */}
-        <Link to="/" className="hidden sm:flex items-center group z-50" onClick={() => {
+        <Link to="/" className={cn(
+          "hidden sm:flex items-center group z-50 transition-opacity duration-300 pointer-events-auto",
+          isScrolled ? "opacity-0 pointer-events-none" : "opacity-100"
+        )} onClick={() => {
           if (!isServicePage) {
             setActiveItem("#home");
             isClickScrolling.current = true;
@@ -165,7 +183,7 @@ export function Navbar() {
         </Link>
 
         {/* --- CENTER: APPLE GLASS SHORTCUT PILL (DESKTOP - ICONS + TEXT) --- */}
-        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-50">
+        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-50 pointer-events-auto">
           <div className="flex items-center gap-1 px-1.5 py-1.5 rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.3)] saturate-150">
             {navItems.map((item) => {
               const isActive = activeItem === item.href;
@@ -197,7 +215,7 @@ export function Navbar() {
         </div>
 
         {/* --- CENTER: APPLE GLASS SHORTCUT PILL (MOBILE - ICONS + TEXT) --- */}
-        <div className="flex md:hidden absolute left-1/2 -translate-x-1/2 top-0 z-50 w-[96vw] sm:w-[85vw]">
+        <div className="flex md:hidden absolute left-1/2 -translate-x-1/2 top-0 z-50 w-[96vw] sm:w-[85vw] pointer-events-auto">
           <div className="flex items-center justify-between w-full px-1 py-1 rounded-[2rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_12px_40px_0_rgba(0,0,0,0.4)] saturate-150">
             {navItems.map((item) => {
               const isActive = activeItem === item.href;
@@ -233,13 +251,16 @@ export function Navbar() {
         <a
           href="#contact"
           onClick={(e) => handleNavClick(e, "#contact")}
-          className="hidden md:flex items-center gap-2 text-xs font-bold text-white uppercase tracking-widest hover:text-zinc-300 transition-colors group cursor-pointer z-50 ml-auto"
+          className={cn(
+            "hidden md:flex items-center gap-2 text-xs font-bold text-white uppercase tracking-widest hover:text-zinc-300 transition-all duration-300 group cursor-pointer z-50 ml-auto pointer-events-auto",
+            isScrolled ? "opacity-0 pointer-events-none" : "opacity-100"
+          )}
         >
           Start Project
           <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
         </a>
 
       </nav>
-    </motion.header>
+    </header>
   );
 }

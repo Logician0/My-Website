@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
+import { PremiumBackground } from '@/components/PremiumBackground';
 import { testimonials } from '@/lib/data';
 import { cn } from '@/utils/cn';
 
@@ -49,8 +50,7 @@ export function Testimonials() {
   };
 
   return (
-    <section className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 bg-[#050505] overflow-hidden font-sans border-t border-white/[0.05]">
-      
+    <section id="testimonials" className="relative py-16 sm:py-24 md:py-32 px-4 sm:px-6 overflow-hidden font-sans">
       {/* --- CINEMATIC DARK BACKGROUND --- */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.08)_0%,transparent_60%)] pointer-events-none z-0" />
 

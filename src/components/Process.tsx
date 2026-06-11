@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Lightbulb, Palette, Code, Rocket } from 'lucide-react';
+import { PremiumBackground } from '@/components/PremiumBackground';
 
 const steps = [
   { id: 1, title: 'Discovery', Icon: MessageSquare },
@@ -173,7 +174,7 @@ const ProcessCard = React.memo(({ step, isActive }: { step: typeof steps[0], isA
 
 export function Process() {
   return (
-    <section id="process" className="py-16 md:py-32 bg-[#050505] border-t border-white/[0.05] relative overflow-hidden flex flex-col items-center justify-center font-sans">
+    <section id="process" className="py-16 md:py-32 relative overflow-hidden flex flex-col items-center justify-center font-sans">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.08)_0%,transparent_60%)] pointer-events-none" />
 
       <div className="relative z-10 w-full max-w-7xl px-4">

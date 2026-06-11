@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus } from 'lucide-react';
+import { PremiumBackground } from '@/components/PremiumBackground';
 import { cn } from '@/utils/cn';
 
 const faqs = [
@@ -28,8 +29,7 @@ export function FAQ() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-20 px-4 sm:px-6 bg-[#050505] relative overflow-hidden border-t border-white/[0.05]">
-      
+    <section id="faq" className="py-20 px-4 sm:px-6 relative overflow-hidden">
       <div className="max-w-3xl mx-auto relative z-10">
         
         {/* --- HEADER --- */}

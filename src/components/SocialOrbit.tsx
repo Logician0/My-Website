@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Youtube, Twitter, Instagram, Linkedin, Github, Sparkles, BrainCircuit, Bot, MessageSquare, Mic, Video, Image, FileText, Zap, Wand2 } from 'lucide-react';
-import { cn } from '@/utils/cn';
+import { Youtube, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
+import { PremiumBackground } from '@/components/PremiumBackground';
 
 const socialIcons = [
   { Icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@logiciancreatives' },
@@ -13,19 +13,15 @@ const socialIcons = [
   { Icon: Github, label: 'GitHub', href: 'https://github.com/Logician0' },
 ];
 
-const aiSkillsWithIcons = [
-  { name: "Claude", icon: BrainCircuit },
-  { name: "Gemini", icon: Sparkles },
-  { name: "ChatGPT", icon: Bot },
-  { name: "Grok", icon: Zap },
-  { name: "HeyGen", icon: Video },
-  { name: "ElevenLabs", icon: Mic },
-  { name: "Kling", icon: Image },
-  { name: "Nano Banana", icon: Wand2 },
-  { name: "Notion", icon: FileText },
-  { name: "AI Image Generation", icon: Image },
-  { name: "AI Video Generation", icon: Video },
-  { name: "Advanced Prompting", icon: MessageSquare }
+const aiTools = [
+  { name: "ChatGPT", logo: "https://placehold.co/150x150/1a1a1a/cccccc?text=Icon" },
+  { name: "Claude", logo: "https://placehold.co/150x150/1a1a1a/cccccc?text=Icon" },
+  { name: "Gemini", logo: "https://placehold.co/150x150/1a1a1a/cccccc?text=Icon" },
+  { name: "HeyGen", logo: "https://placehold.co/150x150/1a1a1a/cccccc?text=Icon" },
+  { name: "ElevenLabs", logo: "https://placehold.co/150x150/1a1a1a/cccccc?text=Icon" },
+  { name: "Notion", logo: "https://placehold.co/150x150/1a1a1a/cccccc?text=Icon" },
+  { name: "Midjourney", logo: "https://placehold.co/150x150/1a1a1a/cccccc?text=Icon" },
+  { name: "Grok", logo: "https://placehold.co/150x150/1a1a1a/cccccc?text=Icon" }
 ];
 
 const getIconPositions = (radius: number) => {
@@ -118,8 +114,7 @@ export function SocialOrbit() {
   const iconPositions = useMemo(() => getIconPositions(radius), [radius]);
 
   return (
-    <section id="about" className="py-16 sm:py-20 md:py-24 bg-[#050505] relative overflow-hidden border-t border-white/[0.05] font-sans" aria-label="About Logician Creatives">
-      
+    <section id="about" className="py-16 sm:py-20 md:py-24 relative overflow-hidden font-sans" aria-label="About Logician Creatives">
       {/* Cinematic Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.08)_0%,transparent_60%)] pointer-events-none z-0" />
       
@@ -252,11 +247,8 @@ export function SocialOrbit() {
         <div className="relative pt-12 border-t border-white/5 overflow-hidden">
           
           <div className="flex flex-col items-center justify-center mb-8">
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-cyan-950/30 backdrop-blur-xl border border-cyan-500/20 mb-4 shadow-[0_0_20px_rgba(6,182,212,0.2)]">
-              <BrainCircuit className="w-6 h-6 text-cyan-400" />
-            </div>
             <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tighter drop-shadow-lg">
-              AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-600">Expertise</span>
+              Tools We <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-600">Use</span>
             </h3>
           </div>
 
@@ -270,17 +262,20 @@ export function SocialOrbit() {
               className="flex whitespace-nowrap items-center gap-4 sm:gap-6 px-4 w-max marquee"
               style={{ willChange: "transform" }}
             >
-              {/* Double the array for seamless infinite scrolling */}
-              {[...aiSkillsWithIcons, ...aiSkillsWithIcons].map((skill, index) => {
-                const Icon = skill.icon;
+              {/* Triple the array for seamless infinite scrolling */}
+              {[...aiTools, ...aiTools, ...aiTools].map((tool, index) => {
                 return (
                   <div 
-                    key={`${skill.name}-${index}`}
-                    className="flex flex-col items-center justify-center gap-2 w-[100px] h-[100px] sm:w-[130px] sm:h-[130px] rounded-2xl sm:rounded-3xl bg-white/[0.03] border border-white/[0.08] shadow-sm hover:bg-white/[0.06] hover:border-white/20 transition-colors duration-300 cursor-default"
-                    style={{ transform: "translateZ(0)" }}
+                    key={`${tool.name}-${index}`}
+                    className="flex flex-col items-center justify-center gap-3 w-[80px] sm:w-[110px] transition-transform duration-300 hover:scale-110 cursor-default"
                   >
-                    <Icon className="w-7 h-7 sm:w-8 sm:h-8 text-cyan-400 opacity-90" strokeWidth={1.5} />
-                    <span className="text-[9px] sm:text-[10px] font-bold text-white/90 uppercase tracking-widest text-center leading-tight px-1 line-clamp-2">{skill.name}</span>
+                    {/* Placeholder Image with rounded edges */}
+                    <img 
+                      src={tool.logo} 
+                      alt={`${tool.name} logo`} 
+                      className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-2xl shadow-inner border border-white/10"
+                    />
+                    <span className="text-[9px] sm:text-[10px] font-bold text-white/90 uppercase tracking-widest text-center leading-tight px-1 line-clamp-2">{tool.name}</span>
                   </div>
                 );
               })}

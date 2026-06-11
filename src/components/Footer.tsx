@@ -52,7 +52,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="relative z-50 border-t border-white/5 bg-black" aria-label="Site Footer">
+    <footer className="relative z-50 bg-black" aria-label="Site Footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* ==================================================================

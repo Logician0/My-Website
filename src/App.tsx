@@ -44,13 +44,14 @@ const PageLoader = () => (
 export function App() {
   return (
     <BrowserRouter>
+      {/* Navbar is OUTSIDE the overflow-hidden wrapper so position:fixed works correctly */}
+      <Navbar />
+      
       {/* min-h-screen: Ensures the background fills the window 
-         flex-col: Stacks Navbar, Content, Footer vertically
+         flex-col: Stacks Content, Footer vertically
          overflow-x-hidden: Prevents side-scrolling issues
       */}
       <div className="min-h-screen bg-black text-white antialiased cursor-default flex flex-col overflow-x-hidden">
-        
-        <Navbar />
 
         {/* flex-grow: Pushes the Footer to the bottom if content is short.
            w-full: Ensures content takes full width.

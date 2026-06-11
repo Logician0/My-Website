@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion, AnimatePresence, Transition } from "framer-motion";
+import { createPortal } from "react-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import { Play, ExternalLink, X, ArrowRight } from "lucide-react";
+import { PremiumBackground } from '@/components/PremiumBackground';
 
 /* ═══ TYPES ═══ */
 type Ratio = "16/9" | "9/16";
@@ -33,16 +35,11 @@ interface WebProject {
 
 /* ═══ YOUTUBE URLS ═══ */
 const gridYtEmbed = (id: string) =>
-  `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=${id}&modestbranding=1&rel=0`;
+  `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&playsinline=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0`;
 const modalYtEmbed = (id: string) =>
   `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1&controls=1`;
-const ytThumb = (id: string) =>
-  `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const ytThumbMax = (id: string) =>
   `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-
-/* ═══ ANIMATION CONFIG ═══ */
-const appleSpring: Transition = { type: "spring", bounce: 0, duration: 0.35 };
 
 /* ═══ LIGHTWEIGHT BACKGROUNDS ═══ */
 // Removed heavy SVG turbulence and particle animations that cause scroll lag
@@ -67,7 +64,7 @@ const trustedClients = [
 const desktopVideos: VideoProject[] = [
   { id: "v1-desk", showOn: "desktop", title: "Desert Bloom", category: "Color Grade", youtubeId: "83WR-gPqV-k", ratio: "16/9", gridClass: "col-span-3 row-span-1", w: "120%", h: "120%", customThumb: "" },
   { id: "v2-desk", showOn: "desktop", title: "Fashion Clip", category: "Reels", youtubeId: "wyz9Ok6gDyA", ratio: "9/16", gridClass: "col-span-1 row-span-1", w: "150%", h: "150%", customThumb: "" },
-  { id: "v3-desk", showOn: "desktop", title: "Motion ID-009", category: "CGI", youtubeId: "KasJHz8AbnE", ratio: "9/16", gridClass: "col-span-2 row-span-2", w: "120%", h: "120%", customThumb: "" },
+  { id: "v3-desk", showOn: "desktop", title: "Motion ID-009", category: "CGI", youtubeId: "KasJHz8AbnE", ratio: "9/16", gridClass: "col-span-2 row-span-2", w: "125%", h: "125%", customThumb: "" },
   { id: "v4-desk", showOn: "desktop", title: "Neon City", category: "3D Art", youtubeId: "Adiz1O8JQig", ratio: "9/16", gridClass: "col-span-2 row-span-2", w: "120%", h: "120%", customThumb: "" },
   { id: "v5-desk", showOn: "desktop", title: "Tech Short", category: "Social", youtubeId: "c0v_SUjTg7Q", ratio: "9/16", gridClass: "col-span-1 row-span-1", w: "120%", h: "120%", customThumb: "" },
   { id: "v6-desk", showOn: "desktop", title: "Automotive Ad", category: "Commercial", youtubeId: "-v31vBqMixw", ratio: "16/9", gridClass: "col-span-3 row-span-1", w: "120%", h: "120%", customThumb: "" },
@@ -252,7 +249,8 @@ function MobileVideoSwipeRow({
             style={{ width: cardWidth, scrollSnapAlign: "start" }}
             onClick={() => onPlay({ ...video, gridClass: "", showOn: "mobile" })}
           >
-            <div
+            <motion.div
+              layoutId={`video-wrapper-${video.id}`}
               className={`relative overflow-hidden rounded-2xl bg-zinc-900 border border-white/[0.06] cursor-pointer active:scale-[0.97] transition-transform duration-200 ${aspectClass}`}
             >
               <img
@@ -276,7 +274,7 @@ function MobileVideoSwipeRow({
                   <Play className="w-3 h-3 text-white ml-0.5" fill="currentColor" />
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         ))}
       </div>
@@ -375,131 +373,59 @@ function MobileWebSwipeRow({
   );
 }
 
-/* ═══ VIDEO MODAL (UNCHANGED) ═══ */
-function VideoModalContent({
-  video,
-  onClose,
-  showIframe,
-}: {
-  video: VideoProject;
-  onClose: () => void;
-  showIframe: boolean;
-}) {
-  const isCenterpiece = video.isCenterpiece;
-
-  const closeBtn = (
-    <motion.button
-      initial={{ opacity: 0, scale: 0.8, x: "-50%" }}
-      animate={{ opacity: 1, scale: 1, x: "-50%" }}
-      exit={{ opacity: 0, scale: 0.8, x: "-50%" }}
-      transition={{ delay: 0.15, duration: 0.2 }}
-      onClick={(e) => {
-        e.stopPropagation();
-        onClose();
-      }}
-      className="absolute top-3 md:top-5 left-1/2 z-[70] w-8 h-8 md:w-10 md:h-10 flex items-center justify-center bg-black/60 hover:bg-black/90 rounded-full transition-colors border border-white/20 backdrop-blur-md"
-    >
-      <X size={20} className="text-white" />
-    </motion.button>
-  );
-
-  return (
-    <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        onClick={onClose}
-        className="absolute inset-0 bg-black/90 backdrop-blur-sm cursor-pointer pointer-events-auto"
-      />
-
-      {isCenterpiece ? (
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0, opacity: 0 }}
-          transition={appleSpring}
-          className={`relative z-10 bg-black overflow-hidden shadow-2xl rounded-2xl md:rounded-[32px] ring-1 ring-white/10 pointer-events-auto ${video.ratio === "16/9"
-            ? "aspect-video max-w-[90vw] md:max-w-[1100px]"
-            : "aspect-[9/16] max-w-[75vw] md:max-w-[500px]"
-            } w-full`}
-        >
-          {showIframe ? (
-            <iframe
-              src={modalYtEmbed(video.youtubeId)}
-              title={video.title}
-              allowFullScreen
-              allow="autoplay; fullscreen"
-              className="w-full h-full relative z-10 bg-black"
-            />
-          ) : (
-            <img src={video.customThumb || ytThumb(video.youtubeId)} alt="" className="w-full h-full object-cover" />
-          )}
-          {closeBtn}
-        </motion.div>
-      ) : (
-        <motion.div
-          layoutId={`video-wrapper-${video.id}`}
-          transition={appleSpring}
-          className={`relative z-10 w-full bg-black overflow-hidden shadow-2xl rounded-2xl md:rounded-[32px] ring-1 ring-white/10 pointer-events-auto ${video.ratio === "16/9"
-            ? "aspect-video max-w-[1100px]"
-            : "aspect-[9/16] max-w-[75vw] md:max-w-[450px]"
-            }`}
-        >
-          {showIframe ? (
-            <iframe
-              src={modalYtEmbed(video.youtubeId)}
-              title={video.title}
-              allowFullScreen
-              allow="autoplay; fullscreen"
-              className="w-full h-full relative z-10 bg-black"
-            />
-          ) : (
-            <img src={video.customThumb || ytThumb(video.youtubeId)} alt="" className="w-full h-full object-cover" />
-          )}
-          {closeBtn}
-        </motion.div>
-      )}
-    </>
-  );
-}
+/* ═══ VIDEO MODAL (REMOVED) ═══ */
 
 /* ═══ MAIN LAYOUT ═══ */
 export function ServicesRound() {
   const [activeTab, setActiveTab] = useState<"video" | "web">("video");
   const [activeVideo, setActiveVideo] = useState<VideoProject | null>(null);
-  const [showIframe, setShowIframe] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!gridRef.current) return;
+    const rect = gridRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    gridRef.current.style.setProperty("--mouse-x", `${x}px`);
+    gridRef.current.style.setProperty("--mouse-y", `${y}px`);
+  }, []);
 
   useEffect(() => {
     const handlePopState = () => {
       if (activeVideo) closeVideo();
     };
     window.addEventListener("popstate", handlePopState);
-    return () => window.removeEventListener("popstate", handlePopState);
+    
+    if (activeVideo) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      document.body.style.overflow = "unset";
+    };
   }, [activeVideo]);
 
   const openVideo = useCallback((v: VideoProject) => {
     setActiveVideo(v);
     window.history.pushState({ isModalOpen: true }, "");
-    setTimeout(() => setShowIframe(true), 400);
   }, []);
 
   const closeVideo = useCallback(() => {
-    setShowIframe(false);
-    setTimeout(() => {
-      setActiveVideo(null);
-      if (window.history.state?.isModalOpen) window.history.back();
-    }, 10);
+    setActiveVideo(null);
+    if (window.history.state?.isModalOpen) window.history.back();
   }, []);
 
   return (
     <section
       ref={sectionRef}
       id="portfolio"
-      className="relative w-full py-8 md:py-12 bg-[#050505] overflow-hidden font-sans"
+      className="relative w-full py-8 md:py-12 overflow-hidden font-sans"
     >
+      <PremiumBackground />
       {/* Soft gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-transparent to-[#050505] pointer-events-none" />
 
@@ -572,7 +498,24 @@ export function ServicesRound() {
         </motion.div>
 
         {/* ═══ PORTFOLIO GRID ═══ */}
-        <div className="relative w-full max-w-6xl mx-auto min-h-[300px] md:min-h-[500px]">
+        <div 
+          ref={gridRef}
+          onMouseMove={handleMouseMove}
+          className="relative w-full max-w-6xl mx-auto min-h-[300px] md:min-h-[500px] group"
+        >
+          {/* ZERO-LAG TEXTURE & HOVER EFFECTS BEHIND CARDS */}
+          {/* 1. Static CSS Dot Grid Texture (Extremely Fast) */}
+          <div className="absolute -inset-10 z-0 opacity-20 pointer-events-none bg-[radial-gradient(rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black,transparent)]" />
+          
+          {/* 2. Dynamic Spotlight Glow (Hardware Accelerated, tracks mouse via CSS vars) */}
+          <div 
+            className="hidden md:block absolute -inset-20 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 transform-gpu"
+            style={{
+              background: 'radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.04), transparent 40%)',
+              willChange: 'transform, opacity'
+            }}
+          />
+
           <AnimatePresence mode="wait">
             {/* ─── VIDEO TAB ─── */}
             {activeTab === "video" && (
@@ -582,7 +525,7 @@ export function ServicesRound() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
-                className="relative w-full"
+                className="relative w-full z-10"
               >
                 {/* ═══ DESKTOP GRID — UNCHANGED ═══ */}
                 <div className="hidden md:grid grid-cols-8 grid-flow-row-dense gap-4 auto-rows-[200px]">
@@ -620,7 +563,7 @@ export function ServicesRound() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
-                className="relative w-full"
+                className="relative w-full z-10"
               >
                 {/* ═══ DESKTOP WEB GRID — UNCHANGED ═══ */}
                 <div className="hidden md:grid grid-cols-8 grid-flow-row-dense gap-4 auto-rows-[200px]">
@@ -723,20 +666,55 @@ export function ServicesRound() {
         </motion.div>
       </div>
 
-      {/* ═══ VIDEO MODAL — UNCHANGED ═══ */}
-      <AnimatePresence>
-        {activeVideo && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className={`fixed inset-0 z-[100] flex items-center justify-center pointer-events-none ${!activeVideo.isCenterpiece ? "p-4 md:p-8" : ""
-              }`}
-          >
-            <VideoModalContent video={activeVideo} onClose={closeVideo} showIframe={showIframe} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* ═══ VIDEO MODAL ═══ */}
+      {typeof document !== "undefined" && createPortal(
+        <AnimatePresence>
+          {activeVideo && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-[#050505]/95 z-[9999] flex items-center justify-center p-4"
+              onClick={closeVideo}
+            >
+              <motion.div 
+                layoutId={`video-wrapper-${activeVideo.id}`}
+                transition={{ type: "spring", stiffness: 450, damping: 35 }}
+                className={`relative w-full ${
+                  activeVideo.ratio === "16/9" ? "max-w-4xl aspect-video" : "max-w-[85vw] sm:max-w-sm aspect-[9/16]"
+                } bg-zinc-900 rounded-2xl overflow-hidden border border-white/10`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Perfect Crossfade: Keep the exact same thumbnail during the flight animation */}
+                <img
+                  src={activeVideo.customThumb || ytThumbMax(activeVideo.youtubeId)}
+                  alt={activeVideo.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+
+                <button
+                  onClick={closeVideo}
+                  className="absolute z-50 top-4 right-4 bg-black/50 backdrop-blur-md p-2 rounded-full text-white hover:bg-cyan-500 hover:text-black transition-all duration-300"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                {/* Render iframe immediately so browser doesn't block autoplay on a hidden element */}
+                <div className="absolute inset-0 w-full h-full bg-black/0">
+                  <iframe
+                    src={modalYtEmbed(activeVideo.youtubeId)}
+                    className="w-full h-full border-none"
+                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
       <style>{`
         @keyframes marquee {

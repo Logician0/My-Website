@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle, Loader2, Mail } from 'lucide-react';
+import { PremiumBackground } from '@/components/PremiumBackground';
 import { cn } from '@/utils/cn';
 
 export function Newsletter() {
@@ -41,7 +42,7 @@ export function Newsletter() {
   };
 
   return (
-    <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden border-t border-white/[0.05] bg-[#050505]">
+    <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden">
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.1)_0%,transparent_60%)] pointer-events-none" />
