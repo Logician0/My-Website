@@ -33,14 +33,14 @@ const getIconPositions = (radius: number) => {
   });
 };
 
-function BreathingIcon({ 
-  Icon, 
-  label, 
-  href, 
-  position, 
-  index, 
-  isVisible 
-}: { 
+function BreathingIcon({
+  Icon,
+  label,
+  href,
+  position,
+  index,
+  isVisible
+}: {
   Icon: React.ElementType;
   label: string;
   href: string;
@@ -58,12 +58,12 @@ function BreathingIcon({
       style={{
         left: '50%',
         top: '50%',
-        x: '-50%', 
+        x: '-50%',
         y: '-50%',
         willChange: 'transform',
       }}
-      initial={{ scale: 0, opacity: 0 }} 
-      animate={isVisible ? { 
+      initial={{ scale: 0, opacity: 0 }}
+      animate={isVisible ? {
         x: [`calc(-50% + ${position.x}px)`, `calc(-50% + ${position.x + 4}px)`, `calc(-50% + ${position.x - 2}px)`, `calc(-50% + ${position.x}px)`],
         y: [`calc(-50% + ${position.y}px)`, `calc(-50% + ${position.y - 3}px)`, `calc(-50% + ${position.y + 2}px)`, `calc(-50% + ${position.y}px)`],
         scale: 1,
@@ -99,12 +99,12 @@ export function SocialOrbit() {
     const updateSize = () => {
       const width = window.innerWidth;
       setIsMobile(width < 768);
-      if (width < 640) setRadius(135); 
+      if (width < 640) setRadius(135);
       else if (width < 768) setRadius(160);
       else if (width < 1024) setRadius(190);
       else setRadius(220);
     };
-    
+
     updateSize();
     window.addEventListener('resize', updateSize);
     return () => window.removeEventListener('resize', updateSize);
@@ -116,9 +116,9 @@ export function SocialOrbit() {
     <section id="about" className="py-16 sm:py-20 md:py-24 relative overflow-hidden font-sans" aria-label="About Logician Creatives">
       {/* Cinematic Background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(ellipse_at_center,rgba(6,182,212,0.08)_0%,transparent_60%)] pointer-events-none z-0" />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
-        
+
         {/* Header */}
         <motion.div
           className="text-center mb-12 sm:mb-16"
@@ -142,9 +142,9 @@ export function SocialOrbit() {
 
         {/* Orbit & Info */}
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 mb-20 md:mb-32">
-          
+
           <div className="relative flex-shrink-0">
-            <div 
+            <div
               className="relative flex items-center justify-center"
               style={{
                 width: isMobile ? '340px' : '480px',
@@ -153,15 +153,15 @@ export function SocialOrbit() {
             >
               <AnimatePresence>
                 {iconsVisible && socialIcons.map((social, index) => (
-                    <BreathingIcon
-                      key={social.label}
-                      Icon={social.Icon}
-                      label={social.label}
-                      href={social.href}
-                      position={iconPositions[index]}
-                      index={index}
-                      isVisible={iconsVisible}
-                    />
+                  <BreathingIcon
+                    key={social.label}
+                    Icon={social.Icon}
+                    label={social.label}
+                    href={social.href}
+                    position={iconPositions[index]}
+                    index={index}
+                    isVisible={iconsVisible}
+                  />
                 ))}
               </AnimatePresence>
 
@@ -175,18 +175,18 @@ export function SocialOrbit() {
                 <motion.div
                   className="absolute -inset-3 rounded-full"
                   animate={{
-                    boxShadow: iconsVisible 
-                      ? '0 0 30px rgba(6, 182, 212, 0.15)' 
-                      : '0 0 0px rgba(6, 182, 212, 0)',   
+                    boxShadow: iconsVisible
+                      ? '0 0 30px rgba(6, 182, 212, 0.15)'
+                      : '0 0 0px rgba(6, 182, 212, 0)',
                   }}
                   transition={{ duration: 0.3 }}
                 />
-                
+
                 <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden bg-[#050505] border border-cyan-500/20 shadow-lg">
                   {/* Gloss Overlay */}
                   <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent z-10 pointer-events-none" />
                   <img
-                    src="/my-photo.webp" 
+                    src="/my-photo.webp"
                     alt="Suraj Kumar - Founder & CEO of Logician Creatives"
                     className="w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out grayscale-[20%]"
                     loading="eager"
@@ -221,8 +221,8 @@ export function SocialOrbit() {
             </h3>
             <div className="space-y-4 text-white/70 text-sm sm:text-base leading-relaxed font-medium">
               <p>
-                At <span className="text-white font-bold">Logician Creatives</span>, we transform 
-                visionary ideas into digital masterpieces. With world-class expertise in AI automation, 
+                At <span className="text-white font-bold">Logician Creatives</span>, we transform
+                visionary ideas into digital masterpieces. With world-class expertise in AI automation,
                 high-end video production, and elite web engineering.
               </p>
             </div>
@@ -244,7 +244,7 @@ export function SocialOrbit() {
 
         {/* --- AI EXPERTISE MARQUEE --- */}
         <div className="relative pt-12 border-t border-white/5 overflow-hidden">
-          
+
           <div className="flex flex-col items-center justify-center mb-8">
             <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tighter drop-shadow-lg">
               Tools We <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-600">Use</span>
@@ -264,14 +264,14 @@ export function SocialOrbit() {
               {/* Triple the array for seamless infinite scrolling */}
               {[...aiTools, ...aiTools, ...aiTools].map((tool, index) => {
                 return (
-                  <div 
+                  <div
                     key={`${tool.name}-${index}`}
                     className="flex flex-col items-center justify-center gap-3 w-[80px] sm:w-[110px] transition-transform duration-300 hover:scale-110 cursor-default"
                   >
                     {/* Placeholder Image with rounded edges */}
-                    <img 
-                      src={tool.logo} 
-                      alt={`${tool.name} logo`} 
+                    <img
+                      src={tool.logo}
+                      alt={`${tool.name} logo`}
                       className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-2xl shadow-inner border border-white/10"
                     />
                     <span className="text-[9px] sm:text-[10px] font-bold text-white/90 uppercase tracking-widest text-center leading-tight px-1 line-clamp-2">{tool.name}</span>
@@ -280,7 +280,7 @@ export function SocialOrbit() {
               })}
             </div>
           </div>
-          
+
         </div>
 
       </div>

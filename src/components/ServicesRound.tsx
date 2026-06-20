@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, ExternalLink, X, ArrowRight } from "lucide-react";
+import { Link } from 'react-router-dom';
 import { PremiumBackground } from '@/components/PremiumBackground';
 
 /* ═══ TYPES ═══ */
@@ -654,15 +655,16 @@ export function ServicesRound() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="mt-12 md:mt-24"
         >
-          <a
-            href={activeTab === "video" ? "/services/video-editing" : "/services/web-dev"}
+          <Link
+            to={activeTab === "video" ? "/services/video-editing" : "/services/web-dev"}
+            onClick={() => window.scrollTo(0, 0)}
             className="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-8 md:px-10 py-3.5 md:py-4 rounded-full bg-white/5 backdrop-blur-2xl border border-white/15 text-white text-[11px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:bg-white/10 hover:border-white/40 shadow-2xl"
           >
             <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
             <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <span className="relative z-10">View Full Library</span>
             <ArrowRight size={14} className="relative z-10 transition-transform duration-300 group-hover:translate-x-1.5 md:w-4 md:h-4" />
-          </a>
+          </Link>
         </motion.div>
       </div>
 
