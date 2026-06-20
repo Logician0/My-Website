@@ -2,56 +2,15 @@
 
 import React, { useState, useEffect } from 'react';
 import { 
-  Plus, Trash2, Edit2, Save, Send, ShieldAlert, LogOut, 
-  CheckCircle2, XCircle, LayoutGrid, Smartphone, Monitor, 
-  Eye, Settings, Film, Globe, Bot, ArrowLeft, Loader2, 
-  Sparkles, Key, Github, Play, ExternalLink
+  Plus, Trash2, Edit2, Send, LogOut, 
+  CheckCircle2, XCircle, Eye, Settings, Film, 
+  Globe, Loader2, Key, Github, Play, ExternalLink
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import initialPortfolioData from '../data/portfolio.json';
 
 // Types derived from schema
 type Ratio = "16/9" | "9/16";
-
-interface VideoProject {
-  id: string;
-  showOn?: "desktop" | "mobile" | "all";
-  title: string;
-  category: string;
-  youtubeId: string;
-  ratio: Ratio;
-  gridClass?: string;
-  w?: string;
-  h?: string;
-  customThumb?: string;
-}
-
-interface WebProject {
-  id: string;
-  title: string;
-  tech: string;
-  link: string;
-  image: string;
-  gridClass?: string;
-  isCenterpiece?: boolean;
-}
-
-interface MobileVideoItem {
-  id: string;
-  title: string;
-  category: string;
-  youtubeId: string;
-  ratio: Ratio;
-  customThumb?: string;
-}
-
-interface MobileWebItem {
-  id: string;
-  title: string;
-  tech: string;
-  link: string;
-  image: string;
-}
 
 export function AdminPage() {
   const [auth, setAuth] = useState(false);
@@ -65,7 +24,6 @@ export function AdminPage() {
   // Selection States
   const [selectedListKey, setSelectedListKey] = useState<string>('desktopVideos');
   const [selectedItem, setSelectedItem] = useState<any>(null);
-  const [isAdding, setIsAdding] = useState(false);
   
   // Library specific states
   const [selectedServiceIdx, setSelectedServiceIdx] = useState<number>(0);
@@ -80,9 +38,6 @@ export function AdminPage() {
   const [isPublishing, setIsPublishing] = useState(false);
   const [publishStatus, setPublishStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [logs, setLogs] = useState<string[]>([]);
-
-  // Mobile View Toggle for Live Previews
-  const [mobilePreviewToggle, setMobilePreviewToggle] = useState<'desktop' | 'mobile'>('desktop');
 
   // Verify auth on mount
   useEffect(() => {
@@ -263,7 +218,6 @@ export function AdminPage() {
 
   // Add Item Card handler
   const handleAddNewItem = () => {
-    setIsAdding(true);
     
     if (activeTab === 'homepage') {
       const isVideo = selectedListKey.toLowerCase().includes('video');

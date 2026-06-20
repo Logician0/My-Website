@@ -84,8 +84,8 @@ import portfolioData from "@/data/portfolio.json";
 const desktopVideos: VideoProject[] = portfolioData.servicesRound.desktopVideos as VideoProject[];
 
 /* ═══ MOBILE VIDEO SWIPE DATA ═══ */
-const mobileHorizontalVideos: MobileVideoItem[] = portfolioData.servicesRound.mobileHorizontalVideos;
-const mobileVerticalVideos: MobileVideoItem[] = portfolioData.servicesRound.mobileVerticalVideos;
+const mobileHorizontalVideos: MobileVideoItem[] = portfolioData.servicesRound.mobileHorizontalVideos as MobileVideoItem[];
+const mobileVerticalVideos: MobileVideoItem[] = portfolioData.servicesRound.mobileVerticalVideos as MobileVideoItem[];
 
 /* ═══ WEB DATA ═══ */
 const webProjects: WebProject[] = portfolioData.servicesRound.webProjects as WebProject[];
