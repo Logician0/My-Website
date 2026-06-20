@@ -1,7 +1,7 @@
 'use client';
 
 import { Suspense, lazy } from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
@@ -47,7 +47,7 @@ const PageLoader = () => (
 
 export function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       {/* Navbar is OUTSIDE the overflow-hidden wrapper so position:fixed works correctly */}
       <Navbar />
       
@@ -82,6 +82,6 @@ export function App() {
         <Footer />
         
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
