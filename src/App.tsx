@@ -23,6 +23,10 @@ const CareersPage = lazy(() =>
   import('@/pages/CareersPage').then(module => ({ default: module.CareersPage }))
 );
 
+const AdminPage = lazy(() =>
+  import('@/pages/AdminPage').then(module => ({ default: module.AdminPage }))
+);
+
 // ✅ FIX: Import path must match filename 'PrivacyPage' (not 'Privacy')
 const PrivacyPage = lazy(() =>
   import('@/pages/Privacy').then(module => ({ default: module.PrivacyPage }))
@@ -61,6 +65,7 @@ export function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/careers" element={<CareersPage />} />
+              <Route path="/admin" element={<AdminPage />} />
               
               <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/terms" element={<TermsPage />} />

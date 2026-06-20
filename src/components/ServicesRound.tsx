@@ -34,6 +34,23 @@ interface WebProject {
   isCenterpiece?: boolean;
 }
 
+interface MobileVideoItem {
+  id: string;
+  title: string;
+  category: string;
+  youtubeId: string;
+  ratio: Ratio;
+  customThumb?: string;
+}
+
+interface MobileWebItem {
+  id: string;
+  title: string;
+  tech: string;
+  link: string;
+  image: string;
+}
+
 /* ═══ YOUTUBE URLS ═══ */
 const gridYtEmbed = (id: string) =>
   `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&controls=0&playsinline=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0`;
@@ -61,91 +78,22 @@ const trustedClients = [
   { name: "Pete Z", followers: "296k", image: "/images/pete_z.jpg" },
 ];
 
-/* Desktop grid videos — UNCHANGED */
-const desktopVideos: VideoProject[] = [
-  { id: "v1-desk", showOn: "desktop", title: "Desert Bloom", category: "Color Grade", youtubeId: "83WR-gPqV-k", ratio: "16/9", gridClass: "col-span-3 row-span-1", w: "120%", h: "120%", customThumb: "" },
-  { id: "v2-desk", showOn: "desktop", title: "Fashion Clip", category: "Reels", youtubeId: "wyz9Ok6gDyA", ratio: "9/16", gridClass: "col-span-1 row-span-1", w: "150%", h: "150%", customThumb: "" },
-  { id: "v3-desk", showOn: "desktop", title: "Motion ID-009", category: "CGI", youtubeId: "KasJHz8AbnE", ratio: "9/16", gridClass: "col-span-2 row-span-2", w: "125%", h: "125%", customThumb: "" },
-  { id: "v4-desk", showOn: "desktop", title: "Neon City", category: "3D Art", youtubeId: "Adiz1O8JQig", ratio: "9/16", gridClass: "col-span-2 row-span-2", w: "120%", h: "120%", customThumb: "" },
-  { id: "v5-desk", showOn: "desktop", title: "Tech Short", category: "Social", youtubeId: "c0v_SUjTg7Q", ratio: "9/16", gridClass: "col-span-1 row-span-1", w: "120%", h: "120%", customThumb: "" },
-  { id: "v6-desk", showOn: "desktop", title: "Automotive Ad", category: "Commercial", youtubeId: "-v31vBqMixw", ratio: "16/9", gridClass: "col-span-3 row-span-1", w: "120%", h: "120%", customThumb: "" },
-  { id: "v7-desk", showOn: "desktop", title: "Travel Doc", category: "YouTube", youtubeId: "lsqQnlXeZ6Q", ratio: "16/9", gridClass: "col-span-3 row-span-1", w: "212%", h: "212%", customThumb: "" },
-  { id: "v8-desk", showOn: "desktop", title: "Event B-Roll", category: "Highlight", youtubeId: "0Ph6MpGKq8I", ratio: "9/16", gridClass: "col-span-1 row-span-1", w: "120%", h: "120%", customThumb: "" },
-  { id: "v9-desk", showOn: "desktop", title: "Fitness Promo", category: "Ad", youtubeId: "MxKeZvMf2TM", ratio: "16/9", gridClass: "col-span-3 row-span-1", w: "120%", h: "120%", customThumb: "" },
-  { id: "v10-desk", showOn: "desktop", title: "Product Tease", category: "Promo", youtubeId: "hFGV4zHmXxY", ratio: "9/16", gridClass: "col-span-1 row-span-1", w: "120%", h: "120%", customThumb: "" },
-];
+import portfolioData from "@/data/portfolio.json";
 
-
+/* Desktop grid videos */
+const desktopVideos: VideoProject[] = portfolioData.servicesRound.desktopVideos as VideoProject[];
 
 /* ═══ MOBILE VIDEO SWIPE DATA ═══ */
-interface MobileVideoItem {
-  id: string;
-  title: string;
-  category: string;
-  youtubeId: string;
-  ratio: Ratio;
-  customThumb?: string;
-}
+const mobileHorizontalVideos: MobileVideoItem[] = portfolioData.servicesRound.mobileHorizontalVideos;
+const mobileVerticalVideos: MobileVideoItem[] = portfolioData.servicesRound.mobileVerticalVideos;
 
-const mobileHorizontalVideos: MobileVideoItem[] = [
-  { id: "mob-h1", title: "Desert Bloom", category: "Color Grade", youtubeId: "MxKeZvMf2TM", ratio: "16/9", customThumb: "" },
-  { id: "mob-h2", title: "Automotive Ad", category: "Commercial", youtubeId: "83WR-gPqV-k", ratio: "16/9", customThumb: "" },
-  { id: "mob-h3", title: "Travel Doc", category: "YouTube", youtubeId: "lsqQnlXeZ6Q", ratio: "16/9", customThumb: "" },
-  { id: "mob-h4", title: "Event B-Roll", category: "Highlight", youtubeId: "-v31vBqMixw", ratio: "16/9", customThumb: "" },
-
-];
-
-const mobileVerticalVideos: MobileVideoItem[] = [
-  { id: "mob-v1", title: "Tech Short", category: "Social", youtubeId: "KasJHz8AbnE", ratio: "9/16", customThumb: "" },
-  { id: "mob-v2", title: "Fashion Clip", category: "Reels", youtubeId: "0Ph6MpGKq8I", ratio: "9/16", customThumb: "" },
-  { id: "mob-v3", title: "Product Tease", category: "Promo", youtubeId: "hFGV4zHmXxY", ratio: "9/16", customThumb: "" },
-  { id: "mob-v4", title: "Motion ID-009", category: "CGI", youtubeId: "Adiz1O8JQig", ratio: "9/16", customThumb: "" },
-  { id: "mob-v5", title: "Neon City", category: "3D Art", youtubeId: "c0v_SUjTg7Q", ratio: "9/16", customThumb: "" },
-];
-
-/* ═══ WEB DATA — UNCHANGED ═══ */
-const webProjects: WebProject[] = [
-  { id: "w1", title: "Fintech Dashboard", tech: "Next.js", link: "https://example.com", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070", gridClass: "col-span-3 row-span-1" },
-  { id: "w2", title: "App UI", tech: "React Native", link: "https://example.com", image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1470", gridClass: "col-span-1 row-span-1" },
-  { id: "w3", title: "Creative Portfolio", tech: "Framer Motion", link: "https://example.com", image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1964", gridClass: "col-span-2 row-span-2" },
-  { id: "w4", title: "SaaS Landing Page", tech: "Webflow", link: "https://example.com", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015", gridClass: "col-span-2 row-span-2" },
-  { id: "w5", title: "Crypto Exchange", tech: "Vue.js", link: "https://example.com", image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=1470", gridClass: "col-span-1 row-span-1" },
-  { id: "w6", title: "Real Estate Portal", tech: "Tailwind", link: "https://example.com", image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2070", gridClass: "col-span-3 row-span-1" },
-  { id: "w7", title: "E-Commerce", tech: "Shopify", link: "https://example.com", image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=2070", gridClass: "col-span-3 row-span-1" },
-  { id: "w8", title: "Healthcare App", tech: "React", link: "https://example.com", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1470", gridClass: "col-span-1 row-span-1" },
-  { id: "w9", title: "Travel Blog", tech: "Gatsby", link: "https://example.com", image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2070", gridClass: "col-span-3 row-span-1" },
-  { id: "w10", title: "Music Player", tech: "Svelte", link: "https://example.com", image: "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?q=80&w=1470", gridClass: "col-span-1 row-span-1" },
-];
-
-const webCenterpiece: WebProject = {
-  id: "w11", title: "Award Winning Agency", tech: "Three.js", link: "https://example.com",
-  image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2064", isCenterpiece: true,
-};
+/* ═══ WEB DATA ═══ */
+const webProjects: WebProject[] = portfolioData.servicesRound.webProjects as WebProject[];
+const webCenterpiece: WebProject = portfolioData.servicesRound.webCenterpiece as WebProject;
 
 /* ═══ MOBILE WEB SWIPE DATA ═══ */
-interface MobileWebItem {
-  id: string;
-  title: string;
-  tech: string;
-  link: string;
-  image: string;
-}
-
-const mobileWebItems: MobileWebItem[] = [
-  { id: "mw-1", title: "Fintech Dashboard", tech: "Next.js", link: "https://example.com", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070" },
-  { id: "mw-2", title: "Crypto Exchange", tech: "Vue.js", link: "https://example.com", image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=1470" },
-  { id: "mw-3", title: "Real Estate Portal", tech: "Tailwind", link: "https://example.com", image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=2070" },
-  { id: "mw-4", title: "Creative Portfolio", tech: "Framer Motion", link: "https://example.com", image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=1964" },
-  { id: "mw-5", title: "E-Commerce", tech: "Shopify", link: "https://example.com", image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=2070" },
-];
-
-const mobileAppItems: MobileWebItem[] = [
-  { id: "ma-1", title: "Healthcare App", tech: "React Native", link: "https://example.com", image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1470" },
-  { id: "ma-2", title: "Music Player", tech: "Swift UI", link: "https://example.com", image: "https://images.unsplash.com/photo-1614680376573-df3480f0c6ff?q=80&w=1470" },
-  { id: "ma-3", title: "SaaS Dashboard", tech: "Electron", link: "https://example.com", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015" },
-  { id: "ma-4", title: "Travel Companion", tech: "Flutter", link: "https://example.com", image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2070" },
-  { id: "ma-5", title: "Fitness Tracker", tech: "Kotlin", link: "https://example.com", image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1470" },
-];
+const mobileWebItems: MobileWebItem[] = portfolioData.servicesRound.mobileWebItems;
+const mobileAppItems: MobileWebItem[] = portfolioData.servicesRound.mobileAppItems;
 
 /* ═══ DESKTOP VIDEO CARD — hover to play (UNCHANGED) ═══ */
 function DesktopVideoCard({
