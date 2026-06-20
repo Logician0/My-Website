@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { 
   Plus, Trash2, Edit2, Send, LogOut, 
   CheckCircle2, XCircle, Eye, Settings, Film, 
-  Globe, Loader2, Key, Github, Play, ExternalLink
+  Globe, Loader2, Key, Github, Play, ExternalLink,
+  Tv, Smartphone, Compass, Layers, Cpu, Laptop
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import initialPortfolioData from '../data/portfolio.json';
@@ -330,68 +331,137 @@ export function AdminPage() {
   const renderLivePreview = () => {
     if (!selectedItem) {
       return (
-        <div className="flex flex-col items-center justify-center h-64 text-zinc-500 border border-dashed border-zinc-800 rounded-3xl">
-          <Eye className="w-8 h-8 mb-2 opacity-50" />
-          <p className="text-xs uppercase tracking-wider">Select a card to see live preview</p>
+        <div className="flex flex-col items-center justify-center h-48 text-zinc-500 border border-dashed border-zinc-800 rounded-3xl">
+          <Eye className="w-6 h-6 mb-2 opacity-50" />
+          <p className="text-[10px] uppercase tracking-wider">Select a card to see live preview</p>
         </div>
       );
     }
 
     const isVideo = selectedItem.youtubeId !== undefined || (selectedItem.metadata && selectedItem.metadata.type === 'video');
-    const ytId = selectedItem.youtubeId || (selectedItem.metadata && selectedItem.metadata.youtubeId) || 'dQw4w9WgXcQ';
+    const ytId = selectedItem.youtubeId || (selectedItem.metadata && selectedItem.metadata.youtubeId) || '';
     const isVertical = selectedItem.ratio === '9/16' || (selectedItem.metadata && selectedItem.metadata.aspect === '9/16');
-    const image = selectedItem.customThumb || selectedItem.image || selectedItem.thumbnail || `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg`;
+    const image = selectedItem.customThumb || selectedItem.image || selectedItem.thumbnail || (ytId ? `https://i.ytimg.com/vi/${ytId}/hqdefault.jpg` : 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800');
     
     const title = selectedItem.title || 'Untitled Card';
     const subtitle = selectedItem.category || selectedItem.tech || (selectedItem.tags ? selectedItem.tags.join(' + ') : 'Tag');
 
+    const showGridSim = activeTab === 'homepage' && ['desktopVideos', 'webProjects'].includes(selectedListKey);
+
     return (
-      <div className="flex flex-col items-center justify-center p-4">
-        <h4 className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-4">Interactive Live Preview</h4>
+      <div className="flex flex-col items-center justify-center p-2 w-full">
+        <h4 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-3">Live Preview</h4>
         
         {/* Frame simulator */}
-        <div className="relative p-4 rounded-3xl border border-white/5 bg-zinc-950/80 shadow-2xl flex justify-center items-center overflow-hidden w-full max-w-sm">
+        <div className="relative p-3 rounded-2xl border border-white/5 bg-zinc-950/80 shadow-2xl flex justify-center items-center overflow-hidden w-full max-w-sm">
           {/* Top gloss */}
           <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent z-10" />
 
           {isVideo ? (
             /* VIDEO CARD PREVIEW */
-            <div className={`relative overflow-hidden rounded-2xl bg-zinc-900 border border-white/10 shadow-lg group cursor-pointer ${isVertical ? 'aspect-[9/16] w-[180px]' : 'aspect-video w-[320px]'}`}>
-              <img src={image} alt="" className="absolute inset-0 w-full h-full object-cover opacity-80" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-3">
+            <div className={`relative overflow-hidden rounded-xl bg-zinc-900 border border-white/10 shadow-lg group cursor-pointer ${isVertical ? 'aspect-[9/16] w-[140px]' : 'aspect-video w-[280px]'}`}>
+              <div className="absolute inset-0 overflow-hidden">
+                <img 
+                  src={image} 
+                  alt="" 
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-80" 
+                  style={{
+                    width: selectedItem.w || '100%',
+                    height: selectedItem.h || '100%',
+                  }}
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-2.5">
                 <p className="text-cyan-400 text-[8px] font-bold uppercase tracking-widest mb-0.5">{subtitle}</p>
-                <h3 className="text-white text-[11px] font-bold leading-tight line-clamp-2">{title}</h3>
+                <h3 className="text-white text-[10px] font-bold leading-tight line-clamp-2">{title}</h3>
               </div>
               <div className="absolute top-2 right-2">
-                <div className="w-6 h-6 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center">
-                  <Play className="w-2.5 h-2.5 text-white ml-0.5" fill="currentColor" />
+                <div className="w-5 h-5 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center">
+                  <Play className="w-2 h-2 text-white ml-0.5" fill="currentColor" />
                 </div>
               </div>
             </div>
           ) : (
             /* WEBSITE CARD PREVIEW */
-            <div className={`relative overflow-hidden rounded-2xl bg-zinc-900 border border-white/10 shadow-lg group cursor-pointer ${selectedItem.isCenterpiece ? 'w-[200px] h-[200px] rotate-45 border-purple-500' : 'aspect-video w-[320px]'}`}>
-              <img 
-                src={image} 
-                alt="" 
-                className={`absolute inset-0 w-full h-full object-cover opacity-75 ${selectedItem.isCenterpiece ? '-rotate-45 w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' : ''}`} 
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className={`absolute inset-0 flex flex-col justify-end p-4 ${selectedItem.isCenterpiece ? '-rotate-45' : ''}`}>
-                <p className="text-white/60 text-[9px] font-bold uppercase tracking-widest mb-1">{subtitle}</p>
-                <h3 className="text-white text-xs font-bold leading-tight line-clamp-1">{title}</h3>
+            <div className={`relative overflow-hidden rounded-xl bg-zinc-900 border border-white/10 shadow-lg group cursor-pointer ${selectedItem.isCenterpiece ? 'w-[160px] h-[160px] rotate-45 border-purple-500' : 'aspect-video w-[280px]'}`}>
+              <div className="absolute inset-0 overflow-hidden">
+                <img 
+                  src={image} 
+                  alt="" 
+                  className={`absolute object-cover opacity-75 ${
+                    selectedItem.isCenterpiece 
+                      ? '-rotate-45 w-[150%] h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2' 
+                      : 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'
+                  }`} 
+                  style={selectedItem.isCenterpiece ? undefined : {
+                    width: selectedItem.w || '100%',
+                    height: selectedItem.h || '100%',
+                  }}
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
+              <div className={`absolute inset-0 flex flex-col justify-end p-3.5 ${selectedItem.isCenterpiece ? '-rotate-45' : ''}`}>
+                <p className="text-white/60 text-[8px] font-bold uppercase tracking-widest mb-0.5">{subtitle}</p>
+                <h3 className="text-white text-[10px] font-bold leading-tight line-clamp-1">{title}</h3>
               </div>
               {!selectedItem.isCenterpiece && (
                 <div className="absolute top-2 right-2">
-                  <div className="w-6 h-6 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center">
-                    <ExternalLink className="w-2.5 h-2.5 text-white" />
+                  <div className="w-5 h-5 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center">
+                    <ExternalLink className="w-2 h-2 text-white" />
                   </div>
                 </div>
               )}
             </div>
           )}
         </div>
+
+        {/* 8-COLUMN GRID SIMULATOR */}
+        {showGridSim && (
+          <div className="mt-3 w-full border-t border-white/5 pt-3">
+            <p className="text-[8px] font-bold text-zinc-500 uppercase tracking-widest mb-1.5 text-center">Desktop Grid Simulator</p>
+            <div className="grid grid-cols-8 gap-1.5 auto-rows-[35px] w-full bg-zinc-950/80 p-2 rounded-xl border border-white/5 relative overflow-hidden">
+              {/* Selected Card */}
+              <div 
+                className={`${selectedItem.gridClass || 'col-span-1 row-span-1'} relative overflow-hidden rounded-lg bg-zinc-900 border-2 border-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.15)] flex flex-col justify-between p-1`}
+              >
+                <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                  <img 
+                    src={image} 
+                    alt="" 
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover opacity-40"
+                    style={{
+                      width: selectedItem.w || '100%',
+                      height: selectedItem.h || '100%',
+                    }}
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 to-transparent z-10" />
+
+                <div className="relative z-10 flex justify-between items-start w-full scale-75 origin-top-left">
+                  <span className="text-[6px] bg-cyan-500/25 text-cyan-400 font-bold px-0.5 rounded border border-cyan-500/20 uppercase tracking-widest">Active</span>
+                </div>
+
+                <div className="relative z-10 mt-auto">
+                  <h4 className="text-white text-[7px] font-bold leading-none truncate">{title}</h4>
+                </div>
+              </div>
+
+              {/* Dotted dummy placeholders */}
+              {Array.from({ length: 9 }).map((_, i) => (
+                <div 
+                  key={i} 
+                  className="col-span-1 row-span-1 border border-dashed border-zinc-800/80 rounded-md bg-zinc-950/20 flex items-center justify-center text-[7px] text-zinc-700 select-none font-mono"
+                >
+                  +
+                </div>
+              ))}
+            </div>
+            <p className="text-[8px] text-zinc-500 mt-1 text-center font-mono uppercase tracking-wider">
+              Actual scale: {selectedItem.gridClass || 'col-span-1 row-span-1'}
+            </p>
+          </div>
+        )}
       </div>
     );
   };
@@ -545,39 +615,34 @@ export function AdminPage() {
           {/* ==================== HOMEPAGE SECTIONS TAB ==================== */}
           {activeTab === 'homepage' && (
             <>
-              {/* Sidebar selectors */}
-              <div className="col-span-12 lg:col-span-3 space-y-4">
-                <div className="bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-3xl p-5 shadow-2xl">
-                  <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-4">Edit Section</h3>
-                  <div className="flex flex-col gap-1.5">
-                    {[
-                      { key: 'desktopVideos', label: 'Desktop Grid Videos', type: 'video' },
-                      { key: 'mobileHorizontalVideos', label: 'Mobile Horizontal Edits', type: 'video' },
-                      { key: 'mobileVerticalVideos', label: 'Mobile Vertical Reels', type: 'video' },
-                      { key: 'webProjects', label: 'Desktop Web Projects', type: 'web' },
-                      { key: 'webCenterpiece', label: 'Desktop Web Centerpiece', type: 'web' },
-                      { key: 'mobileWebItems', label: 'Mobile Web Projects', type: 'web' },
-                      { key: 'mobileAppItems', label: 'Mobile Apps & Software', type: 'web' }
-                    ].map(section => (
-                      <button
-                        key={section.key}
-                        onClick={() => { setSelectedListKey(section.key); setSelectedItem(null); }}
-                        className={`w-full px-4 py-3 rounded-xl text-left text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-between ${
-                          selectedListKey === section.key 
-                            ? 'bg-white/10 text-white border-l-2 border-white pl-3.5' 
-                            : 'text-zinc-400 hover:text-zinc-200 hover:bg-white/5'
-                        }`}
-                      >
-                        {section.label}
-                        {section.type === 'video' ? <Film className="w-3.5 h-3.5 opacity-60" /> : <Globe className="w-3.5 h-3.5 opacity-60" />}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+              {/* Top Horizontal Icon Tabs Selector */}
+              <div className="col-span-12 mb-2 bg-zinc-900/30 backdrop-blur-xl border border-white/5 p-2 rounded-2xl shadow-xl flex gap-1.5 overflow-x-auto no-scrollbar scroll-smooth">
+                {[
+                  { key: 'desktopVideos', label: 'Desktop Videos', icon: <Film className="w-4 h-4" /> },
+                  { key: 'mobileHorizontalVideos', label: 'Mobile Horizontal', icon: <Tv className="w-4 h-4" /> },
+                  { key: 'mobileVerticalVideos', label: 'Mobile Reels', icon: <Smartphone className="w-4 h-4" /> },
+                  { key: 'webProjects', label: 'Web Projects', icon: <Globe className="w-4 h-4" /> },
+                  { key: 'webCenterpiece', label: 'Web Centerpiece', icon: <Compass className="w-4 h-4" /> },
+                  { key: 'mobileWebItems', label: 'Mobile Web', icon: <Layers className="w-4 h-4" /> },
+                  { key: 'mobileAppItems', label: 'Mobile Apps', icon: <Cpu className="w-4 h-4" /> }
+                ].map(section => (
+                  <button
+                    key={section.key}
+                    onClick={() => { setSelectedListKey(section.key); setSelectedItem(null); }}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all whitespace-nowrap border ${
+                      selectedListKey === section.key 
+                        ? 'bg-white text-black border-white shadow-lg' 
+                        : 'text-zinc-400 border-transparent hover:text-zinc-200 hover:bg-white/5'
+                    }`}
+                  >
+                    {section.icon}
+                    <span>{section.label}</span>
+                  </button>
+                ))}
               </div>
 
-              {/* Items List & Edit Form */}
-              <div className="col-span-12 lg:col-span-5 space-y-6">
+              {/* Items List & Edit Form (Now expanded to col-span-8) */}
+              <div className="col-span-12 lg:col-span-8 space-y-6">
                 {/* Cards List */}
                 <div className="bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-3xl p-6 shadow-2xl">
                   <div className="flex items-center justify-between mb-4">
@@ -706,14 +771,52 @@ export function AdminPage() {
                             </select>
                           </div>
 
-                          {/* Custom Thumbnail */}
+                          {/* Custom Thumbnail with Fetch HD button */}
+                          <div className="col-span-2">
+                            <label className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest block mb-1.5 font-bold">Custom Image URL (Optional)</label>
+                            <div className="flex gap-2">
+                              <input
+                                type="text"
+                                placeholder="Auto YouTube thumbnail if empty"
+                                value={selectedItem.customThumb || ''}
+                                onChange={(e) => handleCardFieldChange('customThumb', e.target.value)}
+                                className="flex-grow px-4 py-3 rounded-xl bg-zinc-950 border border-white/5 text-xs text-white focus:outline-none focus:border-white/20"
+                              />
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  if (selectedItem.youtubeId) {
+                                    handleCardFieldChange('customThumb', `https://img.youtube.com/vi/${selectedItem.youtubeId}/maxresdefault.jpg`);
+                                  } else {
+                                    alert('Please enter a YouTube Video ID first.');
+                                  }
+                                }}
+                                className="px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 active:scale-95"
+                              >
+                                <Play className="w-3.5 h-3.5 text-red-500 fill-red-500" />
+                                Fetch HD
+                              </button>
+                            </div>
+                          </div>
+
+                          {/* Image Thumbnail / Iframe Zoom w & h */}
                           <div className="col-span-2 sm:col-span-1">
-                            <label className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest block mb-1.5">Custom Image URL (Optional)</label>
+                            <label className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest block mb-1.5 font-bold">Zoom Width (e.g. 120%)</label>
                             <input
                               type="text"
-                              placeholder="Auto YouTube thumb"
-                              value={selectedItem.customThumb || ''}
-                              onChange={(e) => handleCardFieldChange('customThumb', e.target.value)}
+                              placeholder="e.g. 100%"
+                              value={selectedItem.w || ''}
+                              onChange={(e) => handleCardFieldChange('w', e.target.value)}
+                              className="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-white/5 text-xs text-white focus:outline-none focus:border-white/20"
+                            />
+                          </div>
+                          <div className="col-span-2 sm:col-span-1">
+                            <label className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest block mb-1.5 font-bold">Zoom Height (e.g. 120%)</label>
+                            <input
+                              type="text"
+                              placeholder="e.g. 100%"
+                              value={selectedItem.h || ''}
+                              onChange={(e) => handleCardFieldChange('h', e.target.value)}
                               className="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-white/5 text-xs text-white focus:outline-none focus:border-white/20"
                             />
                           </div>
@@ -777,8 +880,8 @@ export function AdminPage() {
               </div>
 
               {/* Sticky Live Preview Column */}
-              <div className="col-span-12 lg:col-span-4 sticky top-28">
-                <div className="bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-3xl p-6 shadow-2xl">
+              <div className="col-span-12 lg:col-span-4 order-first lg:order-last sticky top-[72px] lg:top-28 z-30 bg-black/90 backdrop-blur-md border-b lg:border-none border-white/10 shadow-lg lg:shadow-none pb-4 pt-2 lg:py-0 -mx-4 px-4 lg:mx-0 lg:px-0">
+                <div className="bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-2xl lg:rounded-3xl p-3 lg:p-6 shadow-2xl">
                   {renderLivePreview()}
                 </div>
               </div>
@@ -788,64 +891,58 @@ export function AdminPage() {
           {/* ==================== LIBRARY PAGES TAB ==================== */}
           {activeTab === 'library' && (
             <>
-              {/* Library Catalog Selectors */}
-              <div className="col-span-12 lg:col-span-3 space-y-4">
-                <div className="bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-3xl p-5 shadow-2xl space-y-5">
-                  <div>
-                    <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2.5">Service Page</h3>
-                    <div className="flex flex-col gap-1">
-                      {data.services.map((service: any, idx: number) => {
-                        const IsVideo = service.slug === 'video-editing';
-                        return (
-                          <button
-                            key={service.id}
-                            onClick={() => { 
-                              setSelectedServiceIdx(idx); 
-                              setSelectedCategoryIdx(0); 
-                              setSelectedItem(null);
-                              setSelectedLibraryItemIdx(-1);
-                            }}
-                            className={`w-full px-4 py-3 rounded-xl text-left text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-between ${
-                              selectedServiceIdx === idx 
-                                ? 'bg-white/10 text-white border-l-2 border-white pl-3.5' 
-                                : 'text-zinc-400 hover:text-zinc-200 hover:bg-white/5'
-                            }`}
-                          >
-                            {service.title}
-                            {IsVideo ? <Film className="w-3.5 h-3.5 opacity-60" /> : <Globe className="w-3.5 h-3.5 opacity-60" />}
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
+              {/* Top Horizontal Selectors for Library Service Pages & Categories */}
+              <div className="col-span-12 mb-2 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+                {/* Service Page segmented control */}
+                <div className="bg-zinc-900/30 backdrop-blur-xl border border-white/5 p-1 rounded-2xl shadow-xl flex w-full max-w-md">
+                  {data.services.map((service: any, idx: number) => {
+                    const isVideo = service.slug === 'video-editing';
+                    return (
+                      <button
+                        key={service.id}
+                        onClick={() => { 
+                          setSelectedServiceIdx(idx); 
+                          setSelectedCategoryIdx(0); 
+                          setSelectedItem(null);
+                          setSelectedLibraryItemIdx(-1);
+                        }}
+                        className={`flex-1 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all flex items-center justify-center gap-2 border ${
+                          selectedServiceIdx === idx 
+                            ? 'bg-white text-black border-white shadow-md' 
+                            : 'text-zinc-400 border-transparent hover:text-zinc-200 hover:bg-white/5'
+                        }`}
+                      >
+                        {isVideo ? <Film className="w-3.5 h-3.5" /> : <Globe className="w-3.5 h-3.5" />}
+                        <span>{service.title}</span>
+                      </button>
+                    );
+                  })}
+                </div>
 
-                  <div>
-                    <h3 className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-2.5">Category</h3>
-                    <div className="flex flex-col gap-1">
-                      {data.services[selectedServiceIdx].categories.map((category: any, idx: number) => (
-                        <button
-                          key={category.id}
-                          onClick={() => { 
-                            setSelectedCategoryIdx(idx); 
-                            setSelectedItem(null);
-                            setSelectedLibraryItemIdx(-1);
-                          }}
-                          className={`w-full px-4 py-2.5 rounded-lg text-left text-[11px] font-bold uppercase tracking-wider transition-all ${
-                            selectedCategoryIdx === idx 
-                              ? 'bg-white/5 text-white' 
-                              : 'text-zinc-500 hover:text-zinc-300 hover:bg-white/[0.02]'
-                          }`}
-                        >
-                          {category.title}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
+                {/* Categories slider */}
+                <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-1 w-full md:w-auto scroll-smooth">
+                  {data.services[selectedServiceIdx].categories.map((category: any, idx: number) => (
+                    <button
+                      key={category.id}
+                      onClick={() => { 
+                        setSelectedCategoryIdx(idx); 
+                        setSelectedItem(null);
+                        setSelectedLibraryItemIdx(-1);
+                      }}
+                      className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-wider transition-all whitespace-nowrap border ${
+                        selectedCategoryIdx === idx 
+                          ? 'bg-zinc-800 text-white border-zinc-700 shadow-md' 
+                          : 'text-zinc-500 border-transparent hover:text-zinc-300 hover:bg-white/5'
+                      }`}
+                    >
+                      {category.title}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              {/* Items list & Form */}
-              <div className="col-span-12 lg:col-span-5 space-y-6">
+              {/* Items list & Form (Expanded to col-span-8) */}
+              <div className="col-span-12 lg:col-span-8 space-y-6">
                 <div className="bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-3xl p-6 shadow-2xl">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xs font-bold text-zinc-400 uppercase tracking-widest">Library Items</h3>
@@ -927,15 +1024,34 @@ export function AdminPage() {
                         />
                       </div>
 
-                      {/* Thumbnail Image URL */}
+                      {/* Thumbnail Image URL with optional YouTube Fetcher */}
                       <div className="col-span-2">
-                        <label className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest block mb-1.5">Thumbnail Image URL</label>
-                        <input
-                          type="text"
-                          value={selectedItem.thumbnail || ''}
-                          onChange={(e) => handleCardFieldChange('thumbnail', e.target.value)}
-                          className="w-full px-4 py-3 rounded-xl bg-zinc-950 border border-white/5 text-xs text-white focus:outline-none focus:border-white/20"
-                        />
+                        <label className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest block mb-1.5 font-bold">Thumbnail Image URL</label>
+                        <div className="flex gap-2">
+                          <input
+                            type="text"
+                            placeholder="Auto YouTube thumbnail if empty"
+                            value={selectedItem.thumbnail || ''}
+                            onChange={(e) => handleCardFieldChange('thumbnail', e.target.value)}
+                            className="flex-grow px-4 py-3 rounded-xl bg-zinc-950 border border-white/5 text-xs text-white focus:outline-none focus:border-white/20"
+                          />
+                          {selectedItem.metadata?.type === 'video' && (
+                            <button
+                              type="button"
+                              onClick={() => {
+                                if (selectedItem.metadata.youtubeId) {
+                                  handleCardFieldChange('thumbnail', `https://img.youtube.com/vi/${selectedItem.metadata.youtubeId}/maxresdefault.jpg`);
+                                } else {
+                                  alert('Please enter a YouTube Video ID first.');
+                                }
+                              }}
+                              className="px-4 py-3 bg-zinc-800 hover:bg-zinc-700 text-white rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5 active:scale-95"
+                            >
+                              <Play className="w-3.5 h-3.5 text-red-500 fill-red-500" />
+                              Fetch HD
+                            </button>
+                          )}
+                        </div>
                       </div>
 
                       {/* Tags (comma separated) */}
@@ -996,8 +1112,8 @@ export function AdminPage() {
               </div>
 
               {/* Sticky live preview side */}
-              <div className="col-span-12 lg:col-span-4 sticky top-28">
-                <div className="bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-3xl p-6 shadow-2xl">
+              <div className="col-span-12 lg:col-span-4 order-first lg:order-last sticky top-[72px] lg:top-28 z-30 bg-black/90 backdrop-blur-md border-b lg:border-none border-white/10 shadow-lg lg:shadow-none pb-4 pt-2 lg:py-0 -mx-4 px-4 lg:mx-0 lg:px-0">
+                <div className="bg-zinc-900/30 backdrop-blur-xl border border-white/5 rounded-2xl lg:rounded-3xl p-3 lg:p-6 shadow-2xl">
                   {renderLivePreview()}
                 </div>
               </div>

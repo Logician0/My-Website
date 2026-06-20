@@ -124,8 +124,12 @@ function DesktopVideoCard({
         <img
           src={video.customThumb || ytThumbMax(video.youtubeId)}
           alt={video.title}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${video.ratio === "9/16" ? "scale-[1.15]" : ""
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover transition-opacity duration-500 ${video.ratio === "9/16" ? "scale-[1.15]" : ""
             } ${hovered && iframeLoaded ? "opacity-0" : "opacity-100"}`}
+          style={{
+            width: video.w || "100%",
+            height: video.h || "100%",
+          }}
           loading="lazy"
         />
 
