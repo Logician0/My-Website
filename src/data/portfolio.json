@@ -52,14 +52,14 @@
       {
         "id": "v5-desk",
         "showOn": "desktop",
-        "title": "Tech Short",
+        "title": "Anushka & Sharda University Promo Video (800k+ Views)",
         "category": "Social",
-        "youtubeId": "c0v_SUjTg7Q",
+        "youtubeId": "_FQ7EBFkYY0",
         "ratio": "9/16",
         "gridClass": "col-span-1 row-span-1",
         "w": "120%",
         "h": "120%",
-        "customThumb": "https://img.youtube.com/vi/c0v_SUjTg7Q/maxresdefault.jpg"
+        "customThumb": "https://img.youtube.com/vi/_FQ7EBFkYY0/maxresdefault.jpg"
       },
       {
         "id": "v6-desk",
@@ -112,14 +112,14 @@
       {
         "id": "v10-desk",
         "showOn": "desktop",
-        "title": "Product Tease",
+        "title": "Anushka Promo 800k+ Views",
         "category": "Promo",
-        "youtubeId": "hFGV4zHmXxY",
+        "youtubeId": "LkDVvwnNx2s",
         "ratio": "9/16",
         "gridClass": "col-span-1 row-span-1",
-        "w": "120%",
-        "h": "120%",
-        "customThumb": "https://img.youtube.com/vi/hFGV4zHmXxY/maxresdefault.jpg"
+        "w": "150%",
+        "h": "150%",
+        "customThumb": "https://img.youtube.com/vi/LkDVvwnNx2s/maxresdefault.jpg"
       }
     ],
     "mobileHorizontalVideos": [
@@ -175,11 +175,13 @@
       },
       {
         "id": "mob-v3",
-        "title": "Product Tease",
+        "title": "Anushka Promo 800k+ Views",
         "category": "Promo",
-        "youtubeId": "hFGV4zHmXxY",
+        "youtubeId": "LkDVvwnNx2s",
         "ratio": "9/16",
-        "customThumb": "https://img.youtube.com/vi/hFGV4zHmXxY/maxresdefault.jpg"
+        "customThumb": "https://img.youtube.com/vi/LkDVvwnNx2s/maxresdefault.jpg",
+        "w": "130",
+        "h": "130"
       },
       {
         "id": "mob-v4",
@@ -191,11 +193,27 @@
       },
       {
         "id": "mob-v5",
-        "title": "Neon City",
-        "category": "3D Art",
-        "youtubeId": "c0v_SUjTg7Q",
+        "title": "Palak Plix Promo VIDEO (100K+ VIEWS)",
+        "category": "Promo",
+        "youtubeId": "6KRlmvzYYx8",
         "ratio": "9/16",
-        "customThumb": "https://img.youtube.com/vi/c0v_SUjTg7Q/maxresdefault.jpg"
+        "customThumb": "https://img.youtube.com/vi/6KRlmvzYYx8/maxresdefault.jpg"
+      },
+      {
+        "id": "card-1785606787878",
+        "title": "Palak x Gazhal Promo Video",
+        "category": "Promo",
+        "youtubeId": "fdHWLuXTIBA",
+        "ratio": "9/16",
+        "customThumb": "https://img.youtube.com/vi/fdHWLuXTIBA/maxresdefault.jpg"
+      },
+      {
+        "id": "card-1785606793592",
+        "title": "Anushka & Sharda University Promo Video (800k+ Views)",
+        "category": "Promo",
+        "youtubeId": "_FQ7EBFkYY0",
+        "ratio": "9/16",
+        "customThumb": "https://img.youtube.com/vi/_FQ7EBFkYY0/maxresdefault.jpg"
       }
     ],
     "webProjects": [
