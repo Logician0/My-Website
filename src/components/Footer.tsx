@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Youtube, Twitter, Instagram, Linkedin, Github, Sparkles, FileText, Shield } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { config } from '../config/templateConfig';
 
 // Data Arrays
 const serviceShortcuts = [
@@ -12,11 +13,11 @@ const serviceShortcuts = [
 ];
 
 const socialLinks = [
-  { Icon: Youtube, href: 'https://youtube.com/@logiciancreatives', label: 'YouTube' },
-  { Icon: Twitter, href: 'https://x.com/Suraj_cix', label: 'X' },
-  { Icon: Instagram, href: 'https://www.instagram.com/logiciancreatives/', label: 'Instagram' },
-  { Icon: Linkedin, href: 'https://www.linkedin.com/in/suraj-kumar0/', label: 'LinkedIn' },
-  { Icon: Github, href: 'https://github.com/Logician0', label: 'GitHub' },
+  { Icon: Youtube, href: config.socials.youtube, label: 'YouTube' },
+  { Icon: Twitter, href: config.socials.twitter, label: 'X' },
+  { Icon: Instagram, href: config.socials.instagram, label: 'Instagram' },
+  { Icon: Linkedin, href: config.socials.linkedin, label: 'LinkedIn' },
+  { Icon: Github, href: config.socials.github, label: 'GitHub' },
 ];
 
 export function Footer() {
@@ -66,7 +67,7 @@ export function Footer() {
                {/* Brand */}
                <Link to="/" className="flex items-center gap-2" onClick={scrollToTop}>
                   <img src="/logo.png" alt="Logo" className="w-5 h-5 object-contain" />
-                  <span className="text-sm font-bold text-white">Logician</span>
+                  <span className="text-sm font-bold text-white">{config.brand.name}</span>
                </Link>
 
                {/* Social Icons (Flex Wrap to show all) */}
@@ -123,7 +124,7 @@ export function Footer() {
                     <FileText className="w-3 h-3" /> Terms
                  </Link>
                </div>
-               <p className="text-[9px] text-zinc-600">© {new Date().getFullYear()} Logician Creatives</p>
+               <p className="text-[9px] text-zinc-600">© {new Date().getFullYear()} {config.brand.fullName}</p>
             </div>
           </div>
         </div>
@@ -136,7 +137,7 @@ export function Footer() {
             <div className="col-span-4 pr-8">
               <Link to="/" className="flex items-center gap-2 mb-4 group" onClick={scrollToTop}>
                 <motion.img src="/logo.png" alt="Logo" className="w-8 h-8 object-contain" whileHover={{ scale: 1.1, rotate: 10 }} />
-                <span className="text-base font-bold text-white tracking-tight">Logician</span>
+                <span className="text-base font-bold text-white tracking-tight">{config.brand.name}</span>
               </Link>
               <p className="text-xs text-zinc-500 leading-relaxed mb-6">
                 I build digital ecosystems that dominate. From AI automation to cinematic storytelling, I am the architect of your growth.

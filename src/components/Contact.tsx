@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle, Loader2, Mail, MessageSquare, User, Briefcase, AlertCircle } from 'lucide-react';
 import { services } from '@/lib/data';
 import { cn } from '@/utils/cn';
+import { config } from '../config/templateConfig';
 
 interface FormData {
   name: string;
@@ -139,7 +140,7 @@ export function Contact() {
             {/* Quick Info */}
             <div className="space-y-4">
               <motion.a
-                href="mailto:hello@logiciancreatives.com"
+                href={`mailto:${config.contact.email}`}
                 className="flex items-center gap-4 p-4 rounded-2xl border border-white/5 bg-white/[0.01] hover:border-white/10 hover:bg-white/[0.02] transition-all"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -152,7 +153,7 @@ export function Contact() {
                 </div>
                 <div className="text-left">
                   <div className="text-sm text-zinc-500">Email me at</div>
-                  <div className="text-white font-medium hover:text-cyan-400 transition-colors">hello@logiciancreatives.com</div>
+                  <div className="text-white font-medium hover:text-cyan-400 transition-colors">{config.contact.email}</div>
                 </div>
               </motion.a>
               

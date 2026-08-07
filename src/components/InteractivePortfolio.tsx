@@ -191,13 +191,13 @@ const services: any[] = [
             id: 'web-1', title: 'Shree Ram Properties', description: 'A premium real estate platform featuring dynamic property listings and seamless lead capture.',
             thumbnail: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&auto=format&fit=crop&q=80',
             tags: ['Real Estate', 'Next.js', 'Corporate'],
-            metadata: { type: 'web', url: 'https://logiciancreatives.in', stack: 'Next.js + Tailwind + Framer Motion', features: ['Property Search', 'Lead Generation', 'Admin Dashboard'], aspect: '16/9' }
+            metadata: { type: 'web', url: 'https://yourdomain.com', stack: 'Next.js + Tailwind + Framer Motion', features: ['Property Search', 'Lead Generation', 'Admin Dashboard'], aspect: '16/9' }
           },
           {
             id: 'web-2', title: 'Aditya General Store', description: 'A modern digital storefront streamlining inventory and customer engagement for local business.',
             thumbnail: 'https://images.unsplash.com/photo-1580828343064-fde4fc206bc6?w=800&auto=format&fit=crop&q=80',
             tags: ['E-commerce', 'Local Business', 'Retail'],
-            metadata: { type: 'web', url: 'https://logiciancreatives.in', stack: 'React + Node.js', features: ['Inventory Sync', 'WhatsApp Integration', 'Digital Catalog'], aspect: '16/9' }
+            metadata: { type: 'web', url: 'https://yourdomain.com', stack: 'React + Node.js', features: ['Inventory Sync', 'WhatsApp Integration', 'Digital Catalog'], aspect: '16/9' }
           }
         ]
       },
@@ -209,7 +209,7 @@ const services: any[] = [
             id: 'land-1', title: 'High-Conversion SaaS Landing', description: 'Optimized for lead generation with interactive elements and lightning-fast performance.',
             thumbnail: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&auto=format&fit=crop&q=80',
             tags: ['Marketing', 'Framer Motion', 'Conversion'],
-            metadata: { type: 'web', url: 'https://logiciancreatives.in', stack: 'Next.js + Framer Motion', features: ['A/B Tested', 'Mobile First', 'Heatmap Ready'], aspect: '16/9' }
+            metadata: { type: 'web', url: 'https://yourdomain.com', stack: 'Next.js + Framer Motion', features: ['A/B Tested', 'Mobile First', 'Heatmap Ready'], aspect: '16/9' }
           }
         ]
       }

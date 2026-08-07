@@ -235,7 +235,7 @@ export function AdminPage() {
         id: `card-${Date.now()}`,
         title: 'New Web Project',
         tech: 'Next.js',
-        link: 'https://logiciancreatives.in',
+        link: 'https://yourdomain.com',
         image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71'
       };
 
@@ -267,7 +267,7 @@ export function AdminPage() {
           aspect: '16/9'
         } : {
           type: 'web',
-          url: 'https://logiciancreatives.in',
+          url: 'https://yourdomain.com',
           stack: 'React + Tailwind',
           features: ['Landing Page']
         }

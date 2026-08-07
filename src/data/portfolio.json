@@ -920,7 +920,7 @@
               ],
               "metadata": {
                 "type": "web",
-                "url": "https://logiciancreatives.in",
+                "url": "https://yourdomain.com",
                 "stack": "Next.js + Tailwind + Framer Motion",
                 "features": [
                   "Property Search",
@@ -941,7 +941,7 @@
               ],
               "metadata": {
                 "type": "web",
-                "url": "https://logiciancreatives.in",
+                "url": "https://yourdomain.com",
                 "stack": "React + Node.js",
                 "features": [
                   "Inventory Sync",
@@ -970,7 +970,7 @@
               ],
               "metadata": {
                 "type": "web",
-                "url": "https://logiciancreatives.in",
+                "url": "https://yourdomain.com",
                 "stack": "Next.js + Framer Motion",
                 "features": [
                   "A/B Tested",
@@ -999,7 +999,7 @@
               ],
               "metadata": {
                 "type": "web",
-                "url": "https://logiciancreatives.in",
+                "url": "https://yourdomain.com",
                 "stack": "React + Three.js",
                 "features": [
                   "Custom Animations",

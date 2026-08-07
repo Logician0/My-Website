@@ -3,13 +3,14 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Youtube, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
+import { config } from '../config/templateConfig';
 
 const socialIcons = [
-  { Icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@logiciancreatives' },
-  { Icon: Twitter, label: 'Twitter', href: 'https://x.com/Suraj_cix' },
-  { Icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/logiciancreatives/' },
-  { Icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/suraj-kumar0/' },
-  { Icon: Github, label: 'GitHub', href: 'https://github.com/Logician0' },
+  { Icon: Youtube, label: 'YouTube', href: config.socials.youtube },
+  { Icon: Twitter, label: 'Twitter', href: config.socials.twitter },
+  { Icon: Instagram, label: 'Instagram', href: config.socials.instagram },
+  { Icon: Linkedin, label: 'LinkedIn', href: config.socials.linkedin },
+  { Icon: Github, label: 'GitHub', href: config.socials.github },
 ];
 
 
@@ -172,8 +173,8 @@ export function SocialOrbit() {
                   {/* Gloss Overlay */}
                   <div className="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent z-10 pointer-events-none" />
                   <img
-                    src="/my-photo.webp"
-                    alt="Suraj Kumar - Founder & CEO of Logician Creatives"
+                    src={config.personal.pfpUrl}
+                    alt={`${config.personal.name} - ${config.personal.role}`}
                     className="w-full h-full object-cover opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out grayscale-[20%]"
                     loading="eager"
                   />
@@ -189,8 +190,8 @@ export function SocialOrbit() {
                 >
                   {iconsVisible ? 'Close Orbit' : 'Tap to Connect'}
                 </button>
-                <h3 className="text-xl sm:text-2xl font-black text-white tracking-tighter uppercase leading-none mt-1">Suraj Kumar</h3>
-                <p className="text-white/50 text-[10px] sm:text-xs uppercase tracking-widest mt-2 font-bold">Founder & CEO</p>
+                <h3 className="text-xl sm:text-2xl font-black text-white tracking-tighter uppercase leading-none mt-1">{config.personal.name}</h3>
+                <p className="text-white/50 text-[10px] sm:text-xs uppercase tracking-widest mt-2 font-bold">{config.personal.role}</p>
               </div>
             </div>
           </div>
@@ -207,18 +208,12 @@ export function SocialOrbit() {
             </h3>
             <div className="space-y-4 text-white/70 text-sm sm:text-base leading-relaxed font-medium">
               <p>
-                At <span className="text-white font-bold">Logician Creatives</span>, I transform
-                visionary ideas into digital masterpieces. With world-class expertise in AI automation,
-                high-end video production, and elite web engineering.
+                At <span className="text-white font-bold">{config.brand.fullName}</span>, {config.personal.bio}
               </p>
             </div>
 
             <div className="grid grid-cols-3 gap-4 sm:gap-6 mt-10">
-              {[
-                { value: '150+', label: 'Projects' },
-                { value: '50+', label: 'Clients' },
-                { value: '5+', label: 'Years' },
-              ].map((stat) => (
+              {config.personal.stats.map((stat) => (
                 <div key={stat.label} className="text-center lg:text-left p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-sm">
                   <div className="text-2xl sm:text-3xl font-black text-white tracking-tighter">{stat.value}</div>
                   <div className="text-white/40 text-[9px] sm:text-[10px] uppercase tracking-widest mt-1 font-bold">{stat.label}</div>

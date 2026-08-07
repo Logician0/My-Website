@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { config } from '../config/templateConfig';
 
 export function Hero() {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -25,24 +26,26 @@ export function Hero() {
       {/* --- BACKGROUND TYPOGRAPHY --- */}
       <div className="absolute top-[18%] md:top-[22%] w-full flex flex-col items-center justify-center z-10 pointer-events-none px-4">
         
-        {/* MOBILE ONLY TEXT ("LOGICIAN CREATIVES") */}
+        {/* MOBILE ONLY TEXT (Brand Name) */}
         <motion.h1 
           initial={{ opacity: 0, y: 30, scale: 0.92 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
           className="md:hidden text-[17vw] leading-[0.85] font-black tracking-tighter text-white text-center uppercase drop-shadow-2xl"
         >
-          LOGICIAN<br />CREATIVES
+          {config.brand.fullName.split(' ').map((word, idx) => (
+            <span key={idx} className="block">{word}</span>
+          ))}
         </motion.h1>
 
-        {/* DESKTOP ONLY TEXT ("SURAJ") */}
+        {/* DESKTOP ONLY TEXT */}
         <motion.h1 
           initial={{ opacity: 0, y: 30, scale: 0.92 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
           className="hidden md:block text-[22vw] lg:text-[18rem] leading-none font-black tracking-tighter text-white text-center uppercase drop-shadow-2xl whitespace-nowrap"
         >
-          SURAJ
+          {config.personal.firstName}
         </motion.h1>
 
       </div>
@@ -57,8 +60,8 @@ export function Hero() {
         {/* INNER WRAPPER: Handles your exact scale and position separately to fix lag without moving the image */}
         <div className="w-full h-full flex justify-center origin-bottom scale-[1.45] md:scale-[1.35] -translate-x-8 md:translate-x-0 transform-gpu will-change-transform">
           <img 
-            src="/suraj-cutout.png" 
-            alt="Suraj Kumar" 
+            src={config.personal.heroCutoutUrl} 
+            alt={config.personal.name} 
             className="object-contain object-bottom w-full h-full drop-shadow-2xl"
           />
         </div>
@@ -89,7 +92,7 @@ export function Hero() {
           transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
           className="text-white/70 text-lg lg:text-xl font-light tracking-[0.2em] uppercase drop-shadow-lg"
         >
-          Software Developer
+          {config.personal.title}
         </motion.span>
       </div>
 
@@ -100,9 +103,9 @@ export function Hero() {
         transition={{ duration: 1.2, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
         className="md:hidden absolute bottom-[18vh] z-40 flex flex-col items-center w-full px-5 space-y-1"
       >
-        <h2 className="text-white text-2xl font-semibold tracking-wide">Suraj Kumar</h2>
+        <h2 className="text-white text-2xl font-semibold tracking-wide">{config.personal.name}</h2>
         <p className="text-white/60 text-xs font-light tracking-[0.15em] uppercase text-center">
-          Video Editor <span className="text-white/30 mx-1">|</span> Software Developer
+          Video Editor <span className="text-white/30 mx-1">|</span> {config.personal.title}
         </p>
       </motion.div>
 

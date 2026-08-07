@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Home, Briefcase, Activity, User, MessageSquare, Mail } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/utils/cn";
+import { config } from '../config/templateConfig';
 
 const navItems = [
   { label: "Home", href: "#home", id: "home", icon: Home },
@@ -292,7 +293,7 @@ export function Navbar() {
           }
         }}>
           <span className="text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-zinc-300 transition-colors">
-            Logician Creatives
+            {config.brand.fullName}
           </span>
         </Link>
 
