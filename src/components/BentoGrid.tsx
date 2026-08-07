@@ -56,7 +56,7 @@ export function BentoGrid() {
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
           <span className="inline-block px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-xs text-zinc-400 mb-3">
-            What We Build
+            What I Build
           </span>
           <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight mb-2">
             <span className="text-white">Three Pillars of </span>

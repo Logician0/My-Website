@@ -139,7 +139,7 @@ export function Footer() {
                 <span className="text-base font-bold text-white tracking-tight">Logician</span>
               </Link>
               <p className="text-xs text-zinc-500 leading-relaxed mb-6">
-                We build digital ecosystems that dominate. From AI automation to cinematic storytelling, we are the architects of your growth.
+                I build digital ecosystems that dominate. From AI automation to cinematic storytelling, I am the architect of your growth.
               </p>
               <motion.button 
                 onClick={() => handleNav('contact')}

@@ -74,7 +74,7 @@ export function Contact() {
     // Simulate success
     setFormState({
       status: 'success',
-      message: "Thanks for reaching out! We'll get back to you within 24 hours.",
+      message: "Thanks for reaching out! I'll get back to you within 24 hours.",
     });
 
     // Reset form after success
@@ -132,8 +132,8 @@ export function Contact() {
             </h2>
             
             <p className="text-lg text-zinc-400 leading-relaxed mb-10" style={{ lineHeight: 1.7 }}>
-              Ready to transform your digital presence? Tell us about your vision 
-              and we'll craft a strategy tailored to your goals.
+              Ready to transform your digital presence? Tell me about your vision 
+              and I'll craft a strategy tailored to your goals.
             </p>
 
             {/* Quick Info */}
@@ -151,7 +151,7 @@ export function Contact() {
                   <Mail className="w-5 h-5 text-violet-400" />
                 </div>
                 <div className="text-left">
-                  <div className="text-sm text-zinc-500">Email us at</div>
+                  <div className="text-sm text-zinc-500">Email me at</div>
                   <div className="text-white font-medium hover:text-cyan-400 transition-colors">hello@logiciancreatives.com</div>
                 </div>
               </motion.a>
@@ -339,7 +339,7 @@ export function Contact() {
                     {/* Message */}
                     <div>
                       <label className="block text-sm font-medium text-zinc-400 mb-2">
-                        Tell Us About Your Project <span className="text-pink-400">*</span>
+                        Tell Me About Your Project <span className="text-pink-400">*</span>
                       </label>
                       <textarea
                         value={formData.message}
@@ -400,7 +400,7 @@ export function Contact() {
                     </motion.button>
 
                     <p className="text-center text-xs text-zinc-500">
-                      By submitting, you agree to our privacy policy. We'll never spam you.
+                      By submitting, you agree to my privacy policy. I'll never spam you.
                     </p>
                   </motion.div>
                 )}

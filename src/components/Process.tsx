@@ -6,12 +6,29 @@ import { MessageSquare, Lightbulb, Palette, Code, Rocket } from 'lucide-react';
 import { PremiumBackground } from '@/components/PremiumBackground';
 
 const steps = [
-  { id: 1, title: 'Discovery', Icon: MessageSquare, desc: 'We dive deep into your brand, audience, and goals to lay a solid foundation.' },
+  { id: 1, title: 'Discovery', Icon: MessageSquare, desc: 'I dive deep into your brand, audience, and goals to lay a solid foundation.' },
   { id: 2, title: 'Strategy', Icon: Lightbulb, desc: 'Crafting a customized blueprint and timeline to guarantee project success.' },
   { id: 3, title: 'Design', Icon: Palette, desc: 'Creating stunning, user-centric visual interfaces that captivate and convert.' },
   { id: 4, title: 'Develop', Icon: Code, desc: 'Writing clean, scalable, and high-performance code to bring the vision to life.' },
   { id: 5, title: 'Launch', Icon: Rocket, desc: 'Rigorous testing, optimization, and deploying your product to the world.' },
 ];
+
+const aiTools = [
+  { name: "ChatGPT", logo: "/images/chatgpt.jpg" },
+  { name: "Claude", logo: "/images/claude.webp" },
+  { name: "Gemini", logo: "/images/gemini.webp" },
+  { name: "HeyGen", logo: "/images/heygen.jpg" },
+  { name: "ElevenLabs", logo: "/images/elevenlabs.png" },
+  { name: "Notion", logo: "/images/notion.png" },
+  { name: "Midjourney", logo: "/images/midjurney.png" },
+  { name: "Grok", logo: "/images/grok.avif" },
+  { name: "Higgs Field", logo: "/images/higgsfield.jpeg" },
+  { name: "Creative Cloud", logo: "/images/cc.jpg" },
+  { name: "Audacity", logo: "/images/audacity.png" },
+  { name: "DaVinci Resolve", logo: "/images/dr.png" }
+];
+const aiToolsRow1 = aiTools.slice(0, 6);
+const aiToolsRow2 = aiTools.slice(6, 12);
 
 // --- UNIVERSAL PROCESS LOOP ---
 function ProcessLoop({ onStepChange }: { onStepChange: (step: number) => void }) {
@@ -198,7 +215,7 @@ export function Process() {
             </span>
           </div>
           <h2 className="text-3xl md:text-5xl font-black text-white mb-3 tracking-tighter uppercase drop-shadow-xl">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 to-zinc-600">Process</span>
+            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 to-zinc-600">Process</span>
           </h2>
           <p className="text-white/50 text-xs sm:text-sm font-light tracking-[0.1em] uppercase">
             A proven path to digital dominance.
@@ -214,7 +231,7 @@ export function Process() {
           </div>
 
           {/* Right Column: Static List of Descriptions */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-2.5 max-w-lg mx-auto lg:mx-0">
+          <div className="hidden lg:flex w-full lg:w-1/2 flex-col gap-2.5 max-w-lg mx-auto lg:mx-0">
              {steps.map((step) => (
                <div 
                  key={step.id} 
@@ -248,6 +265,55 @@ export function Process() {
           </div>
 
         </div>
+
+        {/* --- TOOLS WE USE MARQUEE --- */}
+        <div className="relative pt-12 mt-12 border-t border-white/5 overflow-hidden">
+          <div className="flex flex-col items-center justify-center mb-8">
+            <h3 className="text-xl sm:text-2xl font-black text-white uppercase tracking-tighter drop-shadow-lg">
+              Tools I <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-cyan-600">Use</span>
+            </h3>
+          </div>
+
+          <div className="relative flex flex-col gap-4 overflow-x-hidden w-full group py-4">
+            {/* Fade edges */}
+            <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-40 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+            <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-40 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+
+            {/* Desktop: Single Row */}
+            <div className="hidden md:flex whitespace-nowrap items-center gap-4 sm:gap-6 px-4 w-max marquee" style={{ willChange: "transform" }}>
+              {[...aiTools, ...aiTools, ...aiTools].map((tool, index) => (
+                <div key={`${tool.name}-${index}`} className="flex flex-col items-center justify-center gap-3 w-[80px] sm:w-[110px] transition-transform duration-300 hover:scale-110 cursor-default">
+                  <img src={tool.logo} alt={`${tool.name} logo`} className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-2xl shadow-inner border border-white/10" />
+                  <span className="text-[9px] sm:text-[10px] font-bold text-white/90 uppercase tracking-widest text-center leading-tight px-1 line-clamp-2">{tool.name}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Mobile: Two Rows */}
+            <div className="md:hidden flex flex-col gap-8">
+              {/* Row 1: Left to Right */}
+              <div className="flex whitespace-nowrap items-center gap-4 px-4 w-max marquee" style={{ willChange: "transform", animationDirection: "reverse" }}>
+                {[...aiToolsRow1, ...aiToolsRow1, ...aiToolsRow1, ...aiToolsRow1].map((tool, index) => (
+                  <div key={`${tool.name}-r1-${index}`} className="flex flex-col items-center justify-center gap-3 w-[80px] transition-transform duration-300">
+                    <img src={tool.logo} alt={tool.name} className="w-12 h-12 object-cover rounded-2xl shadow-inner border border-white/10" />
+                    <span className="text-[9px] font-bold text-white/90 uppercase tracking-widest text-center leading-tight px-1 line-clamp-2">{tool.name}</span>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Row 2: Right to Left */}
+              <div className="flex whitespace-nowrap items-center gap-4 px-4 w-max marquee" style={{ willChange: "transform" }}>
+                {[...aiToolsRow2, ...aiToolsRow2, ...aiToolsRow2, ...aiToolsRow2].map((tool, index) => (
+                  <div key={`${tool.name}-r2-${index}`} className="flex flex-col items-center justify-center gap-3 w-[80px] transition-transform duration-300">
+                    <img src={tool.logo} alt={tool.name} className="w-12 h-12 object-cover rounded-2xl shadow-inner border border-white/10" />
+                    <span className="text-[9px] font-bold text-white/90 uppercase tracking-widest text-center leading-tight px-1 line-clamp-2">{tool.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

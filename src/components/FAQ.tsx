@@ -9,19 +9,19 @@ import { cn } from '@/utils/cn';
 const faqs = [
   {
     question: "What makes Logician Creatives different?",
-    answer: "We don't just build websites or edit videos; we build ecosystems. Our unique blend of AI automation, high-end motion design, and performance engineering ensures your brand doesn't just look good—it dominates."
+    answer: "I don't just build websites or edit videos; I build ecosystems. My unique blend of AI automation, high-end motion design, and performance engineering ensures your brand doesn't just look good—it dominates."
   },
   {
     question: "How does your subscription model work?",
-    answer: "We offer flexible monthly retainers for continuous growth. You get a dedicated team, priority support, and a set amount of hours/deliverables per month. Pause or cancel anytime with transparent pricing."
+    answer: "I offer flexible monthly retainers for continuous growth. You get priority support and a set amount of hours/deliverables per month. Pause or cancel anytime with transparent pricing."
   },
   {
     question: "Do you work with startups?",
-    answer: "Absolutely. We love ambitious founders. We have specific packages designed to get startups from zero to one, focusing on MVP development, pitch decks, and launch content."
+    answer: "Absolutely. I love ambitious founders. I have specific packages designed to get startups from zero to one, focusing on MVP development, pitch decks, and launch content."
   },
   {
     question: "What is your typical turnaround time?",
-    answer: "For video edits, typically 24-48 hours. For web projects, a landing page takes 1-2 weeks, while full platforms take 4-8 weeks depending on complexity. We move fast without breaking things."
+    answer: "For video edits, typically 24-48 hours. For web projects, a landing page takes 1-2 weeks, while full platforms take 4-8 weeks depending on complexity. I move fast without breaking things."
   }
 ];
 
@@ -53,7 +53,7 @@ export function FAQ() {
             Frequently Asked <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 to-zinc-600">Questions</span>
           </motion.h2>
           <p className="text-white/50 font-light tracking-[0.1em] uppercase text-xs sm:text-sm">
-            Everything you need to know about our process.
+            Everything you need to know about my process.
           </p>
         </div>
 

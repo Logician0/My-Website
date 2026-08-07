@@ -73,7 +73,7 @@ export function Testimonials() {
             Words of <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-300 to-zinc-600 pr-2">Trust</span>
           </h2>
           <p className="text-white/50 font-light tracking-[0.1em] uppercase text-xs sm:text-sm">
-            Don't just take our word for it.
+            Don't just take my word for it.
           </p>
         </motion.div>
 
@@ -95,7 +95,7 @@ export function Testimonials() {
               className="relative"
             >
               {/* LIQUID GLASS CONTAINER */}
-              <div className="relative rounded-[2rem] md:rounded-[2.5rem] bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] shadow-lg p-6 sm:p-10 md:p-14 overflow-hidden group">
+              <div className="relative rounded-3xl bg-white/[0.02] backdrop-blur-xl border border-white/[0.05] p-6 sm:p-8 md:p-10 overflow-hidden group">
                 
                 {/* Glossy Top Highlight */}
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-50" />
@@ -130,16 +130,16 @@ export function Testimonials() {
                 </div>
 
                 {/* Content */}
-                <blockquote className="relative z-10 text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed mb-6 sm:mb-10 font-medium">
+                <blockquote className="relative z-10 text-sm sm:text-base md:text-lg lg:text-xl text-white/80 font-light leading-relaxed mb-6 sm:mb-8">
                   "{current.content}"
                 </blockquote>
 
                 {/* Author Info */}
-                <div className="relative z-10 flex items-center gap-3 sm:gap-4 border-t border-white/[0.08] pt-6 sm:pt-8">
+                <div className="relative z-10 flex items-center gap-3 sm:gap-4 border-t border-white/[0.05] pt-6 sm:pt-8">
                   <motion.img
                     src={current.avatar}
                     alt={current.name}
-                    className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full object-cover border border-cyan-500/30 shadow-lg"
+                    className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border border-cyan-500/20 shadow-sm"
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ delay: 0.2 }}
@@ -161,11 +161,11 @@ export function Testimonials() {
             
             <motion.button
               onClick={() => paginate(-1)}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white/60 hover:bg-white/10 hover:text-white hover:border-white/40 transition-all backdrop-blur-md"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-transparent bg-white/[0.03] flex items-center justify-center text-white/60 hover:bg-white/[0.08] hover:text-white transition-all backdrop-blur-md"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ChevronLeft className="w-4 h-4" />
             </motion.button>
 
             {/* White Dots */}
@@ -190,11 +190,11 @@ export function Testimonials() {
 
             <motion.button
               onClick={() => paginate(1)}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/5 flex items-center justify-center text-white/60 hover:bg-white/10 hover:text-white hover:border-white/40 transition-all backdrop-blur-md"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-transparent bg-white/[0.03] flex items-center justify-center text-white/60 hover:bg-white/[0.08] hover:text-white transition-all backdrop-blur-md"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              <ChevronRight className="w-4 h-4" />
             </motion.button>
           </div>
 

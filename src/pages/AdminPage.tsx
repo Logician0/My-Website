@@ -5,7 +5,7 @@ import {
   Plus, Trash2, Edit2, Send, LogOut, 
   CheckCircle2, XCircle, Eye, Settings, Film, 
   Globe, Loader2, Key, Github, Play, ExternalLink,
-  Tv, Smartphone, Compass, Layers, Cpu, Laptop
+  Tv, Smartphone, Compass, Layers, Cpu
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import initialPortfolioData from '../data/portfolio.json';
@@ -222,7 +222,7 @@ export function AdminPage() {
     
     if (activeTab === 'homepage') {
       const isVideo = selectedListKey.toLowerCase().includes('video');
-      const isVertical = selectedListKey === 'mobileVerticalVideos';
+      const isVertical = selectedListKey === 'mobileVerticalVideos' || selectedListKey === 'allVerticalVideos';
       
       const newCard: any = isVideo ? {
         id: `card-${Date.now()}`,
@@ -618,12 +618,14 @@ export function AdminPage() {
               {/* Top Horizontal Icon Tabs Selector */}
               <div className="col-span-12 mb-2 bg-zinc-900/30 backdrop-blur-xl border border-white/5 p-2 rounded-2xl shadow-xl flex gap-1.5 overflow-x-auto no-scrollbar scroll-smooth">
                 {[
-                  { key: 'desktopVideos', label: 'Desktop Videos', icon: <Film className="w-4 h-4" /> },
-                  { key: 'mobileHorizontalVideos', label: 'Mobile Horizontal', icon: <Tv className="w-4 h-4" /> },
-                  { key: 'mobileVerticalVideos', label: 'Mobile Reels', icon: <Smartphone className="w-4 h-4" /> },
+                  { key: 'mobileWebItems', label: 'Mobile Layout', icon: <Layers className="w-4 h-4" /> },
+                  { key: 'mobileHorizontalVideos', label: 'Mobile Horizontal Layout', icon: <Tv className="w-4 h-4" /> },
+                  { key: 'mobileVerticalVideos', label: 'Mobile Vertical Layout', icon: <Smartphone className="w-4 h-4" /> },
+                  { key: 'desktopVideos', label: 'Desktop Layout', icon: <Film className="w-4 h-4" /> },
+                  { key: 'allHorizontalVideos', label: 'All Horizontal Videos', icon: <Play className="w-4 h-4 text-emerald-400" /> },
+                  { key: 'allVerticalVideos', label: 'All Vertical Videos', icon: <Play className="w-4 h-4 text-rose-400" /> },
                   { key: 'webProjects', label: 'Web Projects', icon: <Globe className="w-4 h-4" /> },
                   { key: 'webCenterpiece', label: 'Web Centerpiece', icon: <Compass className="w-4 h-4" /> },
-                  { key: 'mobileWebItems', label: 'Mobile Web', icon: <Layers className="w-4 h-4" /> },
                   { key: 'mobileAppItems', label: 'Mobile Apps', icon: <Cpu className="w-4 h-4" /> }
                 ].map(section => (
                   <button

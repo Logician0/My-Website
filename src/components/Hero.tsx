@@ -89,7 +89,7 @@ export function Hero() {
           transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
           className="text-white/70 text-lg lg:text-xl font-light tracking-[0.2em] uppercase drop-shadow-lg"
         >
-          Vibe Developer
+          Software Developer
         </motion.span>
       </div>
 
@@ -102,7 +102,7 @@ export function Hero() {
       >
         <h2 className="text-white text-2xl font-semibold tracking-wide">Suraj Kumar</h2>
         <p className="text-white/60 text-xs font-light tracking-[0.15em] uppercase text-center">
-          Video Editor <span className="text-white/30 mx-1">|</span> Vibe Developer
+          Video Editor <span className="text-white/30 mx-1">|</span> Software Developer
         </p>
       </motion.div>
 

@@ -5,6 +5,7 @@ import portfolioData from '../data/portfolio.json';
 
 // Services loaded from dynamic portfolio.json
 export const services: Service[] = portfolioData.services as Service[];
+export const servicesRound = portfolioData.servicesRound;
 
 
 export const testimonials: Testimonial[] = [
@@ -14,7 +15,7 @@ export const testimonials: Testimonial[] = [
     role: 'Creator',
     company: '5.9M Followers',
     avatar: '/images/sahil_gambhir.webp',
-    content: 'Logician Creatives completely transformed my content strategy. Their video editing is top-tier, and the storytelling keeps my audience hooked from the first second to the last.',
+    content: 'Suraj completely transformed my content strategy. His video editing is top-tier, and the storytelling keeps my audience hooked from the first second to the last.',
     rating: 5
   },
   {
@@ -23,25 +24,27 @@ export const testimonials: Testimonial[] = [
     role: 'Creator',
     company: '1.4M Followers',
     avatar: '/images/aditi.webp',
-    content: 'Working with Logician Creatives has been incredible. Their team understands exactly how to capture the right vibe and deliver content that truly connects with millions of people.',
+    content: 'Working with Suraj has been incredible. He understands exactly how to capture the right vibe and deliver content that truly connects with millions of people.',
     rating: 5
   },
+
   {
     id: 't-3',
     name: 'Ghar Soaps',
     role: 'Brand',
     company: '1.8M Followers',
     avatar: '/images/ghar_soaps.webp',
-    content: 'The promotional content they created for us was a game changer. The aesthetic, the pacing, and the overall production quality directly contributed to massive spikes in our engagement and sales.',
+    content: 'The promotional content Suraj created for us was a game changer. The aesthetic, the pacing, and the overall production quality directly contributed to massive spikes in our engagement and sales.',
     rating: 5
   },
+
   {
     id: 't-4',
     name: 'MyPlixLife',
     role: 'Brand',
     company: '1.5M Followers',
     avatar: '/images/plix.webp',
-    content: 'They do not just edit videos; they build digital experiences. From high-quality web development to flawless content production, they are an absolute powerhouse for any brand looking to scale.',
+    content: 'Suraj doesn\'t just edit videos; he builds digital experiences. From high-quality web development to flawless content production, he is an absolute powerhouse for any brand looking to scale.',
     rating: 5
   },
   {
@@ -50,7 +53,7 @@ export const testimonials: Testimonial[] = [
     role: 'Creator',
     company: '971K Followers',
     avatar: '/images/jr_hardik.webp',
-    content: 'Fast, reliable, and incredibly creative. The cinematic edits and smooth transitions they deliver make every piece of content feel premium. Highly recommended!',
+    content: 'Fast, reliable, and incredibly creative. The cinematic edits and smooth transitions Suraj delivers make every piece of content feel premium. Highly recommended!',
     rating: 5
   }
 ];
@@ -83,7 +86,7 @@ export const processSteps: ProcessStep[] = [
     id: 'step-1',
     step: 1,
     title: 'Discovery',
-    description: 'Deep dive into your vision, goals, market position, and challenges. We learn everything about your business.',
+    description: 'Deep dive into your vision, goals, market position, and challenges. I learn everything about your business.',
     icon: 'Search'
   },
   {
@@ -111,7 +114,7 @@ export const processSteps: ProcessStep[] = [
     id: 'step-5',
     step: 5,
     title: 'Launch',
-    description: 'Deploy, optimize, monitor, and iterate. We celebrate your success and ensure continued growth.',
+    description: 'Deploy, optimize, monitor, and iterate. I celebrate your success and ensure continued growth.',
     icon: 'Rocket'
   }
 ];

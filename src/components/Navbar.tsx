@@ -70,7 +70,9 @@ export function Navbar() {
       setIsScrolled(window.scrollY > 20);
       setIsNavVisible(true);
       if (scrollTimer.current) clearTimeout(scrollTimer.current);
-      if (window.scrollY > 50) {
+      
+      const shouldAutoHide = isServicePage || window.scrollY > 50;
+      if (shouldAutoHide) {
         scrollTimer.current = setTimeout(() => {
           setIsNavVisible(false);
         }, 1000);
@@ -84,7 +86,7 @@ export function Navbar() {
       window.removeEventListener("scroll", handleVisibilityScroll);
       if (scrollTimer.current) clearTimeout(scrollTimer.current);
     };
-  }, []);
+  }, [isServicePage]);
 
   // 3. CONTINUOUS SCROLL TRACKING (Lag-Free Native DOM Updates)
   useEffect(() => {
@@ -270,7 +272,7 @@ export function Navbar() {
         isScrolled || isServicePage
           ? "py-3 sm:py-4"
           : "py-4 sm:py-6",
-        isNavVisible || !isScrolled || isHovered
+        isNavVisible || (!isScrolled && !isServicePage) || isHovered
           ? "opacity-100 translate-y-0"
           : "opacity-0 -translate-y-32"
       )}

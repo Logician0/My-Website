@@ -19,7 +19,7 @@ export function ServicesOrbit() {
           className="text-center"
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3">
-            Our Services
+            My Services
           </h2>
           <p className="text-zinc-500 text-sm sm:text-base max-w-md mx-auto">
             A connected ecosystem of creative solutions

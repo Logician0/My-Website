@@ -76,6 +76,8 @@ const trustedClients = [
   { name: "The Real Estate Lawyer", followers: "94k", image: "/images/relawyer.jpg" },
   { name: "Palak Bharti", followers: "165k", image: "/images/palak_bharti.jpg" },
   { name: "Pete Z", followers: "296k", image: "/images/pete_z.jpg" },
+  { name: "Sharda University", followers: "80K", image: "/images/sharda.png" },
+  { name: "Anuska Ghosh", followers: "1.3M", image: "/images/anuska.jpeg" },
 ];
 
 import portfolioData from "@/data/portfolio.json";
@@ -609,7 +611,6 @@ export function ServicesRound() {
         >
           <Link
             to={activeTab === "video" ? "/services/video-editing" : "/services/web-dev"}
-            onClick={() => window.scrollTo(0, 0)}
             className="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-8 md:px-10 py-3.5 md:py-4 rounded-full bg-white/5 backdrop-blur-2xl border border-white/15 text-white text-[11px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:bg-white/10 hover:border-white/40 shadow-2xl"
           >
             <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />

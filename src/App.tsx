@@ -1,22 +1,17 @@
 'use client';
 
-import { Suspense, lazy } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Suspense, lazy, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
 // --- Lazy Load Pages ---
 
-const HomePage = lazy(() =>
-  import('@/pages/HomePage').then(module => ({ default: module.HomePage }))
-);
+import { HomePage } from '@/pages/HomePage';
+import { VideoCategoryPage } from '@/pages/VideoCategoryPage';
 
 const ServicePage = lazy(() =>
   import('@/pages/ServicePage').then(module => ({ default: module.ServicePage }))
-);
-
-const VideoCategoryPage = lazy(() =>
-  import('@/pages/VideoCategoryPage').then(module => ({ default: module.VideoCategoryPage }))
 );
 
 const CareersPage = lazy(() =>
@@ -38,6 +33,21 @@ const TermsPage = lazy(() =>
 );
 
 
+// --- Scroll To Top Handler (Instant Page Transition Reset) ---
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const html = document.documentElement;
+    const originalScrollBehavior = html.style.scrollBehavior;
+    html.style.scrollBehavior = 'auto';
+    window.scrollTo(0, 0);
+    html.style.scrollBehavior = originalScrollBehavior;
+  }, [pathname]);
+
+  return null;
+}
+
 // --- Loading Spinner ---
 const PageLoader = () => (
   <div className="h-screen w-full bg-black flex items-center justify-center">
@@ -48,6 +58,7 @@ const PageLoader = () => (
 export function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       {/* Navbar is OUTSIDE the overflow-hidden wrapper so position:fixed works correctly */}
       <Navbar />
       
@@ -71,7 +82,7 @@ export function App() {
               <Route path="/terms" element={<TermsPage />} />
 
               <Route
-                path="/services/video-editing/:categoryId"
+                path="/services/video-editing"
                 element={<VideoCategoryPage />}
               />
               <Route path="/services/:slug" element={<ServicePage />} />
