@@ -443,7 +443,7 @@ export function InteractivePortfolio() {
                           style={{ willChange: "transform, opacity" }}
                           className="absolute inset-0 w-full h-full transform-style-3d bg-zinc-900"
                           drag="x" dragConstraints={{ left: 0, right: 0 }} dragElastic={0.2}
-                          onDragEnd={(e: any, { offset }: any) => { if (offset.x < -40) paginate(1); else if (offset.x > 40) paginate(-1); }}
+                          onDragEnd={(_: any, { offset }: any) => { if (offset.x < -40) paginate(1); else if (offset.x > 40) paginate(-1); }}
                         >
                           
                           {/* EDGE SWIPE / FULLSCREEN DOUBLE TAP ZONES */}
@@ -534,7 +534,7 @@ export function InteractivePortfolio() {
                       key={`info-${currentItem.id}`} custom={direction} variants={textVariants} initial="enter" animate="center" exit="exit" transition={premiumSpring}
                       style={{ willChange: "transform, opacity" }}
                       drag="x" dragConstraints={{ left: 0, right: 0 }} dragElastic={0.2}
-                      onDragEnd={(e: any, { offset }: any) => { if (offset.x < -40) paginate(1); else if (offset.x > 40) paginate(-1); }}
+                      onDragEnd={(_: any, { offset }: any) => { if (offset.x < -40) paginate(1); else if (offset.x > 40) paginate(-1); }}
                       className="w-full flex flex-col items-center md:items-start text-center md:text-left touch-pan-y"
                     >
                       <div className="flex flex-col md:flex-row justify-between w-full items-start gap-4">

@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
-import { PremiumBackground } from '@/components/PremiumBackground';
 import { testimonials } from '@/lib/data';
 import { cn } from '@/utils/cn';
 

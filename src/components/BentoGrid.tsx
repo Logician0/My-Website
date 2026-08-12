@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect, type MouseEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Bot, Film, Code2, ArrowUpRight } from 'lucide-react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { services } from '@/lib/data';
 import { cn } from '@/utils/cn';
 

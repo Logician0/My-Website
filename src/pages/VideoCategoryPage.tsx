@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Play } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { services, servicesRound } from '@/lib/data';
+import { servicesRound } from '@/lib/data';
 import { cn } from '@/utils/cn';
 
 // 1. Gather & Format Data from the dedicated watch lists in portfolio.json
@@ -65,7 +65,7 @@ export function VideoCategoryPage() {
       ? `https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg` 
       : video.thumbnail;
       
-    const [imgSrc, setImgSrc] = useState(primaryThumb);
+    const imgSrc = primaryThumb;
 
     return (
       <button

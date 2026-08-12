@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Plus } from 'lucide-react';
-import { PremiumBackground } from '@/components/PremiumBackground';
 import { cn } from '@/utils/cn';
 
 const faqs = [

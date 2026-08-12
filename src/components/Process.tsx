@@ -3,7 +3,6 @@
 import React, { useEffect, useState, useRef, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Lightbulb, Palette, Code, Rocket } from 'lucide-react';
-import { PremiumBackground } from '@/components/PremiumBackground';
 
 const steps = [
   { id: 1, title: 'Discovery', Icon: MessageSquare, desc: 'I dive deep into your brand, audience, and goals to lay a solid foundation.' },
