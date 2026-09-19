@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, ExternalLink, X, ArrowRight } from "lucide-react";
+import { Play, Sparkles, X, ArrowRight } from "lucide-react";
 import { Link } from 'react-router-dom';
 import { PremiumBackground } from '@/components/PremiumBackground';
 
@@ -14,7 +14,8 @@ interface VideoProject {
   id: string;
   title: string;
   category: string;
-  youtubeId: string;
+  youtubeId?: string;
+  videoUrl?: string;
   ratio: Ratio;
   gridClass?: string;
   isCenterpiece?: boolean;
@@ -24,31 +25,14 @@ interface VideoProject {
   customThumb?: string;
 }
 
-interface WebProject {
-  id: string;
-  title: string;
-  tech: string;
-  link: string;
-  image: string;
-  gridClass?: string;
-  isCenterpiece?: boolean;
-}
-
 interface MobileVideoItem {
   id: string;
   title: string;
   category: string;
-  youtubeId: string;
+  youtubeId?: string;
+  videoUrl?: string;
   ratio: Ratio;
   customThumb?: string;
-}
-
-interface MobileWebItem {
-  id: string;
-  title: string;
-  tech: string;
-  link: string;
-  image: string;
 }
 
 /* ═══ YOUTUBE URLS ═══ */
@@ -58,10 +42,6 @@ const modalYtEmbed = (id: string) =>
   `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1&controls=1`;
 const ytThumbMax = (id: string) =>
   `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
-
-/* ═══ LIGHTWEIGHT BACKGROUNDS ═══ */
-// Removed heavy SVG turbulence and particle animations that cause scroll lag
-
 
 /* ═══ DATA ═══ */
 const trustedClients = [
@@ -84,20 +64,15 @@ import portfolioData from "@/data/portfolio.json";
 
 /* Desktop grid videos */
 const desktopVideos: VideoProject[] = portfolioData.servicesRound.desktopVideos as VideoProject[];
+const desktopAiVideos: VideoProject[] = (portfolioData.servicesRound.desktopAiVideos || []) as VideoProject[];
 
 /* ═══ MOBILE VIDEO SWIPE DATA ═══ */
 const mobileHorizontalVideos: MobileVideoItem[] = portfolioData.servicesRound.mobileHorizontalVideos as MobileVideoItem[];
 const mobileVerticalVideos: MobileVideoItem[] = portfolioData.servicesRound.mobileVerticalVideos as MobileVideoItem[];
+const mobileHorizontalAiVideos: MobileVideoItem[] = (portfolioData.servicesRound.mobileHorizontalAiVideos || []) as MobileVideoItem[];
+const mobileVerticalAiVideos: MobileVideoItem[] = (portfolioData.servicesRound.mobileVerticalAiVideos || []) as MobileVideoItem[];
 
-/* ═══ WEB DATA ═══ */
-const webProjects: WebProject[] = portfolioData.servicesRound.webProjects as WebProject[];
-const webCenterpiece: WebProject = portfolioData.servicesRound.webCenterpiece as WebProject;
-
-/* ═══ MOBILE WEB SWIPE DATA ═══ */
-const mobileWebItems: MobileWebItem[] = portfolioData.servicesRound.mobileWebItems;
-const mobileAppItems: MobileWebItem[] = portfolioData.servicesRound.mobileAppItems;
-
-/* ═══ DESKTOP VIDEO CARD — hover to play (UNCHANGED) ═══ */
+/* ═══ DESKTOP VIDEO CARD ═══ */
 function DesktopVideoCard({
   video,
   idx,
@@ -109,6 +84,8 @@ function DesktopVideoCard({
 }) {
   const [hovered, setHovered] = useState(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
+
+  const thumbUrl = video.customThumb || (video.youtubeId ? ytThumbMax(video.youtubeId) : "");
 
   return (
     <div className={video.gridClass}>
@@ -124,10 +101,11 @@ function DesktopVideoCard({
         className="relative w-full h-full group cursor-pointer overflow-hidden rounded-2xl bg-zinc-900 border border-white/10 shadow-lg transform-gpu transition-all duration-300 hover:border-white/30 hover:shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
       >
         <img
-          src={video.customThumb || ytThumbMax(video.youtubeId)}
+          src={thumbUrl}
           alt={video.title}
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover transition-opacity duration-500 ${video.ratio === "9/16" ? "scale-[1.15]" : ""
-            } ${hovered && iframeLoaded ? "opacity-0" : "opacity-100"}`}
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover transition-opacity duration-500 ${
+            video.ratio === "9/16" ? "scale-[1.15]" : ""
+          } ${hovered && (iframeLoaded || video.videoUrl) ? "opacity-0" : "opacity-100"}`}
           style={{
             width: video.w || "100%",
             height: video.h || "100%",
@@ -136,27 +114,42 @@ function DesktopVideoCard({
         />
 
         {hovered && (
-          <div className={`absolute inset-0 transition-opacity duration-500 ${iframeLoaded ? "opacity-100" : "opacity-0"}`}>
-            <iframe
-              src={gridYtEmbed(video.youtubeId)}
-              onLoad={() => setIframeLoaded(true)}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-              style={{
-                width: video.w || "150%",
-                height: video.h || "150%",
-                border: "none",
-              }}
-              allow="autoplay; muted; playsinline"
-              title={video.title}
-            />
+          <div className="absolute inset-0 transition-opacity duration-500">
+            {video.videoUrl ? (
+              <video
+                src={video.videoUrl}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 object-cover"
+                style={{
+                  width: video.w || "100%",
+                  height: video.h || "100%",
+                }}
+              />
+            ) : video.youtubeId ? (
+              <div className={`absolute inset-0 transition-opacity duration-500 ${iframeLoaded ? "opacity-100" : "opacity-0"}`}>
+                <iframe
+                  src={gridYtEmbed(video.youtubeId)}
+                  onLoad={() => setIframeLoaded(true)}
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                  style={{
+                    width: video.w || "150%",
+                    height: video.h || "150%",
+                    border: "none",
+                  }}
+                  allow="autoplay; muted; playsinline"
+                  title={video.title}
+                />
+              </div>
+            ) : null}
           </div>
         )}
       </motion.div>
     </div>
   );
 }
-
-
 
 /* ═══ MOBILE VIDEO SWIPE ROW — CSS Scroll-Snap ═══ */
 function MobileVideoSwipeRow({
@@ -209,10 +202,11 @@ function MobileVideoSwipeRow({
               className={`relative overflow-hidden rounded-2xl bg-zinc-900 border border-white/[0.06] cursor-pointer active:scale-[0.97] transition-transform duration-200 ${aspectClass}`}
             >
               <img
-                src={video.customThumb || ytThumbMax(video.youtubeId)}
+                src={video.customThumb || (video.youtubeId ? ytThumbMax(video.youtubeId) : "")}
                 alt={video.title}
-                className={`absolute inset-0 w-full h-full object-cover ${video.ratio === "9/16" ? "scale-[1.15]" : ""
-                  }`}
+                className={`absolute inset-0 w-full h-full object-cover ${
+                  video.ratio === "9/16" ? "scale-[1.15]" : ""
+                }`}
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -238,101 +232,19 @@ function MobileVideoSwipeRow({
         {videos.map((_, i) => (
           <div
             key={i}
-            className={`h-1.5 rounded-full transition-all duration-300 ${i === activeIdx ? "bg-white/80 w-4" : "bg-white/20 w-1.5"
-              }`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === activeIdx ? "bg-white/80 w-4" : "bg-white/20 w-1.5"
+            }`}
           />
         ))}
       </div>
     </div>
   );
 }
-
-/* ═══ MOBILE WEB SWIPE ROW ═══ */
-function MobileWebSwipeRow({
-  items,
-  label,
-}: {
-  items: MobileWebItem[];
-  label: string;
-}) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeIdx, setActiveIdx] = useState(0);
-
-  const handleScroll = useCallback(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const firstChild = el.children[0] as HTMLElement | undefined;
-    if (!firstChild) return;
-    const cardW = firstChild.offsetWidth;
-    const gap = 12;
-    const idx = Math.round(el.scrollLeft / (cardW + gap));
-    setActiveIdx(Math.min(Math.max(idx, 0), items.length - 1));
-  }, [items.length]);
-
-  return (
-    <div className="mb-5">
-      <p className="text-white/30 text-[10px] font-bold uppercase tracking-[0.2em] mb-3 px-1">
-        {label}
-      </p>
-      <div
-        ref={scrollRef}
-        onScroll={handleScroll}
-        className="flex gap-3 overflow-x-auto no-scrollbar px-1"
-        style={{ scrollSnapType: "x mandatory", WebkitOverflowScrolling: "touch" } as React.CSSProperties}
-      >
-        {items.map((web) => (
-          <a
-            key={web.id}
-            href={web.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-shrink-0 block"
-            style={{ width: "82vw", scrollSnapAlign: "start" }}
-          >
-            <div className="relative overflow-hidden rounded-2xl bg-zinc-900 border border-white/[0.06] aspect-video active:scale-[0.97] transition-transform duration-200">
-              <img
-                src={web.image}
-                alt={web.title}
-                className="absolute inset-0 w-full h-full object-cover"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
-                <p className="text-white/50 text-[8px] font-bold uppercase tracking-widest mb-0.5">
-                  {web.tech}
-                </p>
-                <h3 className="text-white text-[11px] font-bold leading-tight line-clamp-1">
-                  {web.title}
-                </h3>
-              </div>
-              <div className="absolute top-2 right-2 z-10">
-                <div className="w-7 h-7 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 flex items-center justify-center">
-                  <ExternalLink className="w-3 h-3 text-white" />
-                </div>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-      {/* Dot indicators */}
-      <div className="flex justify-center gap-1.5 mt-3">
-        {items.map((_, i) => (
-          <div
-            key={i}
-            className={`h-1.5 rounded-full transition-all duration-300 ${i === activeIdx ? "bg-white/80 w-4" : "bg-white/20 w-1.5"
-              }`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-/* ═══ VIDEO MODAL (REMOVED) ═══ */
 
 /* ═══ MAIN LAYOUT ═══ */
 export function ServicesRound() {
-  const [activeTab, setActiveTab] = useState<"video" | "web">("video");
+  const [activeTab, setActiveTab] = useState<"video" | "ai-video">("video");
   const [activeVideo, setActiveVideo] = useState<VideoProject | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
@@ -395,7 +307,7 @@ export function ServicesRound() {
           Worked With...
         </motion.h3>
 
-        {/* Marquee — reduced from 4× to 3× duplication */}
+        {/* Marquee */}
         <div className="w-full max-w-7xl overflow-hidden mb-12 md:mb-16 [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <div className="flex w-max marquee gap-4 md:gap-6">
             {[...trustedClients, ...trustedClients, ...trustedClients].map((client, idx) => (
@@ -410,7 +322,7 @@ export function ServicesRound() {
           </div>
         </div>
 
-        {/* Title + Tabs — UNCHANGED */}
+        {/* Title + Tabs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -431,8 +343,9 @@ export function ServicesRound() {
             />
             <button
               onClick={() => setActiveTab("video")}
-              className={`relative z-10 px-5 md:px-8 py-2 md:py-2.5 text-[11px] md:text-sm font-bold uppercase transition-all duration-300 rounded-full ${activeTab === "video" ? "text-white" : "text-white/35 hover:text-white/70"
-                }`}
+              className={`relative z-10 px-5 md:px-8 py-2 md:py-2.5 text-[11px] md:text-sm font-bold uppercase transition-all duration-300 rounded-full ${
+                activeTab === "video" ? "text-white" : "text-white/35 hover:text-white/70"
+              }`}
             >
               <span className="flex items-center gap-1.5">
                 <Play size={12} className="md:w-[14px] md:h-[14px]" fill="currentColor" />
@@ -440,13 +353,14 @@ export function ServicesRound() {
               </span>
             </button>
             <button
-              onClick={() => setActiveTab("web")}
-              className={`relative z-10 px-5 md:px-8 py-2 md:py-2.5 text-[11px] md:text-sm font-bold uppercase transition-all duration-300 rounded-full ${activeTab === "web" ? "text-white" : "text-white/35 hover:text-white/70"
-                }`}
+              onClick={() => setActiveTab("ai-video")}
+              className={`relative z-10 px-5 md:px-8 py-2 md:py-2.5 text-[11px] md:text-sm font-bold uppercase transition-all duration-300 rounded-full ${
+                activeTab === "ai-video" ? "text-white" : "text-white/35 hover:text-white/70"
+              }`}
             >
               <span className="flex items-center gap-1.5">
-                <ExternalLink size={12} className="md:w-[14px] md:h-[14px]" />
-                Websites
+                <Sparkles size={12} className="md:w-[14px] md:h-[14px] text-cyan-400" />
+                AI Videos
               </span>
             </button>
           </div>
@@ -459,10 +373,8 @@ export function ServicesRound() {
           className="relative w-full max-w-6xl mx-auto min-h-[300px] md:min-h-[500px] group"
         >
           {/* ZERO-LAG TEXTURE & HOVER EFFECTS BEHIND CARDS */}
-          {/* 1. Static CSS Dot Grid Texture (Extremely Fast) */}
           <div className="absolute -inset-10 z-0 opacity-20 pointer-events-none bg-[radial-gradient(rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,black,transparent)]" />
           
-          {/* 2. Dynamic Spotlight Glow (Hardware Accelerated, tracks mouse via CSS vars) */}
           <div 
             className="hidden md:block absolute -inset-20 z-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700 transform-gpu"
             style={{
@@ -482,13 +394,12 @@ export function ServicesRound() {
                 transition={{ duration: 0.4 }}
                 className="relative w-full z-10"
               >
-                {/* ═══ DESKTOP GRID — UNCHANGED ═══ */}
+                {/* ═══ DESKTOP GRID ═══ */}
                 <div className="hidden md:grid grid-cols-8 grid-flow-row-dense gap-4 auto-rows-[200px]">
                   {desktopVideos.map((video, idx) => (
                     <DesktopVideoCard key={video.id} video={video} idx={idx} onPlay={openVideo} />
                   ))}
                 </div>
-
 
                 {/* ═══ MOBILE — Swipe Carousels ═══ */}
                 <div className="md:hidden flex flex-col gap-1">
@@ -510,90 +421,38 @@ export function ServicesRound() {
               </motion.div>
             )}
 
-            {/* ─── WEB TAB ─── */}
-            {activeTab === "web" && (
+            {/* ─── AI VIDEO TAB ─── */}
+            {activeTab === "ai-video" && (
               <motion.div
-                key="web-tab"
+                key="ai-video-tab"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4 }}
                 className="relative w-full z-10"
               >
-                {/* ═══ DESKTOP WEB GRID — UNCHANGED ═══ */}
+                {/* ═══ DESKTOP GRID ═══ */}
                 <div className="hidden md:grid grid-cols-8 grid-flow-row-dense gap-4 auto-rows-[200px]">
-                  {webProjects.map((web, idx) => (
-                    <a
-                      key={web.id}
-                      href={web.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`block focus:outline-none ${web.gridClass}`}
-                    >
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: idx * 0.05 }}
-                        className="relative w-full h-full group overflow-hidden rounded-2xl bg-zinc-900 border border-white/10 shadow-lg transform-gpu transition-all duration-500 hover:border-white/30 hover:shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
-                      >
-                        <img
-                          src={web.image}
-                          alt={web.title}
-                          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                        />
-                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2.5 rounded-full text-white text-xs font-bold border border-white/20 transform scale-90 group-hover:scale-100 transition-transform duration-500 mb-3 shadow-2xl">
-                            Visit Site <ExternalLink size={16} />
-                          </div>
-                          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4">
-                            <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-0.5">{web.tech}</p>
-                            <h3 className="text-white text-sm font-bold leading-tight line-clamp-1">{web.title}</h3>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </a>
+                  {desktopAiVideos.map((video, idx) => (
+                    <DesktopVideoCard key={video.id} video={video} idx={idx} onPlay={openVideo} />
                   ))}
                 </div>
 
-                {/* Desktop web centerpiece — UNCHANGED */}
-                <div className="hidden md:block">
-                  <a href={webCenterpiece.link} target="_blank" rel="noopener noreferrer">
-                    <motion.div
-                      initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%", rotate: 45 }}
-                      animate={{ scale: 1, opacity: 1, x: "-50%", y: "-50%", rotate: 45 }}
-                      transition={{ type: "spring", stiffness: 200, damping: 20, delay: 0.4 }}
-                      className="absolute top-1/2 left-1/2 w-[320px] h-[320px] overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)] border-[6px] border-[#05070A] z-20 group cursor-pointer transform-gpu bg-zinc-900"
-                    >
-                      <img
-                        src={webCenterpiece.image}
-                        alt="Centerpiece"
-                        className="absolute top-1/2 left-1/2 w-[150%] h-[150%] max-w-none -translate-x-1/2 -translate-y-1/2 -rotate-45 object-cover group-hover:scale-110 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="-rotate-45 flex flex-col items-center">
-                          <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-5 py-2.5 rounded-full text-white text-xs font-bold border border-white/20 transform scale-90 group-hover:scale-100 transition-transform duration-500 mb-3 shadow-2xl">
-                            Hero Project <ExternalLink size={16} />
-                          </div>
-                          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 text-center px-4">
-                            <p className="text-white/60 text-[10px] font-bold uppercase tracking-widest mb-0.5">{webCenterpiece.tech}</p>
-                            <h3 className="text-white text-sm font-bold leading-tight line-clamp-1">{webCenterpiece.title}</h3>
-                          </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </a>
-                </div>
-
-                {/* ═══ MOBILE WEB — Swipe Carousels ═══ */}
+                {/* ═══ MOBILE — Swipe Carousels ═══ */}
                 <div className="md:hidden flex flex-col gap-1">
-                  <MobileWebSwipeRow
-                    items={mobileWebItems}
-                    label="Web Projects"
+                  <MobileVideoSwipeRow
+                    videos={mobileHorizontalAiVideos}
+                    label="AI Cinematic & Shorts"
+                    cardWidth="82vw"
+                    aspectClass="aspect-video"
+                    onPlay={openVideo}
                   />
-                  <MobileWebSwipeRow
-                    items={mobileAppItems}
-                    label="Apps & Software"
+                  <MobileVideoSwipeRow
+                    videos={mobileVerticalAiVideos}
+                    label="AI Avatars & Reels"
+                    cardWidth="38vw"
+                    aspectClass="aspect-[9/16]"
+                    onPlay={openVideo}
                   />
                 </div>
               </motion.div>
@@ -601,7 +460,7 @@ export function ServicesRound() {
           </AnimatePresence>
         </div>
 
-        {/* CTA — UNCHANGED */}
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -610,7 +469,7 @@ export function ServicesRound() {
           className="mt-12 md:mt-24"
         >
           <Link
-            to={activeTab === "video" ? "/services/video-editing" : "/services/web-dev"}
+            to="/services/video-editing"
             className="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-8 md:px-10 py-3.5 md:py-4 rounded-full bg-white/5 backdrop-blur-2xl border border-white/15 text-white text-[11px] md:text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:bg-white/10 hover:border-white/40 shadow-2xl"
           >
             <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent" />
@@ -641,9 +500,8 @@ export function ServicesRound() {
                 } bg-zinc-900 rounded-2xl overflow-hidden border border-white/10`}
                 onClick={(e) => e.stopPropagation()}
               >
-                {/* Perfect Crossfade: Keep the exact same thumbnail during the flight animation */}
                 <img
-                  src={activeVideo.customThumb || ytThumbMax(activeVideo.youtubeId)}
+                  src={activeVideo.customThumb || (activeVideo.youtubeId ? ytThumbMax(activeVideo.youtubeId) : "")}
                   alt={activeVideo.title}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
@@ -655,14 +513,23 @@ export function ServicesRound() {
                   <X className="w-5 h-5" />
                 </button>
 
-                {/* Render iframe immediately so browser doesn't block autoplay on a hidden element */}
                 <div className="absolute inset-0 w-full h-full bg-black/0">
-                  <iframe
-                    src={modalYtEmbed(activeVideo.youtubeId)}
-                    className="w-full h-full border-none"
-                    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-                    allowFullScreen
-                  />
+                  {activeVideo.videoUrl ? (
+                    <video
+                      src={activeVideo.videoUrl}
+                      autoPlay
+                      controls
+                      playsInline
+                      className="w-full h-full object-contain"
+                    />
+                  ) : activeVideo.youtubeId ? (
+                    <iframe
+                      src={modalYtEmbed(activeVideo.youtubeId)}
+                      className="w-full h-full border-none"
+                      allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                      allowFullScreen
+                    />
+                  ) : null}
                 </div>
               </motion.div>
             </motion.div>

@@ -80,18 +80,6 @@ const services: any[] = [
         title: 'Shorts & Reels',
         items: [
           {
-            id: '1', title: 'Filmmaking Episode 1', description: 'Fast-paced, hook-driven product reveals designed to stop thumbs and drive action.',
-            thumbnail: 'https://res.cloudinary.com/dbqkbgol3/video/upload/v1772526643/What_filmmaking_actually_means__1080p_y3dyle.mp4',
-            tags: ['Vertical', 'Fast Paced', 'Hooks'],
-            metadata: { type: 'video', videoUrl: 'https://res.cloudinary.com/dbqkbgol3/video/upload/v1772526643/What_filmmaking_actually_means__1080p_y3dyle.mp4', aspect: '9/16' }
-          },
-          {
-            id: '2', title: 'Filmmaking Episode 2', description: 'Authentic, engaging lifestyle content that builds genuine audience connection.',
-            thumbnail: 'https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=600&auto=format&fit=crop&q=80',
-            tags: ['Authentic', 'Storytelling', 'Engaging'],
-            metadata: { type: 'video', videoUrl: 'https://res.cloudinary.com/dbqkbgol3/video/upload/v1772526669/Ep2_uzakzn.mp4', aspect: '9/16' }
-          },
-          {
             id: '3', title: 'Filmmaking Episode 3', description: 'User-generated style content that converts with authentic appeal.',
             thumbnail: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&auto=format&fit=crop&q=80',
             tags: ['UGC', 'Conversion', 'Authentic'],

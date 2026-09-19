@@ -27,19 +27,19 @@ const aiService = services.find(s => s.slug === 'ai-agents')!;
 export function BentoGrid() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [lightProgress, setLightProgress] = useState(0);
-  
+
   // Animate light through connections
   useEffect(() => {
     const duration = 8000;
     const startTime = Date.now();
     let animationFrame: number;
-    
+
     const animate = () => {
       const elapsed = (Date.now() - startTime) % duration;
       setLightProgress(elapsed / duration);
       animationFrame = requestAnimationFrame(animate);
     };
-    
+
     animationFrame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrame);
   }, []);
@@ -71,11 +71,11 @@ export function BentoGrid() {
 
         {/* Hub Diagram Layout */}
         <div ref={containerRef} className="relative">
-          
+
           {/* Desktop Layout - Triangle/Hub Structure */}
           <div className="hidden lg:block relative">
             {/* SVG Connections */}
-            <svg 
+            <svg
               className="absolute inset-0 w-full h-full pointer-events-none z-0"
               viewBox="0 0 800 500"
               preserveAspectRatio="xMidYMid meet"
@@ -87,14 +87,14 @@ export function BentoGrid() {
                   <stop offset="100%" stopColor="rgba(34, 211, 238, 0.3)" />
                 </linearGradient>
                 <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="3" result="coloredBlur" />
                   <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
+                    <feMergeNode in="coloredBlur" />
+                    <feMergeNode in="SourceGraphic" />
                   </feMerge>
                 </filter>
               </defs>
-              
+
               {/* Video Editing (left) to Hub */}
               <path
                 d="M 180,120 L 400,220"
@@ -103,7 +103,7 @@ export function BentoGrid() {
                 fill="none"
                 opacity="0.6"
               />
-              
+
               {/* Web Dev (right) to Hub */}
               <path
                 d="M 620,120 L 400,220"
@@ -112,7 +112,7 @@ export function BentoGrid() {
                 fill="none"
                 opacity="0.6"
               />
-              
+
               {/* Hub to AI Agents */}
               <path
                 d="M 400,220 L 400,320"
@@ -121,7 +121,7 @@ export function BentoGrid() {
                 fill="none"
                 opacity="0.6"
               />
-              
+
               {/* Light flow from AI to Hub and outward */}
               <circle
                 r="4"
@@ -174,7 +174,7 @@ export function BentoGrid() {
             <div className="flex justify-between gap-8 mb-6">
               {/* Video Editing Card */}
               <ServiceCard service={videoService} index={0} />
-              
+
               {/* Web Dev Card */}
               <ServiceCard service={webService} index={1} />
             </div>
@@ -191,20 +191,20 @@ export function BentoGrid() {
           <div className="lg:hidden relative">
             {/* Vertical connection line */}
             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-pink-500/30 via-cyan-500/30 to-violet-500/30 -translate-x-1/2 z-0" />
-            
+
             {/* Light traveling down */}
             <motion.div
               className="absolute left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-white shadow-lg shadow-white/50 z-10"
-              animate={{ 
+              animate={{
                 top: ['5%', '95%', '5%'],
               }}
-              transition={{ 
-                duration: 6, 
+              transition={{
+                duration: 6,
                 repeat: Infinity,
                 ease: 'linear'
               }}
             />
-            
+
             {/* Connection nodes */}
             {[0, 1, 2].map((i) => (
               <motion.div
@@ -217,7 +217,7 @@ export function BentoGrid() {
                 transition={{ delay: i * 0.1 }}
               />
             ))}
-            
+
             {/* Cards stacked vertically */}
             <div className="relative z-20 space-y-3">
               <ServiceCard service={videoService} index={0} isMobile />
@@ -232,13 +232,13 @@ export function BentoGrid() {
 }
 
 // Service Card Component
-function ServiceCard({ 
-  service, 
-  index, 
+function ServiceCard({
+  service,
+  index,
   isCenter = false,
-  isMobile = false 
-}: { 
-  service: typeof services[0]; 
+  isMobile = false
+}: {
+  service: typeof services[0];
   index: number;
   isCenter?: boolean;
   isMobile?: boolean;
@@ -271,11 +271,11 @@ function ServiceCard({
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ 
+        transition={{
           delay: index * 0.1,
-          type: 'spring', 
-          stiffness: 300, 
-          damping: 30 
+          type: 'spring',
+          stiffness: 300,
+          damping: 30
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -287,11 +287,10 @@ function ServiceCard({
           className="pointer-events-none absolute inset-0"
           animate={{
             background: isHovered
-              ? `radial-gradient(300px circle at ${mousePos.x}px ${mousePos.y}px, ${
-                  service.color === 'violet' ? 'rgba(139,92,246,0.15)' :
-                  service.color === 'pink' ? 'rgba(236,72,153,0.15)' :
+              ? `radial-gradient(300px circle at ${mousePos.x}px ${mousePos.y}px, ${service.color === 'violet' ? 'rgba(139,92,246,0.15)' :
+                service.color === 'pink' ? 'rgba(236,72,153,0.15)' :
                   'rgba(34,211,238,0.15)'
-                }, transparent 60%)`
+              }, transparent 60%)`
               : 'transparent',
           }}
           transition={{ duration: 0.2 }}

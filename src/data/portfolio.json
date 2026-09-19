@@ -4,19 +4,19 @@
       {
         "id": "v1-desk",
         "showOn": "desktop",
-        "title": "Desert Bloom",
+        "title": "New Edit For The Real Estate Lawyer",
         "category": "Color Grade",
         "youtubeId": "83WR-gPqV-k",
         "ratio": "16/9",
         "gridClass": "col-span-3 row-span-1",
         "w": "120%",
         "h": "120%",
-        "customThumb": ""
+        "customThumb": "https://img.youtube.com/vi/83WR-gPqV-k/sddefault.jpg"
       },
       {
         "id": "v2-desk",
         "showOn": "desktop",
-        "title": "Fashion Clip",
+        "title": "Old Work",
         "category": "Reels",
         "youtubeId": "wyz9Ok6gDyA",
         "ratio": "9/16",
@@ -28,31 +28,31 @@
       {
         "id": "v3-desk",
         "showOn": "desktop",
-        "title": "Motion ID-009",
-        "category": "CGI",
-        "youtubeId": "KasJHz8AbnE",
+        "title": "It's Not Just The Direction! | Filmmaking Series Ep 3      #cinematography #filmmaking #editing",
+        "category": "Editing",
+        "youtubeId": "lN2rqP5-wuc",
         "ratio": "9/16",
         "gridClass": "col-span-2 row-span-2",
         "w": "125%",
         "h": "125%",
-        "customThumb": "https://img.youtube.com/vi/KasJHz8AbnE/maxresdefault.jpg"
+        "customThumb": "https://img.youtube.com/vi/lN2rqP5-wuc/maxresdefault.jpg"
       },
       {
         "id": "v4-desk",
         "showOn": "desktop",
-        "title": "I AM LOGICIAN",
-        "category": "3D Art",
-        "youtubeId": "jKbeOSZSpmo",
+        "title": "Vadilal Ad",
+        "category": "Reels",
+        "youtubeId": "Jixhcs-PO7o",
         "ratio": "9/16",
         "gridClass": "col-span-2 row-span-2",
         "w": "120%",
         "h": "120%",
-        "customThumb": "https://img.youtube.com/vi/jKbeOSZSpmo/maxresdefault.jpg"
+        "customThumb": "https://img.youtube.com/vi/Jixhcs-PO7o/maxresdefault.jpg"
       },
       {
         "id": "v5-desk",
         "showOn": "desktop",
-        "title": "Anushka & Sharda University Promo Video (800k+ Views)",
+        "title": "Edit For Sharda University India",
         "category": "Social",
         "youtubeId": "_FQ7EBFkYY0",
         "ratio": "9/16",
@@ -64,7 +64,7 @@
       {
         "id": "v6-desk",
         "showOn": "desktop",
-        "title": " Stop Letting Your Cycle Control Your Life | PMS & PMDD",
+        "title": "Stop Letting Your Cycle Control Your Life | PMS & PMDD",
         "category": "Lifestyle",
         "youtubeId": "RxThHefrP0Q",
         "ratio": "16/9",
@@ -76,7 +76,7 @@
       {
         "id": "v7-desk",
         "showOn": "desktop",
-        "title": " The Confidence Myth (And How to Beat It) w/ ‪@Dr.ShadeZahrai‬ | Ep 47",
+        "title": "The Confidence Myth (And How to Beat It) w/ @Dr.ShadeZahrai | Ep 47",
         "category": "Podcast",
         "youtubeId": "1mZ3AQeidfk",
         "ratio": "16/9",
@@ -88,7 +88,7 @@
       {
         "id": "v8-desk",
         "showOn": "desktop",
-        "title": "Event B-Roll",
+        "title": "New Work",
         "category": "Highlight",
         "youtubeId": "0Ph6MpGKq8I",
         "ratio": "9/16",
@@ -100,19 +100,19 @@
       {
         "id": "v9-desk",
         "showOn": "desktop",
-        "title": "Fitness Promo",
+        "title": "Old Edit for Pete Z Dingus",
         "category": "Ad",
         "youtubeId": "MxKeZvMf2TM",
         "ratio": "16/9",
         "gridClass": "col-span-3 row-span-1",
         "w": "120%",
         "h": "120%",
-        "customThumb": ""
+        "customThumb": "https://img.youtube.com/vi/MxKeZvMf2TM/sddefault.jpg"
       },
       {
         "id": "v10-desk",
         "showOn": "desktop",
-        "title": "Anushka Promo 800k+ Views",
+        "title": "Anushka Edit",
         "category": "Promo",
         "youtubeId": "LkDVvwnNx2s",
         "ratio": "9/16",
@@ -125,23 +125,23 @@
     "mobileHorizontalVideos": [
       {
         "id": "mob-h1",
-        "title": "Desert Bloom",
+        "title": "Old Edit for Pete Z Dingus",
         "category": "Color Grade",
         "youtubeId": "MxKeZvMf2TM",
         "ratio": "16/9",
-        "customThumb": ""
+        "customThumb": "https://img.youtube.com/vi/MxKeZvMf2TM/sddefault.jpg"
       },
       {
         "id": "mob-h2",
-        "title": "Automotive Ad",
+        "title": "New Edit For The Real Estate Lawyer",
         "category": "Commercial",
         "youtubeId": "83WR-gPqV-k",
         "ratio": "16/9",
-        "customThumb": ""
+        "customThumb": "https://img.youtube.com/vi/83WR-gPqV-k/sddefault.jpg"
       },
       {
         "id": "mob-h3",
-        "title": " Stop Letting Your Cycle Control Your Life | PMS & PMDD",
+        "title": "Stop Letting Your Cycle Control Your Life | PMS & PMDD",
         "category": "YouTube",
         "youtubeId": "RxThHefrP0Q",
         "ratio": "16/9",
@@ -149,25 +149,25 @@
       },
       {
         "id": "mob-h4",
-        "title": " The Confidence Myth (And How to Beat It) w/ ‪@Dr.ShadeZahrai‬ | Ep 47",
+        "title": "The Confidence Myth (And How to Beat It) w/ @Dr.ShadeZahrai | Ep 47",
         "category": "Highlight",
         "youtubeId": "1mZ3AQeidfk",
         "ratio": "16/9",
-        "customThumb": ""
+        "customThumb": "https://img.youtube.com/vi/1mZ3AQeidfk/maxresdefault.jpg"
       }
     ],
     "mobileVerticalVideos": [
       {
         "id": "mob-v1",
-        "title": "Tech Short",
-        "category": "Social",
-        "youtubeId": "KasJHz8AbnE",
+        "title": "Old Work",
+        "category": "Reels",
+        "youtubeId": "wyz9Ok6gDyA",
         "ratio": "9/16",
-        "customThumb": "https://img.youtube.com/vi/KasJHz8AbnE/maxresdefault.jpg"
+        "customThumb": "https://img.youtube.com/vi/wyz9Ok6gDyA/maxresdefault.jpg"
       },
       {
         "id": "mob-v2",
-        "title": "Fashion Clip",
+        "title": "New Work",
         "category": "Reels",
         "youtubeId": "0Ph6MpGKq8I",
         "ratio": "9/16",
@@ -175,7 +175,7 @@
       },
       {
         "id": "mob-v3",
-        "title": "Anushka Promo 800k+ Views",
+        "title": "Anushka Edit",
         "category": "Promo",
         "youtubeId": "LkDVvwnNx2s",
         "ratio": "9/16",
@@ -185,7 +185,7 @@
       },
       {
         "id": "mob-v4",
-        "title": "Motion ID-009",
+        "title": "New Edit For Jr. Hardik Pandya",
         "category": "CGI",
         "youtubeId": "Adiz1O8JQig",
         "ratio": "9/16",
@@ -193,7 +193,7 @@
       },
       {
         "id": "mob-v5",
-        "title": "Palak Plix Promo VIDEO (100K+ VIEWS)",
+        "title": "ipalak Edit",
         "category": "Promo",
         "youtubeId": "6KRlmvzYYx8",
         "ratio": "9/16",
@@ -201,7 +201,7 @@
       },
       {
         "id": "card-1785606787878",
-        "title": "Palak x Gazhal Promo Video",
+        "title": "ipalak 25 july",
         "category": "Promo",
         "youtubeId": "fdHWLuXTIBA",
         "ratio": "9/16",
@@ -209,11 +209,359 @@
       },
       {
         "id": "card-1785606793592",
-        "title": "Anushka & Sharda University Promo Video (800k+ Views)",
+        "title": "Edit For Sharda University India",
         "category": "Promo",
         "youtubeId": "_FQ7EBFkYY0",
         "ratio": "9/16",
         "customThumb": "https://img.youtube.com/vi/_FQ7EBFkYY0/maxresdefault.jpg"
+      }
+    ],
+    "desktopAiVideos": [
+      {
+        "id": "ai-v1-desk",
+        "showOn": "desktop",
+        "title": "What if The Sun turns Blue? (Destruction)",
+        "category": "AI World Generation",
+        "youtubeId": "s10neE9Q1KY",
+        "videoUrl": "",
+        "ratio": "16/9",
+        "gridClass": "col-span-3 row-span-1",
+        "w": "120%",
+        "h": "120%",
+        "customThumb": "https://img.youtube.com/vi/s10neE9Q1KY/sddefault.jpg"
+      },
+      {
+        "id": "ai-v2-desk",
+        "showOn": "desktop",
+        "title": "Day 1 - #day1 #aboutme #myintroductionvideo",
+        "category": "AI Reel",
+        "youtubeId": "HMZdb1qOtsw",
+        "videoUrl": "",
+        "ratio": "9/16",
+        "gridClass": "col-span-1 row-span-1",
+        "w": "150%",
+        "h": "150%",
+        "customThumb": "https://img.youtube.com/vi/HMZdb1qOtsw/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-v3-desk",
+        "showOn": "desktop",
+        "title": "Your Vibe coded App is in Danger  - Day 2  #VibeCoding #AppSecurity #WebDevelopment #APIKeys",
+        "category": "AI Portrait",
+        "youtubeId": "6RgnqcggJ1w",
+        "videoUrl": "",
+        "ratio": "9/16",
+        "gridClass": "col-span-2 row-span-2",
+        "w": "125%",
+        "h": "125%",
+        "customThumb": "https://img.youtube.com/vi/6RgnqcggJ1w/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-v4-desk",
+        "showOn": "desktop",
+        "title": "Someone Leaked Entire DesignFiles of Top Companies#VibeCoding #ClaudeCode #AITools #WebDevelopment",
+        "category": "AI Short",
+        "youtubeId": "KasJHz8AbnE",
+        "videoUrl": "",
+        "ratio": "9/16",
+        "gridClass": "col-span-2 row-span-2",
+        "w": "120%",
+        "h": "120%",
+        "customThumb": "https://img.youtube.com/vi/KasJHz8AbnE/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-v5-desk",
+        "showOn": "desktop",
+        "title": "I Turned a 50-Minute Lecture Into a Full Presentation in 10 Seconds",
+        "category": "AI Animation",
+        "youtubeId": "c0v_SUjTg7Q",
+        "videoUrl": "",
+        "ratio": "9/16",
+        "gridClass": "col-span-1 row-span-1",
+        "w": "120%",
+        "h": "120%",
+        "customThumb": "https://img.youtube.com/vi/c0v_SUjTg7Q/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-v6-desk",
+        "showOn": "desktop",
+        "title": "90% of People are Getting This Wrong…",
+        "category": "AI Sci-Fi Art",
+        "youtubeId": "hQ6su7l9Mxg",
+        "videoUrl": "",
+        "ratio": "16/9",
+        "gridClass": "col-span-3 row-span-1",
+        "w": "120%",
+        "h": "120%",
+        "customThumb": "https://img.youtube.com/vi/hQ6su7l9Mxg/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-v7-desk",
+        "showOn": "desktop",
+        "title": "Steam Support (AI Short Film) | Full Movie",
+        "category": "AI Animation",
+        "youtubeId": "gjJI4x2hoBg",
+        "videoUrl": "",
+        "ratio": "16/9",
+        "gridClass": "col-span-3 row-span-1",
+        "w": "120%",
+        "h": "120%",
+        "customThumb": "https://img.youtube.com/vi/gjJI4x2hoBg/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-v8-desk",
+        "showOn": "desktop",
+        "title": "Krishna Janmashtami Anushka",
+        "category": "AI Reel",
+        "youtubeId": "GM1W-e-oQAM",
+        "videoUrl": "",
+        "isAi": true,
+        "ratio": "9/16",
+        "gridClass": "col-span-1 row-span-1",
+        "w": "120%",
+        "h": "120%",
+        "customThumb": "https://img.youtube.com/vi/GM1W-e-oQAM/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-v9-desk",
+        "showOn": "desktop",
+        "title": "I Created a $12,000 Jaguar Ad Using AI (For Free)",
+        "category": "AI Generation",
+        "youtubeId": "fIzQwzJaHjY",
+        "videoUrl": "",
+        "ratio": "16/9",
+        "gridClass": "col-span-3 row-span-1",
+        "w": "120%",
+        "h": "120%",
+        "customThumb": "https://img.youtube.com/vi/fIzQwzJaHjY/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-v10-desk",
+        "showOn": "desktop",
+        "title": "Mr Kumar's Style",
+        "category": "3D Art AI",
+        "youtubeId": "jKbeOSZSpmo",
+        "videoUrl": "",
+        "isAi": true,
+        "ratio": "9/16",
+        "gridClass": "col-span-1 row-span-1",
+        "w": "150%",
+        "h": "150%",
+        "customThumb": "https://img.youtube.com/vi/jKbeOSZSpmo/maxresdefault.jpg"
+      }
+    ],
+    "mobileHorizontalAiVideos": [
+      {
+        "id": "ai-mob-h1",
+        "title": "What if The Sun turns Blue? (Destruction)",
+        "category": "AI Cinematic",
+        "youtubeId": "s10neE9Q1KY",
+        "videoUrl": "",
+        "ratio": "16/9",
+        "customThumb": "https://img.youtube.com/vi/s10neE9Q1KY/sddefault.jpg"
+      },
+      {
+        "id": "ai-mob-h2",
+        "title": "90% of People are Getting This Wrong…",
+        "category": "AI Art",
+        "youtubeId": "hQ6su7l9Mxg",
+        "videoUrl": "",
+        "ratio": "16/9",
+        "customThumb": "https://img.youtube.com/vi/hQ6su7l9Mxg/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-mob-h3",
+        "title": "Steam Support (AI Short Film) | Full Movie",
+        "category": "AI Animation",
+        "youtubeId": "gjJI4x2hoBg",
+        "videoUrl": "",
+        "ratio": "16/9",
+        "customThumb": "https://img.youtube.com/vi/gjJI4x2hoBg/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-mob-h4",
+        "title": "I Created a $12,000 Jaguar Ad Using AI (For Free)",
+        "category": "AI Generation",
+        "youtubeId": "fIzQwzJaHjY",
+        "videoUrl": "",
+        "ratio": "16/9",
+        "customThumb": "https://img.youtube.com/vi/fIzQwzJaHjY/maxresdefault.jpg"
+      }
+    ],
+    "mobileVerticalAiVideos": [
+      {
+        "id": "ai-mob-v1",
+        "title": "Day 1 - #day1 #aboutme #myintroductionvideo",
+        "category": "AI Reel",
+        "youtubeId": "HMZdb1qOtsw",
+        "videoUrl": "",
+        "ratio": "9/16",
+        "customThumb": "https://img.youtube.com/vi/HMZdb1qOtsw/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-mob-v2",
+        "title": "Your Vibe coded App is in Danger  - Day 2  #VibeCoding #AppSecurity #WebDevelopment #APIKeys",
+        "category": "AI Portrait",
+        "youtubeId": "6RgnqcggJ1w",
+        "videoUrl": "",
+        "ratio": "9/16",
+        "customThumb": "https://img.youtube.com/vi/6RgnqcggJ1w/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-mob-v3",
+        "title": "Someone Leaked Entire DesignFiles of Top Companies#VibeCoding #ClaudeCode #AITools #WebDevelopment",
+        "category": "AI Motion",
+        "youtubeId": "KasJHz8AbnE",
+        "videoUrl": "",
+        "ratio": "9/16",
+        "customThumb": "https://img.youtube.com/vi/KasJHz8AbnE/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-mob-v4",
+        "title": "I Turned a 50-Minute Lecture Into a Full Presentation in 10 Seconds",
+        "category": "AI Character",
+        "youtubeId": "c0v_SUjTg7Q",
+        "videoUrl": "",
+        "ratio": "9/16",
+        "customThumb": "https://img.youtube.com/vi/c0v_SUjTg7Q/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-mob-v5",
+        "title": "Mr Kumar's Style",
+        "category": "3D Art AI",
+        "youtubeId": "jKbeOSZSpmo",
+        "videoUrl": "",
+        "ratio": "9/16",
+        "customThumb": "https://img.youtube.com/vi/jKbeOSZSpmo/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-mob-v6",
+        "title": "Krishna Janmashtami Anushka",
+        "category": "AI Reel",
+        "youtubeId": "GM1W-e-oQAM",
+        "videoUrl": "",
+        "isAi": true,
+        "ratio": "9/16",
+        "customThumb": "https://img.youtube.com/vi/GM1W-e-oQAM/maxresdefault.jpg"
+      }
+    ],
+    "allAiVideos": [
+      {
+        "id": "ai-all-h1",
+        "title": "What if The Sun turns Blue? (Destruction)",
+        "category": "AI World Generation",
+        "youtubeId": "s10neE9Q1KY",
+        "ratio": "16/9",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/s10neE9Q1KY/sddefault.jpg"
+      },
+      {
+        "id": "ai-all-h2",
+        "title": "90% of People are Getting This Wrong…",
+        "category": "AI Sci-Fi Art",
+        "youtubeId": "hQ6su7l9Mxg",
+        "ratio": "16/9",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/hQ6su7l9Mxg/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-all-h3",
+        "title": "90% of People are Getting This Wrong…",
+        "category": "AI Short Film",
+        "youtubeId": "V4EvkQhHJUQ",
+        "ratio": "16/9",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/V4EvkQhHJUQ/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-all-h4",
+        "title": "Steam Support (AI Short Film) | Full Movie",
+        "category": "AI Animation",
+        "youtubeId": "gjJI4x2hoBg",
+        "ratio": "16/9",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/gjJI4x2hoBg/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-all-h5",
+        "title": "I Created a $12,000 Jaguar Ad Using AI (For Free)",
+        "category": "AI Generation",
+        "youtubeId": "fIzQwzJaHjY",
+        "ratio": "16/9",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/fIzQwzJaHjY/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-all-h6",
+        "title": "Money Is Changing Forever (AI Video)",
+        "category": "AI VFX",
+        "youtubeId": "lPUCfxFAUYk",
+        "ratio": "16/9",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/lPUCfxFAUYk/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-all-h7",
+        "title": "Dharmendra Pradhan and CJI Suryakant Funny AI Video",
+        "category": "AI Motion",
+        "youtubeId": "_JjTP513Omc",
+        "ratio": "16/9",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/_JjTP513Omc/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-all-v1",
+        "title": "Day 1 - #day1 #aboutme #myintroductionvideo",
+        "category": "AI Reel",
+        "youtubeId": "HMZdb1qOtsw",
+        "ratio": "9/16",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/HMZdb1qOtsw/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-all-v2",
+        "title": "Your Vibe coded App is in Danger  - Day 2  #VibeCoding #AppSecurity #WebDevelopment #APIKeys",
+        "category": "AI Portrait",
+        "youtubeId": "6RgnqcggJ1w",
+        "ratio": "9/16",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/6RgnqcggJ1w/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-all-v3",
+        "title": "Someone Leaked Entire DesignFiles of Top Companies#VibeCoding #ClaudeCode #AITools #WebDevelopment",
+        "category": "AI Motion",
+        "youtubeId": "KasJHz8AbnE",
+        "ratio": "9/16",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/KasJHz8AbnE/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-all-v4",
+        "title": "I Turned a 50-Minute Lecture Into a Full Presentation in 10 Seconds",
+        "category": "AI Character",
+        "youtubeId": "c0v_SUjTg7Q",
+        "ratio": "9/16",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/c0v_SUjTg7Q/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-all-v5",
+        "title": "Mr Kumar's Style",
+        "category": "3D Art AI",
+        "youtubeId": "jKbeOSZSpmo",
+        "ratio": "9/16",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/jKbeOSZSpmo/maxresdefault.jpg"
+      },
+      {
+        "id": "ai-all-v6",
+        "title": "Krishna Janmashtami Anushka",
+        "category": "AI Reel",
+        "youtubeId": "GM1W-e-oQAM",
+        "ratio": "9/16",
+        "isAi": true,
+        "customThumb": "https://img.youtube.com/vi/GM1W-e-oQAM/maxresdefault.jpg"
       }
     ],
     "webProjects": [
@@ -383,15 +731,15 @@
     "allHorizontalVideos": [
       {
         "id": "v1-desk",
-        "title": "Desert Bloom",
+        "title": "New Edit For The Real Estate Lawyer",
         "youtubeId": "83WR-gPqV-k",
         "ratio": "16/9",
         "category": "Color Grade",
-        "customThumb": ""
+        "customThumb": "https://img.youtube.com/vi/83WR-gPqV-k/sddefault.jpg"
       },
       {
         "id": "v6-desk",
-        "title": " Stop Letting Your Cycle Control Your Life | PMS & PMDD",
+        "title": "Stop Letting Your Cycle Control Your Life | PMS & PMDD",
         "youtubeId": "RxThHefrP0Q",
         "ratio": "16/9",
         "category": "Lifestyle",
@@ -399,7 +747,7 @@
       },
       {
         "id": "v7-desk",
-        "title": " The Confidence Myth (And How to Beat It) w/ ‪@Dr.ShadeZahrai‬ | Ep 47",
+        "title": "The Confidence Myth (And How to Beat It) w/ @Dr.ShadeZahrai | Ep 47",
         "youtubeId": "1mZ3AQeidfk",
         "ratio": "16/9",
         "category": "Podcast",
@@ -407,89 +755,57 @@
       },
       {
         "id": "v9-desk",
-        "title": "Fitness Promo",
+        "title": "Old Edit for Pete Z Dingus",
         "youtubeId": "MxKeZvMf2TM",
         "ratio": "16/9",
         "category": "Ad",
-        "customThumb": ""
+        "customThumb": "https://img.youtube.com/vi/MxKeZvMf2TM/sddefault.jpg"
       }
     ],
     "allVerticalVideos": [
       {
-        "id": "1",
-        "title": "Filmmaking Episode 1",
-        "youtubeId": "Eh1w-Vv2ShA",
-        "ratio": "9/16",
-        "category": "Editing",
-        "customThumb": "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=600&auto=format&fit=crop&q=80"
-      },
-      {
-        "id": "2",
-        "title": "Filmmaking Episode 2",
-        "youtubeId": "B3oxUCV6zPg",
-        "ratio": "9/16",
-        "category": "Editing",
-        "customThumb": "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=600&auto=format&fit=crop&q=80"
-      },
-      {
         "id": "3",
-        "title": "Filmmaking Episode 3",
+        "title": "It's Not Just The Direction! | Filmmaking Series Ep 3      #cinematography #filmmaking #editing",
         "youtubeId": "lN2rqP5-wuc",
         "ratio": "9/16",
         "category": "Editing",
-        "customThumb": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600&auto=format&fit=crop&q=80"
+        "customThumb": "https://img.youtube.com/vi/lN2rqP5-wuc/maxresdefault.jpg"
       },
       {
         "id": "1",
-        "title": "Zar App Promo",
+        "title": "Another work for Sahil Gambhir",
         "youtubeId": "hFGV4zHmXxY",
         "ratio": "9/16",
         "category": "Editing",
-        "customThumb": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&auto=format&fit=crop&q=80"
+        "customThumb": "https://img.youtube.com/vi/hFGV4zHmXxY/maxresdefault.jpg"
       },
       {
         "id": "2",
-        "title": "Ghar Soap Promo",
+        "title": "New Work",
         "youtubeId": "sojAvbUGQew",
         "ratio": "9/16",
         "category": "Editing",
-        "customThumb": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&auto=format&fit=crop&q=80"
+        "customThumb": "https://img.youtube.com/vi/sojAvbUGQew/maxresdefault.jpg"
       },
       {
         "id": "3",
-        "title": "Plix Tablets Promo",
+        "title": "New Work",
         "youtubeId": "0Ph6MpGKq8I",
         "ratio": "9/16",
         "category": "Editing",
-        "customThumb": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&auto=format&fit=crop&q=80"
+        "customThumb": "https://img.youtube.com/vi/0Ph6MpGKq8I/maxresdefault.jpg"
       },
       {
         "id": "4",
-        "title": "LightLife Weightloss Product Promo",
+        "title": "Old Work",
         "youtubeId": "wyz9Ok6gDyA",
         "ratio": "9/16",
         "category": "Editing",
-        "customThumb": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&auto=format&fit=crop&q=80"
-      },
-      {
-        "id": "v3-desk",
-        "title": "Motion ID-009",
-        "youtubeId": "KasJHz8AbnE",
-        "ratio": "9/16",
-        "category": "CGI",
-        "customThumb": "https://img.youtube.com/vi/KasJHz8AbnE/maxresdefault.jpg"
-      },
-      {
-        "id": "v4-desk",
-        "title": "I AM LOGICIAN",
-        "youtubeId": "jKbeOSZSpmo",
-        "ratio": "9/16",
-        "category": "3D Art",
-        "customThumb": "https://img.youtube.com/vi/jKbeOSZSpmo/maxresdefault.jpg"
+        "customThumb": "https://img.youtube.com/vi/wyz9Ok6gDyA/maxresdefault.jpg"
       },
       {
         "id": "v5-desk",
-        "title": "Anushka & Sharda University Promo Video (800k+ Views)",
+        "title": "Edit For Sharda University India",
         "youtubeId": "_FQ7EBFkYY0",
         "ratio": "9/16",
         "category": "Social",
@@ -497,7 +813,7 @@
       },
       {
         "id": "v10-desk",
-        "title": "Anushka Promo 800k+ Views",
+        "title": "Anushka Edit",
         "youtubeId": "LkDVvwnNx2s",
         "ratio": "9/16",
         "category": "Promo",
@@ -505,7 +821,7 @@
       },
       {
         "id": "mob-v5",
-        "title": "Palak Plix Promo VIDEO (100K+ VIEWS)",
+        "title": "ipalak Edit",
         "youtubeId": "6KRlmvzYYx8",
         "ratio": "9/16",
         "category": "Promo",
@@ -513,11 +829,19 @@
       },
       {
         "id": "card-1785606787878",
-        "title": "Palak x Gazhal Promo Video",
+        "title": "ipalak 25 july",
         "youtubeId": "fdHWLuXTIBA",
         "ratio": "9/16",
         "category": "Promo",
         "customThumb": "https://img.youtube.com/vi/fdHWLuXTIBA/maxresdefault.jpg"
+      },
+      {
+        "id": "new-short-1",
+        "title": "Vadilal Ad",
+        "youtubeId": "Jixhcs-PO7o",
+        "ratio": "9/16",
+        "category": "Reels",
+        "customThumb": "https://img.youtube.com/vi/Jixhcs-PO7o/maxresdefault.jpg"
       }
     ]
   },
@@ -538,38 +862,6 @@
           "image": "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&auto=format&fit=crop&q=80",
           "items": [
             {
-              "id": "1",
-              "title": "Filmmaking Episode 1",
-              "description": "Fast-paced, hook-driven product reveals designed to stop thumbs and drive action.",
-              "thumbnail": "https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=600&auto=format&fit=crop&q=80",
-              "tags": [
-                "Vertical",
-                "Fast Paced",
-                "Hooks"
-              ],
-              "metadata": {
-                "type": "video",
-                "youtubeId": "Eh1w-Vv2ShA",
-                "aspect": "9/16"
-              }
-            },
-            {
-              "id": "2",
-              "title": "Filmmaking Episode 2",
-              "description": "Authentic, engaging lifestyle content that builds genuine audience connection.",
-              "thumbnail": "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?w=600&auto=format&fit=crop&q=80",
-              "tags": [
-                "Authentic",
-                "Storytelling",
-                "Engaging"
-              ],
-              "metadata": {
-                "type": "video",
-                "youtubeId": "B3oxUCV6zPg",
-                "aspect": "9/16"
-              }
-            },
-            {
               "id": "3",
               "title": "Filmmaking Episode 3",
               "description": "User-generated style content that converts with authentic appeal.",
@@ -582,7 +874,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "lN2rqP5-wuc",
-                "aspect": "9/16"
+                "aspect": "9/16",
+                "customThumb": "https://img.youtube.com/vi/lN2rqP5-wuc/maxresdefault.jpg",
+                "title": "It's Not Just The Direction! | Filmmaking Series Ep 3      #cinematography #filmmaking #editing"
               }
             }
           ]
@@ -606,7 +900,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "hFGV4zHmXxY",
-                "aspect": "9/16"
+                "aspect": "9/16",
+                "customThumb": "https://img.youtube.com/vi/hFGV4zHmXxY/maxresdefault.jpg",
+                "title": "Another work for Sahil Gambhir"
               }
             },
             {
@@ -622,7 +918,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "sojAvbUGQew",
-                "aspect": "9/16"
+                "aspect": "9/16",
+                "customThumb": "https://img.youtube.com/vi/sojAvbUGQew/maxresdefault.jpg",
+                "title": "New Work"
               }
             },
             {
@@ -638,7 +936,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "0Ph6MpGKq8I",
-                "aspect": "9/16"
+                "aspect": "9/16",
+                "customThumb": "https://img.youtube.com/vi/0Ph6MpGKq8I/maxresdefault.jpg",
+                "title": "New Work"
               }
             },
             {
@@ -654,7 +954,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "wyz9Ok6gDyA",
-                "aspect": "9/16"
+                "aspect": "9/16",
+                "customThumb": "https://img.youtube.com/vi/wyz9Ok6gDyA/maxresdefault.jpg",
+                "title": "Old Work"
               }
             }
           ]
@@ -678,7 +980,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "MtN1YnoL46Q",
-                "aspect": "16/9"
+                "aspect": "16/9",
+                "customThumb": "https://img.youtube.com/vi/MtN1YnoL46Q/hqdefault.jpg",
+                "title": "The Duck Song"
               }
             },
             {
@@ -694,7 +998,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "jNQXAC9IVRw",
-                "aspect": "9/16"
+                "aspect": "9/16",
+                "customThumb": "https://img.youtube.com/vi/jNQXAC9IVRw/hqdefault.jpg",
+                "title": "Me at the zoo"
               }
             },
             {
@@ -710,7 +1016,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "LXb3EKWsInQ",
-                "aspect": "16/9"
+                "aspect": "16/9",
+                "customThumb": "https://img.youtube.com/vi/LXb3EKWsInQ/maxresdefault.jpg",
+                "title": "COSTA RICA IN 4K 60fps HDR (ULTRA HD)"
               }
             },
             {
@@ -726,7 +1034,8 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "CVpNNMlQ3m8",
-                "aspect": "16/9"
+                "aspect": "16/9",
+                "customThumb": "https://img.youtube.com/vi/CVpNNMlQ3m8/hqdefault.jpg"
               }
             }
           ]
@@ -750,7 +1059,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "ScMzIvxBSi4",
-                "aspect": "9/16"
+                "aspect": "9/16",
+                "customThumb": "https://img.youtube.com/vi/ScMzIvxBSi4/maxresdefault.jpg",
+                "title": "Placeholder Video"
               }
             },
             {
@@ -766,7 +1077,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "MtN1YnoL46Q",
-                "aspect": "16/9"
+                "aspect": "16/9",
+                "customThumb": "https://img.youtube.com/vi/MtN1YnoL46Q/hqdefault.jpg",
+                "title": "The Duck Song"
               }
             },
             {
@@ -782,7 +1095,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "dQw4w9WgXcQ",
-                "aspect": "9/16"
+                "aspect": "9/16",
+                "customThumb": "https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+                "title": "Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)"
               }
             },
             {
@@ -798,7 +1113,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "LXb3EKWsInQ",
-                "aspect": "16/9"
+                "aspect": "16/9",
+                "customThumb": "https://img.youtube.com/vi/LXb3EKWsInQ/maxresdefault.jpg",
+                "title": "COSTA RICA IN 4K 60fps HDR (ULTRA HD)"
               }
             }
           ]
@@ -822,7 +1139,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "MtN1YnoL46Q",
-                "aspect": "16/9"
+                "aspect": "16/9",
+                "customThumb": "https://img.youtube.com/vi/MtN1YnoL46Q/hqdefault.jpg",
+                "title": "The Duck Song"
               }
             },
             {
@@ -838,7 +1157,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "LXb3EKWsInQ",
-                "aspect": "16/9"
+                "aspect": "16/9",
+                "customThumb": "https://img.youtube.com/vi/LXb3EKWsInQ/maxresdefault.jpg",
+                "title": "COSTA RICA IN 4K 60fps HDR (ULTRA HD)"
               }
             },
             {
@@ -854,7 +1175,8 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "CVpNNMlQ3m8",
-                "aspect": "16/9"
+                "aspect": "16/9",
+                "customThumb": "https://img.youtube.com/vi/CVpNNMlQ3m8/hqdefault.jpg"
               }
             },
             {
@@ -870,7 +1192,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "jNQXAC9IVRw",
-                "aspect": "9/16"
+                "aspect": "9/16",
+                "customThumb": "https://img.youtube.com/vi/jNQXAC9IVRw/hqdefault.jpg",
+                "title": "Me at the zoo"
               }
             },
             {
@@ -886,7 +1210,9 @@
               "metadata": {
                 "type": "video",
                 "youtubeId": "ScMzIvxBSi4",
-                "aspect": "16/9"
+                "aspect": "16/9",
+                "customThumb": "https://img.youtube.com/vi/ScMzIvxBSi4/maxresdefault.jpg",
+                "title": "Placeholder Video"
               }
             }
           ]
