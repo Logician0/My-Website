@@ -48,7 +48,10 @@ async function getTitle(id) {
     const r = await fetch(url);
     if (r.ok) {
       const j = await r.json();
-      return j.title || null;
+      if (j.title) {
+        return j.title.replace(/#[a-zA-Z0-9_]+/g, "").replace(/\s+/g, " ").trim().replace(/[-|–—:]\s*$/, "").trim();
+      }
+      return null;
     }
   } catch { }
   // fallback: try the other URL format

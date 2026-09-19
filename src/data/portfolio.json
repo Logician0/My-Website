@@ -28,7 +28,7 @@
       {
         "id": "v3-desk",
         "showOn": "desktop",
-        "title": "It's Not Just The Direction! | Filmmaking Series Ep 3      #cinematography #filmmaking #editing",
+        "title": "It's Not Just The Direction! | Filmmaking Series Ep 3",
         "category": "Editing",
         "youtubeId": "lN2rqP5-wuc",
         "ratio": "9/16",
@@ -233,7 +233,7 @@
       {
         "id": "ai-v2-desk",
         "showOn": "desktop",
-        "title": "Day 1 - #day1 #aboutme #myintroductionvideo",
+        "title": "Day 1",
         "category": "AI Reel",
         "youtubeId": "HMZdb1qOtsw",
         "videoUrl": "",
@@ -246,7 +246,7 @@
       {
         "id": "ai-v3-desk",
         "showOn": "desktop",
-        "title": "Your Vibe coded App is in Danger  - Day 2  #VibeCoding #AppSecurity #WebDevelopment #APIKeys",
+        "title": "Your Vibe coded App is in Danger - Day 2",
         "category": "AI Portrait",
         "youtubeId": "6RgnqcggJ1w",
         "videoUrl": "",
@@ -259,7 +259,7 @@
       {
         "id": "ai-v4-desk",
         "showOn": "desktop",
-        "title": "Someone Leaked Entire DesignFiles of Top Companies#VibeCoding #ClaudeCode #AITools #WebDevelopment",
+        "title": "Someone Leaked Entire DesignFiles of Top Companies",
         "category": "AI Short",
         "youtubeId": "KasJHz8AbnE",
         "videoUrl": "",
@@ -391,7 +391,7 @@
     "mobileVerticalAiVideos": [
       {
         "id": "ai-mob-v1",
-        "title": "Day 1 - #day1 #aboutme #myintroductionvideo",
+        "title": "Day 1",
         "category": "AI Reel",
         "youtubeId": "HMZdb1qOtsw",
         "videoUrl": "",
@@ -400,7 +400,7 @@
       },
       {
         "id": "ai-mob-v2",
-        "title": "Your Vibe coded App is in Danger  - Day 2  #VibeCoding #AppSecurity #WebDevelopment #APIKeys",
+        "title": "Your Vibe coded App is in Danger - Day 2",
         "category": "AI Portrait",
         "youtubeId": "6RgnqcggJ1w",
         "videoUrl": "",
@@ -409,7 +409,7 @@
       },
       {
         "id": "ai-mob-v3",
-        "title": "Someone Leaked Entire DesignFiles of Top Companies#VibeCoding #ClaudeCode #AITools #WebDevelopment",
+        "title": "Someone Leaked Entire DesignFiles of Top Companies",
         "category": "AI Motion",
         "youtubeId": "KasJHz8AbnE",
         "videoUrl": "",
@@ -511,7 +511,7 @@
       },
       {
         "id": "ai-all-v1",
-        "title": "Day 1 - #day1 #aboutme #myintroductionvideo",
+        "title": "Day 1",
         "category": "AI Reel",
         "youtubeId": "HMZdb1qOtsw",
         "ratio": "9/16",
@@ -520,7 +520,7 @@
       },
       {
         "id": "ai-all-v2",
-        "title": "Your Vibe coded App is in Danger  - Day 2  #VibeCoding #AppSecurity #WebDevelopment #APIKeys",
+        "title": "Your Vibe coded App is in Danger - Day 2",
         "category": "AI Portrait",
         "youtubeId": "6RgnqcggJ1w",
         "ratio": "9/16",
@@ -529,7 +529,7 @@
       },
       {
         "id": "ai-all-v3",
-        "title": "Someone Leaked Entire DesignFiles of Top Companies#VibeCoding #ClaudeCode #AITools #WebDevelopment",
+        "title": "Someone Leaked Entire DesignFiles of Top Companies",
         "category": "AI Motion",
         "youtubeId": "KasJHz8AbnE",
         "ratio": "9/16",
@@ -765,7 +765,7 @@
     "allVerticalVideos": [
       {
         "id": "3",
-        "title": "It's Not Just The Direction! | Filmmaking Series Ep 3      #cinematography #filmmaking #editing",
+        "title": "It's Not Just The Direction! | Filmmaking Series Ep 3",
         "youtubeId": "lN2rqP5-wuc",
         "ratio": "9/16",
         "category": "Editing",
@@ -876,7 +876,7 @@
                 "youtubeId": "lN2rqP5-wuc",
                 "aspect": "9/16",
                 "customThumb": "https://img.youtube.com/vi/lN2rqP5-wuc/maxresdefault.jpg",
-                "title": "It's Not Just The Direction! | Filmmaking Series Ep 3      #cinematography #filmmaking #editing"
+                "title": "It's Not Just The Direction! | Filmmaking Series Ep 3"
               }
             }
           ]
